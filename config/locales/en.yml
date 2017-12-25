@@ -323,6 +323,8 @@ en:
     major: "Major"
     organization: "Organization"
     classification: "Classification"
+    reveived_time: "Received time"
+    majors: "Majors"
     reveived: "Received_time"
     certi: "Certificates"
     add: "Add"
@@ -552,6 +554,30 @@ en:
             classification:
               blank: "Classification can not be blank"
               too_long: "Classification must be less than 255 characters"
+        job:
+          attributes:
+            name:
+              blank: "Name can not be blank"
+            content:
+              blank: "Content can not be blank"
+            level:
+              blank: "Level can not be blank"
+            description:
+              blank: "Description can not be blank"
+            language:
+              blank: "Language can not be blank"
+            position:
+              blank: "Position can not be blank"
+            skill:
+              blank: "Skill can not be blank"
+            min_salary:
+              blank: "Min salary can not be blank"
+            max_salary:
+              blank: "Max salary can not be blank"
+        reward_benefit:
+          attributes:
+            content:
+              blank: "Content can not be blank"
   layouts:
     employers:
       employer:
@@ -777,3 +803,5 @@ en:
   appointment:
     create_success: "Create orders_controller success"
     errror: "Create interviewer error"
+  rspec:
+    mgs_not_blank: "%{item} can not be blank"

@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :company do
     name "Framgia_Inc"
     address "Da nang"
-    phone "0123456789"
+    phone "+84-(111)-999-" + Faker::Number.number(4)
     majors "IT_softeware"
     contact_person "Nguyen Van B"
     company_info "Framgia_Inc da nang"

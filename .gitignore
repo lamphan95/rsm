@@ -34,3 +34,4 @@ coverage/.resultset.json
 coverage/index.html
 /Gemfile.lock
 /public/*
+coverage/*

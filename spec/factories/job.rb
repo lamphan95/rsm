@@ -10,8 +10,5 @@ FactoryGirl.define do
     max_salary 500
     description Faker::Lorem.paragraphs
     association :user, factory: :user
-    association :company, factory: :company
-    association :branch, factory: :branch
-    association :category, factory: :category
    end
 end

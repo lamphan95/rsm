@@ -69,3 +69,9 @@ company:
 inforappointment:
   agree: 1
   not_agree: 2
+rspec:
+  blank: ""
+  job_spec:
+    salary: 1500
+    max_salary: 1000
+    min_salary: 1200
