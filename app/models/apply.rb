@@ -16,6 +16,8 @@ class Apply < ApplicationRecord
   scope :newest_apply, ->{order :created_at}
   mount_uploader :cv, CvUploader
 
+  delegate :name, to: :job, prefix: true, allow_nil: :true
+
   include PublicActivity::Model
 
   validates_hash_keys :information do

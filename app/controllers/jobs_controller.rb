@@ -1,4 +1,4 @@
-class JobsController < ApplicationController
+class JobsController < BaseNotificationsController
   layout "jobs/job"
 
   before_action :authenticate_user!, except: %i(index show)
@@ -15,7 +15,6 @@ class JobsController < ApplicationController
   before_action :create_job, only: :index, if: :user_signed_in?
   before_action :create_reward_benefits,
     only: :index, if: :user_signed_in?
-
   before_action :load_branches_for_select_box, only: :index
   before_action :load_category_for_select_box, only: :index
 
@@ -44,7 +43,9 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.save
         @job.save_activity current_user, :create
-        format.js{ @messages = t ".job_created"}
+        Notification.create_notification t("content_notification_create_job",
+          job: @job.name), :employer, @job, current_user.id
+        format.js{@messages = t ".job_created"}
       else
         format.js
       end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => "/ckeditor"
+  mount ActionCable.server => "/cable"
   devise_for :user, path: "devises", controllers: {
     passwords: "devises/passwords",
     registrations: "devises/registrations",
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
 
   root "static_pages#index"
 
-
   resources :users
   resources :achievements
   resources :certificates, except: :index
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :users
     resources :companies
     resources :members
-    resources :activities
+    resources :company_activities
     resources :appointments
     resources :confirm_appointments, only: :edit
     resources :templates

@@ -9,12 +9,14 @@ class Employers::AppliesController < Employers::EmployersController
     end
   end
 
-  def show ;end
+  def show; end
 
   def update
     respond_to do |format|
       if @apply.update_attributes apply_params
         @apply.save_activity current_user, :update, @apply.status
+        Notification.create_notification t("content_notification_update_apply",
+          job: @apply.job_name), :user, @apply, current_user.id
         handling_after_update_success
         format.js{@messages = t "employers.applies.update.success"}
       else

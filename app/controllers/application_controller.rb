@@ -44,5 +44,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i(name phone address sex birthday))
     devise_parameter_sanitizer.permit(:account_update, keys: %i(name phone address sex birthday))
   end
+
+  def load_notification
+    return unless user_signed_in?
+    if current_user.user?
+      @notifications = Notification.user.order_by_created_at
+    elsif current_user.employer?
+      @notifications = Notification.employer.order_by_created_at
+    end
+  end
 end
 

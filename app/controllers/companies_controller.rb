@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class CompaniesController < BaseNotificationsController
   layout "companies/company"
 
   before_action :authenticate_user!, only: %i(update edit destroy)

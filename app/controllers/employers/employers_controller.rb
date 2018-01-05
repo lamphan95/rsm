@@ -5,6 +5,7 @@ class Employers::EmployersController < ApplicationController
   before_action :load_company
   before_action :check_permissions_employer
   before_action :current_ability
+  before_action :load_notification
   load_and_authorize_resource
 
   private
