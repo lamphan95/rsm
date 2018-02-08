@@ -163,9 +163,8 @@ default_survey: 0
 survey:
   optional: 1
   compulsory: 2
-step:
-  step_1: "1"
-  step_2: "2"
+step_1: "1"
+step_2: "2"
 companies: "@company@"
 user: "@user@"
 address: "@address@"

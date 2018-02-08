@@ -1,5 +1,5 @@
 <div id="form-apply">
-  <table class="col-md-12 table table-condensed table-responsive table-user-information">
+  <table class="col-md-12 table-user-information">
     <%= f.simple_fields_for :information do |p| %>
       <%= p.hidden_field :name, value: current_user.name %>
       <%= p.hidden_field :email, value: current_user.email %>
@@ -17,76 +17,73 @@
           </div>
         </div>
       </tr>
-      <tr>
-        <td class="no-border">
-          <strong>
-            <span class="text-danger">&nbsp;*</span>
-            <%= t ".introducing" %>
+      <% if current_user.cv.present? %>
+        <tr class="border-dashed">
+          <strong class="control-label col-md-3 p-0">
+            <div class="pull-left">
+              <abbr title="required">*</abbr>
+              <%= t ".new_cv" %>
+            </div>
           </strong>
-          <%= p.text_area :introducing, class: "form-control ckeditor", cols: Settings.text_area.cols,
-            rows: Settings.text_area.rows %>
-          <span class="error-message">
-            <%= p.error :information %>
-          </span>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-  <table class="col-md-12 table table-condensed table-responsive border-bottom">
-    <% if current_user.cv.present? %>
-      <tr>
-        <strong class="col-md-3">
-          <%= t ".new_cv" %>
-        </strong>
-      </tr>
-      <tr>
-        <td>
-          <div class="radio">
-            <input id="radio-1" name="radio" type="radio" checked value="checked">
-            <label for="radio-1" class="radio-label">
-              <%= current_user.cv_identifier %>
-              <span class="update-at">
-                (<%= t ".update" %><%= I18n.l current_user.updated_at, format: :date_time %>)
-              </span>
-            </label>
-          </div>
-          <div class="radio">
-            <input id="radio-2" name="radio" type="radio">
-            <label for="radio-2" class="radio-label">
-              <label class="fileContainer">
-                <p class="check-p text-primary">
-                  <%= t ".select-cv" %>
-                  <i class="fa fa-upload load-up"></i>
-                </p>
-                <%= f.file_field :cv, id: "cv-file", class: " file-up transparent absolute" %>
+        </tr>
+        <tr>
+          <td>
+            <div class="radio">
+              <input id="radio-1" name="radio" type="radio" checked value="checked">
+              <label for="radio-1" class="radio-label">
+                <%= current_user.cv_identifier %>
+                <span class="update-at">
+                  <%= cv_update_at current_user %>
+                </span>
               </label>
-            </label>
-          </div>
-        </td>
-      </tr>
-      <tr class="files_field">
+            </div>
+            <div class="radio">
+              <input id="radio-2" name="radio" type="radio">
+              <label for="radio-2" class="radio-label">
+                <label class="fileContainer">
+                  <p class="check-p text-primary">
+                    <%= t ".select-cv" %>
+                    <i class="fa fa-upload load-up"></i>
+                  </p>
+                  <%= f.file_field :cv, id: "cv-file", class: " file-up transparent absolute" %>
+                </label>
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr class="files_field">
+          <td>
+            <strong class="col-md-3">
+              <%= t ".new_cv" %>
+            </strong>
+            <span class="btn btn-default btn-file col-md-2">
+              <%= t ".browse" %><%= f.file_field :cv, id: "file_cv", class: "transparent absolute" %>
+            </span>
+          </td>
+        </tr>
+      <% else %>
+        <tr class="border-dashed">
+          <td>
+            <div class="form-group m-top-15">
+              <strong class="control-label col-md-3 p-0">
+                <div class="pull-left">
+                  <abbr title="required">*</abbr>
+                  <%= t ".new_cv" %>
+                </div>
+              </strong>
+              <div class="input-group col-md-9 right-60 w-250">
+                <%= text_field_tag nil, nil, class: "form-control", id: "choose-cv", readonly: true %>
+                <span class="input-group-addon btn btn-info btn-file">
+                  <%= t ".browse" %><%= f.file_field :cv, class: "choose-cv" %>
+                </span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      <tr class="border-dashed">
         <td>
-          <strong class="col-md-3">
-            <span class="glyphicon glyphicon-tag text-primary"></span>
-            <%= t ".new_cv" %>
-          </strong>
-          <span class="btn btn-default btn-file col-md-2">
-            <%= t ".browse" %><%= f.file_field :cv, id: "file_cv", class: "transparent absolute" %>
-          </span>
-        </td>
-      </tr>
-    <% else %>
-      <tr>
-        <td>
-          <strong class="col-md-3">
-            <span class="fa fa-tag text-primary"></span>
-            <span class="text-danger">&nbsp;*</span>
-            <%= t ".new_cv" %>
-          </strong>
-          <span class="btn btn-info btn-file col-md-2">
-            <%= t ".browse" %><%= f.file_field :cv, class: "transparent absolute choose-cv" %>
-          </span>
-          <%= text_field_tag nil, nil, class: "form-control center-block w-450", id: "choose-cv", readonly: true %>
+          <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
         </td>
       </tr>
     <% end %>
