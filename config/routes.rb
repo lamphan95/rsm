@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :email_sents
     resources :steps
     resources :status_steps, only: :index
+    resources :questions, only: :index
   end
   resources :bookmark_likes
   resources :experiences

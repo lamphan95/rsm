@@ -3,7 +3,7 @@ class Employers::JobsController < Employers::EmployersController
   before_action :load_jobs, only: :index
   before_action :load_branches_for_select_box, only: :index
   before_action :load_category_for_select_box, only: :index
-  before_action :load_questions, only: :new
+  before_action :load_questions, :build_surveys, only: :new
   before_action :check_params, only: :create
   before_action :load_status_step, only: %i(index update)
 
@@ -72,11 +72,14 @@ class Employers::JobsController < Employers::EmployersController
     if params[:expire_on] == Settings.jobs.form.check_box_expire_on
       params.require(:job).permit :content, :name, :level, :language, :target, :end_time, :skill,
         :position, :company_id, :description, :min_salary, :max_salary, :branch_id, :category_id,
-        :survey_type, reward_benefits_attributes: %i(id content job_id _destroy)
+        :survey_type, reward_benefits_attributes: %i(id content job_id _destroy),
+        surveys_attributes: [:id, :_destroy, question_attributes: %i(name company_id _destroy)]
     else
       params.require(:job).permit(:content, :name, :level, :language, :target, :skill,
         :position, :company_id, :description, :min_salary, :max_salary, :branch_id, :category_id,
-        :survey_type, reward_benefits_attributes: %i(id content job_id _destroy)).merge! end_time: nil
+        :survey_type, reward_benefits_attributes: %i(id content job_id _destroy),
+        surveys_attributes: [:id, :_destroy, question_attributes: %i(name company_id _destroy)])
+        .merge! end_time: nil
     end
   end
 
@@ -96,6 +99,10 @@ class Employers::JobsController < Employers::EmployersController
     @categories ||= @company.categories.by_status(Category.statuses[:active]).order_name_desc.pluck :name, :id
   end
 
+  def build_surveys
+    @job.surveys.build
+  end
+
   def check_params
     if params[:job] && !params[:onoffswitch]
       params[:job][:survey_type] = Settings.default_value
@@ -107,6 +114,6 @@ class Employers::JobsController < Employers::EmployersController
   end
 
   def load_questions
-    @questions = @company.questions
+    @questions = @company.questions.get_newest
   end
 end

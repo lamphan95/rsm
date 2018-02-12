@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w(employers/notification.scss emp
 Rails.application.config.assets.precompile += %w(company/login.js survey.js employers/apply_block.js)
 Rails.application.config.assets.precompile += %w(employers/calendar.js compCalendar.js employers/validate.js)
 Rails.application.config.assets.precompile += %w(read_notification.scss custom_height_layout.js)
-Rails.application.config.assets.precompile += %w(employer/jquery-ui.css employers/select_step.js survey.scss)
+Rails.application.config.assets.precompile += %w(employer/jquery-ui.css employers/select_step.js survey.scss
+  employers/search_question.js)

@@ -46,7 +46,15 @@
       <%= f.select :category_id, @company.categories.map{|r| [r.name, r.id]},
         {include_blank: t(".please_selected")}, class: "form-control" %>
     <% end %>
-    <%= render partial: "add_survey", locals: {f: f} %>
+    <% if @job.new_record? %>
+      <%= render partial: "add_survey", locals: {f: f} %>
+    <% end %>
+    <center>
+      <div class="centerize create-job-btn">
+        <%= f.button :submit, label: t("jobs.form.save_job"),
+          class: "btn btn-primary btn-sm w-105 m-top-20" %>
+      </div>
+    </center>
   <% end %>
 </div>
 <%= javascript_include_tag "survey" %>

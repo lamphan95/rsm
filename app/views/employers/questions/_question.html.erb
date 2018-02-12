@@ -1,0 +1,11 @@
+<%= collection_check_boxes(:job, :question_ids, questions, :id, :name) do |question| %>
+  <tr role="row">
+    <td class="text-center">
+      <strong>
+        <%= question.check_box checked: false %>
+      </strong>
+    </td>
+
+    <td class="text-center"><%= question.object.name %></td>
+  </tr>
+<% end %>
