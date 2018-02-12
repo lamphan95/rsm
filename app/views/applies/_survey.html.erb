@@ -2,7 +2,7 @@
   <div class="survey display-none opacity-apply">
     <%= f.simple_fields_for :answers do |answer| %>
       <%= render partial: "applies/questions", locals: {f: answer,
-        question: @questions[answer.index]} %>
+        survey: @surveys[answer.index]} %>
     <% end %>
     <center>
       <%= link_to "javascript:void(0)", class: "btn btn-sm btn-primary previous" do %>

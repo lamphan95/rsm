@@ -260,13 +260,6 @@ Job.delete_all
   )}
 end
 
-Job.limit(5).each do |job|
-  2.times do |n|
-    job.update_attributes survey: 1
-    job.questions.create!(name: Faker::Lorem.sentence)
-  end
-end
-
 Job.limit(10).each_with_index do |job, index|
   user = User.find index + 1
   apply = Apply.create!(
@@ -362,3 +355,21 @@ Template.create!(
   name: "template offer",
   type_of: 1
 )
+
+1.upto(10) do |n|
+  Question.create! name: Faker::Lorem.sentence, company_id: 1
+end
+
+Job.limit(5).each do |job|
+  2.times do |n|
+    job.update_attributes survey_type: 1
+    job.surveys.create! question_id: rand(1..10)
+  end
+end
+
+Job.limit(2).each do |job|
+  2.times do |n|
+    job.update_attributes survey_type: 2
+    job.surveys.create! question_id: rand(1..10)
+  end
+end

@@ -41,7 +41,7 @@ class AppliesController < ApplicationController
   def apply_params
     status_id = StatusStep.status_step_priority_company @job.company_id if @job
     params.require(:apply).permit(:status, :user_id, :job_id, :information, :cv,
-      answers_attributes: %i(id name question_id))
+      answers_attributes: %i(id name survey_id))
       .merge! apply_statuses_attributes: [status_step_id: status_id, is_current: :current]
   end
 

@@ -1,6 +1,6 @@
-<div class="question-<%= question.id %>">
+<div class="survey-<%= survey.id %>">
   <i class="text-danger"><%= t ".question", index: f.index + Settings.increase_one %>:</i>
-  <b><h5><%= question.name %> ?</h5></b>
+  <b><h5 class="text-primary d-inline"><%= survey.question_name %> ?</h5></b><br/>
   <label class="control-label add-one-more-section" for="apply_information_introducing">
     <% if @job.compulsory? %>
       <abbr title="required">*</abbr>
@@ -8,5 +8,5 @@
     <%= t ".answer" %>
   </label>
   <%= f.input :name, label: false, input_html: {rows: Settings.rows_text_area} %>
-  <%= f.hidden_field :question_id, value: question.id %>
+  <%= f.hidden_field :survey_id, value: survey.id %>
 </div></br>
