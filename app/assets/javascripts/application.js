@@ -42,3 +42,4 @@
 //= require cable
 //= require fancybox
 //= require custom_height_layout.js
+//= require user

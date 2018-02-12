@@ -147,22 +147,8 @@
       background-color: rgba(0, 0, 0, 0.8);
     }
   }
-  .form-group {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 5px 15px;
-  }
-  .form-control {
-    font-size: 13px;
-    padding: 6px 8px;
-    max-width: 100%;
-    margin: 1px 0;
-    color: $gray-dark-hard-1;
-    box-shadow: none;
-    background: transparent;
-  }
   .remember-login {
-    padding: 15px 30px 15px 15px;
+    padding: 15px 30px 15px 15px !important;
   }
   .btn-sm {
     padding: 5px 10px;
@@ -200,77 +186,12 @@
   }
 }
 
-.switch {
-  margin: 1px 0;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  input {
-    position: absolute;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    &:checked + span {
-      background-color: $blue-light;
-    }
-    &:checked + span:after {
-      left: 26px;
-      width: 24px;
-      top: 1px;
-      bottom: 1px;
-      border: none;
-      -webkit-box-shadow: -2px 0 3px rgba(0, 0, 0, 0.1);
-      box-shadow: -2px 0 3px rgba(0, 0, 0, 0.1);
-    }
-  }
-  span {
-    position: relative;
-    display: inline-block;
-    width: 54px;
-    height: 28px;
-    border-radius: 28px;
-    background-color: $snow;
-    border: 1px solid $grey-light2;
-    -webkit-transition: background-color 0.35s;
-    transition: background-color 0.35s;
-    &:after {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 7px;
-      bottom: 7px;
-      width: 12px;
-      background-color: $white;
-      border: 1px solid $grey-light2;
-      border-radius: 24px;
-      -webkit-box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
-      box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
-      -webkit-transition: all 0.15s ease-out;
-      transition: all 0.15s ease-out;
-    }
-  }
-  &.switch-primary {
-    span {
-      border-color: $blue-light;
-    }
-    input:checked + span {
-      background-color: $blue-light;
-    }
-  }
-}
-
 .color-red {
   color: $red;
 }
 
-.input-inline {
-  display: inline-block;
-  width: 49.7%;
-  border-left: 1px dashed $gray-light-3 !important;
-}
-
 .lang-sel-sel {
-  background: url(/assets/nav-arrow-down.png)  right no-repeat !important;
+  background: url(/assets/nav-arrow-down.png) right no-repeat !important;
 }
 
 .section-vision.title-2 {

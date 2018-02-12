@@ -1,8 +1,13 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  let(:user) { FactoryGirl.create :user }
+
+  let(:company){FactoryGirl.create :company}
+  let!(:user1){FactoryGirl.create :user, company_id: company.id}
+  let(:user){FactoryGirl.create :user, company_id: company.id}
+
   subject {user}
+
   context "associations" do
     it {is_expected.to have_many :achievements}
     it {is_expected.to have_many :clubs}
@@ -41,10 +46,10 @@ RSpec.describe User, type: :model do
   end
 
   context "when email is not valid" do
-    before {subject.email = ""}
+    before {subject.email = user1.email}
     it "matches the error message" do
       subject.valid?
-      subject.errors[:email].should include("can't be blank")
+      expect(subject.errors[:email].to_sentence).to eq I18n.t("users.form.empty")
     end
   end
 

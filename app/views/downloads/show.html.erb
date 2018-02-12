@@ -60,7 +60,7 @@
     <ul class="cv7_contact">
       <li data-tooltip-position="bottom">
         <span class="icon_date_w"><i class="fa fa-calendar-o text-white" aria-hidden="true"></i></span>
-        <div class="w100 ip tw f12 breakwrap"><%= l @user.birthday, format: :long %></div>
+        <div class="w100 ip tw f12 breakwrap"><%= l(@user.birthday, format: :long) if @user.birthday.present? %></div>
       </li>
       <li data-tooltip-position="bottom">
         <span class="icon_phone_w"><i class="fa fa-phone text-white" aria-hidden="true"></i></span>
