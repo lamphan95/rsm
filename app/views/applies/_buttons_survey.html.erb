@@ -1,16 +1,18 @@
-<center class="m-top-20">
-  <% unless @job.compulsory? %>
-    <%= f.button :button, class: "btn btn-sm btn-primary load-page" do %>
-      <i class="fa fa-plus"></i>&nbsp;<%= t ".apply" %>
+<div class="row">
+  <center class="col-md-12 m-top-20">
+    <% unless @job.compulsory? %>
+      <%= f.button :button, class: "btn btn-sm btn-primary load-page" do %>
+        <i class="fa fa-plus"></i>&nbsp;<%= t ".apply" %>
+      <% end %>
     <% end %>
-  <% end %>
-  <% unless @job.not_exist? %>
-    <% if @job.compulsory? %>
-      <p class="text-warning small"><%= t ".answer_survey_continues" %><p>
+    <% unless @job.not_exist? %>
+      <% if @job.compulsory? %>
+        <p class="text-warning small"><%= t ".answer_survey_continues" %></p>
+      <% end %>
+      <%= link_to "javascript:void(0)",
+        class: "btn btn-sm btn-primary next" do %>
+        <%= t ".answer_survey" %>
+      <% end %>
     <% end %>
-    <%= link_to "javascript:void(0)",
-      class: "btn btn-sm btn-primary next" do %>
-      <%= t ".answer_survey" %>
-    <% end %>
-  <% end %>
-</center>
+  </center>
+</div>

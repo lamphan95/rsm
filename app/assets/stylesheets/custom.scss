@@ -516,12 +516,6 @@
   color: #e74c3c !important;
   font-size: 12px;
 }
-.btn-file {
-  position: relative;
-  overflow: hidden;
-  top: 34px;
-  left: 283px;
-}
 .btn-file input[type=file] {
   position: absolute;
   top: 0;
@@ -896,4 +890,13 @@ label.control-label {
 }
 .w-450 {
   width: 450px !important;
+}
+.m-top-10 {
+  margin-top: 10px !important;
+}
+.p-0 {
+  padding: 0 !important;
+}
+.m-top-15 {
+  margin-top: 15px !important;
 }

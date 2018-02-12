@@ -1006,6 +1006,7 @@ en:
     content:
       apply: "Apply"
     form_apply:
+      update: "Update at"
       who: "Who"
       introducing: "Introducing"
       new_cv: "New CV"

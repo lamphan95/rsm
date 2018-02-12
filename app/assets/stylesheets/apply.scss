@@ -21,8 +21,9 @@
 }
 
 .table-user-information {
+  min-width: 445px;
+  min-height: 149px;
   margin-bottom: 0 !important;
-  border-bottom: 3px solid $gray-light-2;
 }
 
 .site-section-top {
@@ -31,4 +32,26 @@
 
 .no-border {
   border-top: 0px !important;
+}
+
+.border-dashed {
+  border-top: 1px dashed $gray-light-1 !important;
+  border-bottom: 1px dashed $gray-light-1 !important;
+}
+
+strong.control-label {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13.7px;
+}
+
+label.control-label {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13.7px;
+}
+
+@media only screen and (min-width: 995px) {
+  .right-60 {
+    position: relative;
+    right: 60px;
+  }
 }

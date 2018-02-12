@@ -1,7 +1,6 @@
 class Employers::JobsController < Employers::EmployersController
   before_action :create_job, only: %i(index new)
   before_action :load_jobs, only: :index
-  before_action :load_applies_joined_by_jobs, only: :index
   before_action :load_branches_for_select_box, only: :index
   before_action :load_category_for_select_box, only: :index
   before_action :build_questions, only: :new

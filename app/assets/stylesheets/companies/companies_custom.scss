@@ -142,7 +142,7 @@
       right: 0;
       bottom: 0;
       z-index: 20;
-      background: image-url("loading.gif") no-repeat center center;
+      background: image-url("logo.gif") no-repeat center center;
       background-size: 128px 128px;
       background-color: rgba(0, 0, 0, 0.8);
     }
@@ -294,9 +294,11 @@
 .border-bottom {
   border-bottom: 3px solid $gray-light-2;
 }
+.w-250 {
+  width: 250px;
+}
 @media all and (min-width: 768px ) and (max-width: 991px ){
   .job-apply-btn .post-job {
     width: 201px;
   }
 }
-

@@ -41,4 +41,8 @@ $(document).ready(function(){
     height: '100%',
     padding: 0
   });
+
+  $(window).on('load', function () {
+    $('.loading').fadeOut('slow');
+  });
 });

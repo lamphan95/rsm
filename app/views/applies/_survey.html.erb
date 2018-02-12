@@ -1,5 +1,5 @@
 <% unless @job.not_exist? %>
-  <div class="survey display-none">
+  <div class="survey display-none opacity-apply">
     <%= f.simple_fields_for :answers do |answer| %>
       <%= render partial: "applies/questions", locals: {f: answer,
         question: @questions[answer.index]} %>

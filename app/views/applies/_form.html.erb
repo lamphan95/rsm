@@ -5,7 +5,7 @@
   </button>
   <div class="modal fade" id="JobModal" role="dialog">
     <div class="modal-dialog job-modal-dialog">
-      <div class="modal-content config custom-width">
+      <div class="modal-content config opacity-apply custom-width">
         <div class="modal-header login-titles">
           <button type="button" class="close title-modal" data-dismiss="modal">x</button>
           <div class="login-title text-center">
@@ -38,9 +38,9 @@
                 <div class="col-md-5 hear-right">
                   <strong><%= t ".information" %></strong><br>
                   <div class="table-responsive">
-                    <table class="table table-condensed table-responsive table-user-information">
+                    <table class="table-user-information">
                       <tbody>
-                        <tr>
+                        <tr class="border-dashed">
                           <td>
                             <strong>
                               <span class="glyphicon glyphicon-user text-primary"></span>
@@ -51,7 +51,7 @@
                             <%= current_user.name %>
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="border-dashed">
                           <td>
                             <strong>
                               <span class="glyphicon glyphicon-envelope text-primary"></span>
@@ -62,7 +62,7 @@
                             <%= current_user.email %>
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="border-dashed">
                           <td>
                             <strong>
                               <span class="glyphicon glyphicon-asterisk text-primary"></span>
@@ -73,7 +73,7 @@
                             <%= current_user.address %>
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="border-dashed">
                           <td>
                             <strong>
                               <span class="glyphicon glyphicon-phone text-primary"></span>
