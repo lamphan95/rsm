@@ -18,7 +18,7 @@ class Apply < ApplicationRecord
   validates :cv, presence: true
   validates :job_id, presence: true
   validates :information, presence: true
-  enum status: {unlock_apply: 0, lock_apply: 1}
+  enum status: {unlock_apply: 0, lock_apply: 1, cancel_apply: 2}
 
   accepts_nested_attributes_for :apply_statuses, allow_destroy: true , update_only: true
   accepts_nested_attributes_for :answers, allow_destroy: true

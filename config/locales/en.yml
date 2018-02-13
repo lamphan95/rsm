@@ -950,6 +950,7 @@ en:
       expired: "Applied on"
       unexpired: "Unexpired"
       applied_on: "Applied on"
+      cancel: "Cancel"
     undefind_form:
       applynow: "Apply now"
       app: "App"
@@ -1016,6 +1017,9 @@ en:
       apply: "Apply"
       answer_survey: "Answer survey"
       answer_survey_continues: "Click answer survey to continues"
+    update:
+      success: "You have successfully canceled the apply."
+      error: "You have fail canceled the apply."
     applies:
       show:
         candidate_information: "Candidate Infomation"

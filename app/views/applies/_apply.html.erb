@@ -1,4 +1,4 @@
-<div class="res-table__row row animated">
+<div id="apply_<%= apply.id %>" class="res-table__row row animated">
   <div class="col-md-1 logo text-center">
     <%= image_tag apply.company.logo.url, size: Settings.apply.image, class: "img_company" %>
   </div>
@@ -35,4 +35,14 @@
     </div>
     <div class="text-strong"><%= l apply.created_at.to_date, format: :long %></div>
   </div>
+  <% if apply.unlock_apply? %>
+    <div class="col-md-2">
+      <%= simple_form_for apply, remote: :true, class: "form-horizontal form-bordered" do |f| %>
+        <%= f.hidden_field :status, value: Apply.statuses.keys[Apply.statuses[:cancel_apply]] %>
+        <%= f.button :button, class: "btn btn-danger" do %>
+          <i class="fa fa-times-circle-o"></i>&nbsp;<%= t ".cancel" %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -1,0 +1,8 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  alertify.success('<%= @success %>');
+  $('#apply_<%= @apply.id%>').html('');
+<% end %>
+$('#img-loading').hide();
+$('.opacity-apply').css('opacity' ,1);
