@@ -25,6 +25,17 @@ class AppliesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @apply.update_attribute :status, params[:apply][:status]
+        @success = t ".success"
+      else
+        @error =  t ".error"
+      end
+      format.js
+    end
+  end
+
   private
 
   def apply_params
