@@ -2,69 +2,48 @@
   <div id="show-user">
     <div class="user clearfix">
       <div class="row">
-        <div class="col-md-10">
-          <div class="avatar col-md-3">
-            <% if @user.picture.present? %>
-              <%= show_avatar @user %>
-            <% else %>
-              <%= image_tag "avatar_2x.png", class: "img-thumbnail img-profile" %>
-            <% end %>
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 pos-relative">
+          <div class="form-group form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <%= text_field_tag :name, @user.name, disabled: true, class: "form-control
+                input-custom input-lg input-disabled" %>
+            </div>
           </div>
-
-          <div class="info col-md-9">
-            <table class= "table table_profile">
-              <tr>
-                <td class="view-field">
-                  <strong class="view-control">
-                    <span class="glyphicon glyphicon-envelope"></span> <span class="title"><%= t ".email" %>:</span>
-                  </strong>
-                </td>
-                <td class="profile_content"><%= @user.email %></td>
-              </tr>
-
-              <tr>
-                <td class="view-field">
-                  <strong class="view-control">
-                    <span class="glyphicon glyphicon-globe"></span> <span class="title"><%= t ".address" %>:</span>
-                  </strong>
-                </td>
-                <td class="profile_content"><%= @user.address %></td>
-              </tr>
-              <tr>
-                <td class="view-field">
-                  <strong class="view-control">
-                    <span class="glyphicon glyphicon-phone"></span> <span class="title"><%= t ".phone" %>:</span>
-                  </strong>
-                </td>
-                <td class="profile_content"><%= @user.phone %></td>
-              </tr>
-               <tr>
-                <td class="view-field">
-                  <strong class="view-control">
-                    <span class="fa fa-birthday-cake"></span> <span class="title"><%= t ".birthday" %>:</span>
-                  </strong>
-                </td>
-                <td class="profile_content">
-                  <% if @user.birthday.present? %>
-                    <%= l @user.birthday, format: :long %>
-                  <% end %>
-                </td>
-              </tr>
-            </table>
+          <div class="form-group form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+              <%= text_field_tag :email, @user.email, disabled: true, class: "form-control
+                input-custom input-lg input-disabled" %>
+            </div>
+          </div>
+          <div class="form-group form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+              <%= text_field_tag :address, @user.address, disabled: true, class: "form-control
+                input-custom input-lg input-disabled" %>
+            </div>
+          </div>
+          <div class="form-group form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+              <%= text_field_tag :phone, @user.phone, disabled: true, class: "form-control
+                input-custom input-lg input-disabled" %>
+            </div>
+          </div>
+          <div class="form-group form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
+              <%= text_field_tag :birthday,
+                @user.birthday.present? ? l(@user.birthday, format: :long) : nil, disabled: true,
+                class: "form-control input-custom input-lg input-disabled" %>
+            </div>
           </div>
         </div>
         <% if can? :update, @user %>
-          <div class="col-md-2">
-            <div class="view-field m-b download-resume pull-right">
-              <%= link_to edit_user_path(current_user),class: "btn btn-sm btn-warning" ,remote:true do %>
-                <i class="glyphicon glyphicon-pencil"></i>
-              <% end %>
-              <%= link_to download_path(current_user.id, format: "pdf"),
-                class: "btn btn-sm btn-primary", target: :_blank do %>
-                <i class="fa fa-download" aria-hidden="true"></i>
-              <% end %>
-            </div>
-          </div>
+          <%= link_to edit_user_path(current_user), class: "btn-absolute", remote:true do %>
+            <i class="glyphicon glyphicon-pencil"></i>
+          <% end %>
         <% end %>
       </div>
     </div>

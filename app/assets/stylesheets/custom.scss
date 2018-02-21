@@ -52,7 +52,7 @@
 }
 .content-section{
   position: relative;
-  padding: 25px 30px;
+  padding: 0 0 10px 20px;
 }
 .view-control {
   word-wrap: break-word;
@@ -899,4 +899,10 @@ label.control-label {
 }
 .m-top-15 {
   margin-top: 15px !important;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.view-field {
+  width: 120px;
 }

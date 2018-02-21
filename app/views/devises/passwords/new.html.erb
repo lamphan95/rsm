@@ -7,7 +7,7 @@
       <%= devise_error_messages! %>
        <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-envelope-o"></i></i></span>
-        <%= f.email_field :email, autofocus: true, class: "form-control input-lg", placeholder: t(".email") %>
+        <%= f.email_field :email, autofocus: true, class: "form-control input-custom input-lg", placeholder: t(".email") %>
       </div><br>
       <div class="col-xs-12 text-right">
         <%= f.submit t(".send"), class: "btn btn-sm btn-success" %>

@@ -1133,32 +1133,6 @@ vn:
       like: "like"
       liked: "Liked"
       dislike: " Dislike"
-  users:
-    show:
-      information: "Thông tin"
-      profile: "Hồ sơ cá nhân"
-      clubs: "Clubs"
-      certificates: "Giấy chứng nhận"
-      experiences: "Kinh nghiệm"
-      achievements: "Thành tích"
-    index:
-      email: "Email"
-      address: "Địa chỉ"
-      phone: "Số điện thoại"
-      describle: "Mô tả"
-      birthday: "Ngày sinh"
-    form:
-      name: "Tên"
-      email: "Email"
-      address: "Địa chỉ"
-      phone: "Số điện thoại"
-      birthday: "Ngày sinh"
-      date_format: "Date format"
-      empty: "đã tồn tại"
-      browse: "Browse"
-      curriculum: "Curriculum vitae"
-      cancle: "Hủy bỏ"
-      save: "Lưu"
   achievements:
     cancle: "Hủy bỏ"
     form:

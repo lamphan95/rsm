@@ -1110,32 +1110,6 @@ en:
       like: "like"
       liked: "Liked"
       dislike: " Dislike"
-  users:
-    show:
-      information: "Information"
-      profile: "Profile"
-      clubs: "Clubs"
-      certificates: "Certificates"
-      experiences: "Experiences"
-      achievements: "Achievements"
-    index:
-      email: "Email"
-      address: "Address"
-      phone: "Phone"
-      describle: "Describle"
-      birthday: "Birthday"
-    form:
-      empty: "already exist"
-      name: "Name"
-      email: "Email"
-      address: "Address"
-      phone: "Phone"
-      birthday: "Birthday"
-      date_format: "Date format"
-      browse: "Browse"
-      curriculum: "Curriculum vitae"
-      cancle: "Cancel"
-      save: "Save"
   achievements:
     cancle: "Cancel"
     form:

@@ -1,31 +1,31 @@
 <%= form_for resource, as: resource_name, url: session_path(resource_name),
   html: {id: "form-login"} do |f| %>
-  <div class="form-group login-error display-none">
+  <div class="form-group form-custom login-error display-none">
     <div class="col-xs-12">
       <p class="color-red text-center"></p>
       <span class="close-error">&times;</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group form-custom">
     <div class="col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <%= f.email_field :email, autofocus: true, class: "form-control input-lg",
+        <%= f.email_field :email, autofocus: true, class: "form-control input-custom input-lg",
           placeholder: t(".email"), id: "login-email" %>
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group form-custom">
     <div class="col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-        <%= f.password_field :password,class: "form-control input-lg",
+        <%= f.password_field :password,class: "form-control input-custom input-lg",
           placeholder: t(".password"), id: "login-password"  %>
       </div>
     </div>
   </div>
 
-  <div class="form-group form-actions remember-login p-15">
+  <div class="form-group form-custom form-actions remember-login p-15">
     <div class="pull-left">
       <%= f.label :remember_me, class: "checkbox inline remember_me" do %>
         <label class="switch switch-primary" data-toggle="tooltip">
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class="form-group p-15">
+  <div class="form-group form-custom p-15">
     <div class="text-center">
       <a href="javascript:void(0)" class="link-forgot-password">
         <small><%= t ".forgot" %></small>

@@ -1,0 +1,30 @@
+vn:
+  users:
+    show:
+      information: "Thông tin"
+      profile: "Hồ sơ cá nhân"
+      clubs: "Clubs"
+      certificates: "Giấy chứng nhận"
+      experiences: "Kinh nghiệm"
+      achievements: "Thành tích"
+    index:
+      email: "Email"
+      address: "Địa chỉ"
+      phone: "Số điện thoại"
+      describle: "Mô tả"
+      birthday: "Ngày sinh"
+    form:
+      name: "Tên"
+      email: "Email"
+      address: "Địa chỉ"
+      phone: "Số điện thoại"
+      birthday: "Ngày sinh"
+      date_format: "%d/%m/%Y"
+      empty: "đã tồn tại"
+      browse: "Browse"
+      curriculum: "Curriculum vitae"
+      cancle: "Hủy bỏ"
+      save: "Lưu"
+      curriculum_your: "Sơ yếu lí lịch của bạn:"
+      change_curriculum: "Đổi sơ yếu lí lịch"
+      change_avatar: "Đổi ảnh đại diện"

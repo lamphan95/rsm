@@ -3,6 +3,7 @@
   <div class="wrapper">
     <div class="logo">
       <a href="#" class="custom-logo-link" rel="home" itemprop="url">
+        <%= image_tag @company.logo.present? ? @company.logo.url : "default_logo.png" %>
       </a>
     </div>
     <div class="header-right">
@@ -79,7 +80,6 @@
             <a href="#"><%= t ".service" %></a>
           </li>
           <li id="menu-item-129" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-129">
-
             <%= link_to jobs_path do %>
               <%= t ".challange_job" %>
             <% end %>

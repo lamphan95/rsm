@@ -3,34 +3,34 @@
 </strong><br>
 <div class="table-responsive">
   <%= f.simple_fields_for :information do |p| %>
-    <div class="form-group input-inline width-inline">
+    <div class="form-group form-custom input-inline width-inline">
       <div class="col-xs-12">
         <div class="input-group">
           <span class="input-group-addon apply-un input-name">
             <i class="fa fa-address-book" aria-hidden="true"></i>
           </span>
           <%= p.text_field :name, autofocus: true, placeholder: t(".name"),
-            class: "form-control input-lg input-name" %>
+            class: "form-control input-custom input-lg input-name" %>
         </div>
         <span class="error-message-name"></span>
       </div>
     </div>
-    <div class="form-group input-inline width-inline">
+    <div class="form-group form-custom input-inline width-inline">
       <div class="col-xs-12">
         <div class="input-group">
           <span class="input-group-addon apply-un input-email"><i class="fa fa-envelope" aria-hidden="true"></i></span>
           <%= p.text_field :email, autofocus: true, placeholder: t(".email"),
-            class: "form-control input-lg input-email" %>
+            class: "form-control input-custom input-lg input-email" %>
         </div>
         <span class="error-message-email"></span>
       </div>
     </div>
-    <div class="form-group input-inline width-inline">
+    <div class="form-group form-custom input-inline width-inline">
       <div class="col-xs-12">
         <div class="input-group">
           <span class="input-group-addon apply-un input-phone"><i class="fa fa-phone" aria-hidden="true"></i></span>
           <%= p.text_field :phone, autofocus: true, placeholder: t(".phone"),
-            class: "form-control input-lg input-phone" %>
+            class: "form-control input-custom input-lg input-phone" %>
         </div>
         <span class="error-message-phone"></span>
       </div>
@@ -44,7 +44,7 @@
               <span class="text-danger">&nbsp;*</span><%= t ".introducing" %>
             </strong>
             <%= p.text_area :introducing,
-              class: "form-control ckeditor input-introducing",
+              class: "form-control form-custom ckeditor input-introducing",
               cols: Settings.text_area.cols, rows: Settings.text_area.rows %>
             <span class="error-message-introducing input-introducing"></span>
           </td>

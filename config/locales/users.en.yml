@@ -1,0 +1,30 @@
+en:
+  users:
+    show:
+      information: "Information"
+      profile: "Profile"
+      clubs: "Clubs"
+      certificates: "Certificates"
+      experiences: "Experiences"
+      achievements: "Achievements"
+    index:
+      email: "Email"
+      address: "Address"
+      phone: "Phone"
+      describle: "Describle"
+      birthday: "Birthday"
+    form:
+      empty: "already exist"
+      name: "Name"
+      email: "Email"
+      address: "Address"
+      phone: "Phone"
+      birthday: "Birthday"
+      date_format: "%m/%d/%Y"
+      browse: "Browse"
+      curriculum: "Curriculum vitae"
+      cancle: "Cancel"
+      save: "Save"
+      curriculum_your: "Curriculum vitae of you:"
+      change_curriculum: "Change curriculum vitae"
+      change_avatar: "Change avatar"

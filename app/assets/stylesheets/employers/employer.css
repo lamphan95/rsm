@@ -17,7 +17,6 @@
  *= require themes
  *= require apply
  *= require employers/config
- *= require font-awesome
  *= require_self
  *= require plugins
  *= require main2
@@ -27,4 +26,5 @@
  *= require fancybox
  *= require employers/radio_button
  *= require employers/histories_step
+ *= require import_font_awesome
  */
