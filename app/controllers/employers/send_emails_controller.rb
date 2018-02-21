@@ -1,11 +1,18 @@
 class Employers::SendEmailsController < ApplicationController
-  before_action :load_company, :load_apply, :load_apply_status, :load_apply_statuses
+  before_action :load_company, :load_apply, :load_apply_status, :load_apply_statuses, except: :show
 
   def create
     SendEmailUserJob.perform_later params[:title], @apply, params[:template_content], @company, @apply_status
     update_content_email_apply_status
     send_mail_interviewer if @apply.interview_scheduled?
     @messages = t ".success"
+    respond_to :js
+  end
+
+  def show
+    @mail_service = EmailSent.find_by(id: params[:id])
+    return if @mail_service.blank?
+    @mail_service.send_mail
     respond_to :js
   end
 

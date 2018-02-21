@@ -62,6 +62,10 @@ module ApplicationHelper
       gsub("@start_time@", information[:start_time].present? ? information[:start_time] : "").
       gsub("@address@", information[:address].present? ? information[:address] : "").
       gsub("@end_time@", information[:end_time].present? ? information[:end_time] : "").
+      gsub("@offer_address@", information[:offer_address].present? ? information[:offer_address] : "").
+      gsub("@requirement@", information[:requirement].present? ? information[:requirement] : "").
+      gsub("@salary@", information[:salary].present? ? information[:salary] : "").
+      gsub("@date_offer@", information[:date_offer].present? ? information[:date_offer] : "").
       gsub("@image_page@", image_tag("framgia.png", size:Settings.apply.image))).html_safe
   end
 end

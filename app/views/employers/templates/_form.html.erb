@@ -1,84 +1,74 @@
-  <%= simple_form_for [:employers, @template], remote: :true do |f| %>
+<%= simple_form_for [:employers, @template], remote: :true do |f| %>
   <%= f.hidden_field :user_id %>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :name, class: "col-sm-2 control-label required" do %>
-        <abbr title="required">*</abbr>
-        <%= t ".name" %>
-      <% end %>
-      <div class="col-sm-7">
-        <%= f.text_field :name, class: "form-control", required: :true %>
-        <%= f.full_error :name, class: "error-message" %>
+  <div class="block-body">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <label class="control-label date required" for="apply_status_offers_attributes_0_start_time_1i">
+        <abbr title="required">*</abbr><%= t ".name" %>
+      </label>
+      <%= f.text_field :name, class: "form-control" %>
+      <%= f.full_error :name %>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <label class="control-label date required" for="apply_status_offers_attributes_0_start_time_1i">
+        <abbr title="required">*</abbr><%= t ".title" %>
+      </label>
+      <%= f.text_field :title, class: "form-control" %>
+      <%= f.full_error :title %>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <label class="control-label date required" for="apply_status_offers_attributes_0_start_time_1i">
+        <abbr title="required">*</abbr><%= t ".type" %>
+      </label>
+      <%= f.select :type_of, @type_template.map {|value, id| [t(".#{value}"), value]},
+        {include_blank: t(".please_selected")}, class: "form-control" %>
+      <%= f.full_error :type_of %>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <label class="control-label date required" for="apply_status_offers_attributes_0_start_time_1i">
+        <abbr title="required">*</abbr><%= t ".body" %>
+      </label>
+      <div id="text-template">
+        <% if @template.template_body.present? %>
+          <%= f.cktext_area :template_body, cols: Settings.templates.textarea , class: "form-control" %>
+        <% else %>
+          <%= f.cktext_area :template_body, cols: Settings.templates.textarea , class: "form-control",
+            value: view_template_body %>
+        <% end %>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :title, class: "col-sm-2 control-label required" do %>
-        <abbr title="required">*</abbr>
-        <%= t ".title" %>
-      <% end %>
-      <div class="col-sm-7">
-        <%= f.text_field :title, class: "form-control", required: :true %>
-        <%= f.full_error :title, class: "error-message" %>
+    <% if @template.name.blank? %>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <abbr title="required">*</abbr><%= t ".note"%>
+        <label class="switch switch-primary">
+          <input type="checkbox" id="check-template">
+          <span></span>
+        </label>
       </div>
-    </div>
-  </div>
-  <div class="row hide-type">
-    <div class="form-group">
-      <%= f.label :type_of, class: "col-sm-2 control-label required" do %>
-        <abbr title="required">*</abbr>
-        <%= t ".type" %>
-      <% end %>
-      <div class="col-sm-7">
-        <%= f.select(:type_of, [[t(".interview"),"template_member"],
-          [t(".candidate"),"template_user"]], {},
-          {class: "form-control"} ) %>
-        <%= f.full_error :type_of, class: "error-message" %>
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 hide-type" id="content-note">
+          <span class="f13 note-style-a"><%= t ".infor" %></span><br>
+          <span class="f11"><%= Settings.companies %></span>
+          <span class="note-style"><%= t ".note_company" %></span><br>
+          <span class="f11"><%= Settings.user %></span>
+          <span class="note-style"><%= t ".note_user" %></span><br>
+          <span class="f11"><%= Settings.address %></span>
+          <span class="note-style"><%= t ".note_address" %></span><br>
+          <span class="f11"><%= Settings.start_time %></span>
+          <span class="note-style"><%= t ".note_start_time" %></span><br>
+          <span class="f11"><%= Settings.end_time %></span>
+          <span class="note-style"><%= t ".note_end_time" %></span><br>
+          <span class="f11"><%= Settings.offer_address %></span>
+          <span class="note-style"><%= t ".offer_address" %></span><br>
+          <span class="f11"><%= Settings.requirement %></span>
+          <span class="note-style"><%= t ".requirement" %></span><br>
+          <span class="f11"><%= Settings.salary %></span>
+          <span class="note-style"><%= t ".salary" %></span><br>
+          <span class="f11"><%= Settings.date_offer %></span>
+          <span class="note-style"><%= t ".date_offer" %></span><br>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <%= f.label :template_body, class: "col-sm-2 control-label required" do %>
-        <abbr title="required">*</abbr>
-        <%= t ".body" %>
-      <% end %>
-      <div class="col-sm-7">
-      </div>
-    </div>
-  </div>
-  <div class="row" id = "text-template">
-    <% if @template.template_body.present? %>
-      <%= f.cktext_area :template_body, cols: Settings.templates.textarea , class: "form-control" %>
-    <% else %>
-      <%= f.cktext_area :template_body, cols: Settings.templates.textarea , class: "form-control", value: view_template_body %>
     <% end %>
   </div>
-  <% if @template.name.blank? %>
-    <div class="row">
-      <abbr title="required">*</abbr><%= t ".note"%>
-      <label class="switch switch-primary">
-        <input type="checkbox" id="check-template">
-        <span></span>
-      </label>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 hide-type" id="content-note">
-        <span class="f13 note-style-a"><%= t ".infor" %></span><br>
-        <span class="f11"><%= Settings.companies %></span>
-        <span class="note-style"><%= t ".note_company" %></span><br>
-        <span class="f11"><%= Settings.user %></span>
-        <span class="note-style"><%= t ".note_user" %></span><br>
-        <span class="f11"><%= Settings.address %></span>
-        <span class="note-style"><%= t ".note_address" %></span><br>
-        <span class="f11"><%= Settings.start_time %></span>
-        <span class="note-style"><%= t ".note_start_time" %></span><br>
-        <span class="f11"><%= Settings.end_time %></span>
-        <span class="note-style"><%= t ".note_end_time" %></span><br>
-      </div>
-    </div>
-  <% end %>
   <div class="modal-footer">
     <div class="row">
       <div class="text-right col-sm-10">

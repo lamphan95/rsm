@@ -105,3 +105,21 @@ $(document).on('click', '#btn-block-apply', function(event){
     }
   });
 });
+
+$(document).on('click', '.send_email', function(event){
+  event.preventDefault();
+  var element = this.nextElementSibling;
+  var step = $('#val_step').val();
+  swal({
+    title: I18n.t('jobs.apply.confirm_change_status'),
+    text: I18n.t('jobs.apply.mail_sure', {step: step}),
+    icon: 'warning',
+    buttons: true,
+    primaryMode: true,
+  })
+  .then(function(isConfirm){
+    if (isConfirm) {
+      element.click();
+    }
+  });
+});

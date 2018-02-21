@@ -2,7 +2,7 @@
   $('#new_template').html('<%= j render "form" %>');
 <% else %>
   alertify.success('<%= @message %>');
-  $('.interview-load').html('<%= j render partial: "employers/templates/interview", collection: @interviewers, as: :interviewer %>');
+  $('#interview-load').html('<%= j render partial: "employers/templates/interview", collection: @interviewers, as: :interviewer %>');
   $('#load_user').html('<%= j render partial: "employers/templates/candidate", collection: @candidates, as: :candidate %>');
   $('#managetemplate').modal('hide');
   $('#new_template').reset[0];

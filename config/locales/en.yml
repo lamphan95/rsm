@@ -175,6 +175,7 @@ en:
       confirm_change_status: "Are you sure?"
       text_change_status: "The new status of apply is %{status}"
       text_change_status_button: "The new status of apply is pendding at %{step}"
+      mail_sure: "Are you sure you want to send mail back in status %{step}"
       sent_email: "Sent email"
       calendar_interview: "Calendar interview"
     form:

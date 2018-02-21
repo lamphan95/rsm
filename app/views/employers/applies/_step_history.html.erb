@@ -10,7 +10,6 @@
         <strong><%= t "employers.history.title_email" %></strong>
       </h2>
     </div>
-
     <div class="block-top block-content-mini-padding">
       <div class="clearfix">
         <% if (@prev_apply_status && @prev_apply_status.id == apply_status.id) || apply_status.current? %>
@@ -28,10 +27,11 @@
           </span>
       </div>
     </div>
-
     <ul class="media-list">
+      <%= hidden_field_tag "val_step", @data_step[:status_step_lastest].code %>
       <%= (render partial: "employers/email_sents/email_sent",
-        collection: data_step[:email_sents], as: :email_sent) || t("employers.no_data") %>
+        collection: data_step[:email_sents], as: :email_sent,
+        locals: {status_step: status_step, apply_id: apply, apply_status: apply_status}) || t("employers.no_data") %>
     </ul>
   </div>
 </div>

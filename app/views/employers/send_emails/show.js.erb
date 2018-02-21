@@ -1,0 +1,5 @@
+<% if @mail_service.blank? %>
+  alertify.warning('<%= t "employers.email_sents.email_sent.fail" %>');
+<% else %>
+  alertify.success('<%= t "employers.email_sents.email_sent.success" %>');
+<% end %>

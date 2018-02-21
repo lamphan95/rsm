@@ -350,3 +350,15 @@ Template.create!(
   name: "template interview",
   type_of: 1
 )
+Template.create!(
+  template_body:"<p>@company@<br />
+  Hello you @user@<br />
+  We would like to send you a mail to inform you that from @date_offer@ is your official time,
+  the place is @offer_address@. Your starting salary is @ salary @, however this number may increase according to your capacity.
+  Also we have some requirements such as @requirement@</p>
+  ",
+  user_id: 1,
+  title: "Thông báo gửi offer",
+  name: "template offer",
+  type_of: 1
+)

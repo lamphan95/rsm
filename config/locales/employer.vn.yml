@@ -4,6 +4,10 @@ vn:
       email_sent:
         information: "Thông tin"
         view: "Xem thêm"
+        resend: "Gửi lại"
+        success: "Gửi thành công"
+        fail: "Gửi thất bại"
+        sure: "Bạn có muốn gửi mail lại không"
     applies:
       apply:
         click: "Nhấp chuột"
@@ -344,13 +348,21 @@ vn:
         show: "Nội dung"
         sure: "Bạn có chắc?"
       form:
+        template_member: "Mẫu Offer"
+        template_user: "Mẫu ứng cử viên"
         name: "Tên"
+        type: "Kiểu"
+        please_selected: "--- Xin hãy chọn ---"
         note: "Chú thích"
         title: "Tiêu đề"
         infor: "Mặc định khi gửi mail, không sử dụng thì có thể xóa: "
         note_company: " Tên công ty"
         note_user: " Tên ứng cử viên"
         note_address: " Địa chỉ phỏng vấn"
+        offer_address: "Địa chỉ offer"
+        requirement: "Thông tin thêm"
+        salary: "Lưong"
+        date_offer: "Ngày offer"
         note_start_time: " Thời gian bắt đầu phỏng vấn"
         note_end_time: "Thời gian chậm nhất để đi phỏng vấn"
         type: "Kiểu"
@@ -371,6 +383,7 @@ vn:
       index:
         all: "Tất cả các mẫu"
         title: "Tiêu đề"
+        offer: "Mẫu offer"
         interview: "Người phỏng vấn"
         candidate: "Ứng viên"
         add: "Tạo mẫu"
@@ -382,7 +395,8 @@ vn:
         delete: "Xóa"
         post_job: "Đăng việc"
       show:
-        content_template: "@company@</br>Hello you @user@</br>&nbsp;</br> vui lòng đến vào lúc @start_time@ tại @address@  để phỏng vấn, chậm nhất là vào @end_time@"
+        offer_content: "@company@<br>Hello you @user@<br>Chúng tôi xin gửi mail cho bạn để thông báo rằng từ ngày @date_offer@ là thời gian bạn làm chính thức, địa điểm là @offer_address@. mức lương khởi điểm của bạn là @salary@, tuy nhiên con số này có thể tăng lên theo năng lực của bạn<br>Ngoài ra chúng tôi còn có yêu cầu một số thứ như @requirement@"
+        content_template: "@company@</br>Hello you @user@</br> Vui lòng đến vào lúc @start_time@ tại @address@  để phỏng vấn, chậm nhất là vào @end_time@"
         of_company: " của công ty "
         template_error: "Không thể tìm thấy mẫu. Hãy thử lại sau"
         company: "Công ty %{name} Việt Nam"

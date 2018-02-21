@@ -28,12 +28,20 @@ $(document).on('change', '.template-user', function(){
     address: data_apply.get('apply_status[appointment_attributes][address]'),
     start_time: data_apply.get('apply_status[appointment_attributes][start_time]'),
     end_time: data_apply.get('apply_status[appointment_attributes][end_time]'),
-    name: data_apply.get('user_name')
+    name: data_apply.get('user_name'),
+    salary: data_apply.get('apply_status[offers_attributes][0][salary]'),
+    offer_address: data_apply.get('apply_status[offers_attributes][0][address]'),
+    requirement: data_apply.get('apply_status[offers_attributes][0][requirement]'),
+    date_offer: data_apply.get('apply_status[offers_attributes][0][start_time]')
   };
   $.ajax('/employers/templates/' + template, {
     type: 'GET',
     data: data
   });
+
+//   for(var pair of data_apply.entries()) {
+//    console.log(pair[0]+ ', '+ pair[1]);
+// }
 });
 
 $(document).on('click', '#check-template', function(){
@@ -56,4 +64,13 @@ $(document).on('click', '.view_mail', function(){
 
 $(window).on('load', function () {
   $('.loading').fadeOut('slow');
+});
+
+$(document).on('change', '#template_type_of', function(){
+  var value = $(this).val();
+  if(value == 'template_member'){
+    CKEDITOR.instances['template_template_body'].setData(I18n.t('employers.templates.show.offer_content'));
+  }else{
+    CKEDITOR.instances['template_template_body'].setData(I18n.t('employers.templates.show.content_template'));
+  }
 });

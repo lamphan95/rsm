@@ -1,15 +1,17 @@
 class Employers::TemplatesController < Employers::EmployersController
   before_action :load_templates, only: %i(index create)
+  before_action :load_type_template, expect: %i(index)
 
   def index; end
 
-  def new; end
+  def new;end
 
   def create
     respond_to do |format|
       if @template.save
         format.js{@message = t".create"}
       else
+        @type_template = Template.type_ofs
         format.js
       end
     end
@@ -17,7 +19,9 @@ class Employers::TemplatesController < Employers::EmployersController
 
   def show
     @information = {name: params[:name], address: params[:address],
-      start_time: params[:start_time], end_time: params[:end_time]}
+      start_time: params[:start_time], end_time: params[:end_time],
+      salary: params[:salary], offer_address: params[:offer_address],
+      requirement: params[:requirement], date_offer: params[:date_offer]}
     @template = Template.find_by id: params[:id]
     respond_to :js
   end
@@ -54,6 +58,10 @@ class Employers::TemplatesController < Employers::EmployersController
     @interviewers = Template.template_member.page(params[:page]).per Settings.templates.page
     @candidates = Template.template_user.page(params[:page]).per Settings.templates.page
     @page = params[:page]
+  end
+
+  def load_type_template
+    @type_template = Template.type_ofs
   end
 end
 

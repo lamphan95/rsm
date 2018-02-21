@@ -26,8 +26,7 @@ class Employers::EmployersController < BaseNotificationsController
   end
 
   def load_templates
-    @template_members = current_user.templates.template_member
-    @template_users = current_user.templates.template_user
+    @template_users = current_user.templates
   end
 
   def check_permissions_employer

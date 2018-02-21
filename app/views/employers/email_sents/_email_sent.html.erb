@@ -1,3 +1,13 @@
+<div class="row">
+  <span class="text-muted pull-right">
+    <button class="send_email btn btn-sm btn-info pull-right" >
+      <i class="fa fa-reply" aria-hidden="true"></i>
+      <%= t ".resend" %>
+    </button>
+    <%= link_to employers_send_email_path(email_sent), remote: true do %>
+    <% end %>
+  </span>
+</div>
 <li class="media">
   <a href="page_ready_user_profile.html" class="pull-left">
     <%= image_tag email_sent.user_picture.url, class: "sender-avatar img-circle" %>

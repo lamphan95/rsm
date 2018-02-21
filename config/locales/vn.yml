@@ -179,6 +179,7 @@ vn:
       confirm_send_email: "Bạn có muốn gửi email cho ứng cử viên?"
       text_send_email: "Bạn đã thay đổi trạng thái thành công"
       confirm_change_status: "Bạn có chắc không?"
+      mail_sure: "Bạn có chắc muốn gửi mail lại ở trạng thái %{step}"
       text_change_status: "Tình trạng hồ sơ ứng tuyển mới là %{status}"
       text_change_status_button: "Trạng thái Hồ sơ ứng tuyển mới đang chờ xử lý là %{step}"
       sent_email: "Gửi email"
