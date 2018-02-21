@@ -75,5 +75,8 @@ vn:
       test_scheduled: "Lịch test"
       interview_scheduled: "Lịch phỏng vấn"
       date: "Ngày"
+      address: "Địa điểm"
+      start_time_appointment: "Thời gian bắt đầu"
+      end_time_appointment: "Thời gian kết thúc"
     send_email:
       select_template: "Select template"
