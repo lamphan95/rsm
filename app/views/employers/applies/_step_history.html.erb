@@ -3,7 +3,13 @@
   <div class="block full overcast-custom <%= disabled_block apply %>">
     <div class="block-title">
       <div class="block-options pull-right">
-        <a href="javascript:void(0)" class="btn btn-sm btn-alt btn-default" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
+        <% if (@prev_apply_status && @prev_apply_status.id == apply_status.id) || apply_status.current? %>
+          <%= link_to new_employers_apply_status_path(status_step_id:
+            status_step.id, apply_id: apply.id, apply_status_id: apply_status.id),
+            class: "btn btn-sm btn-alt btn-default", remote: true do %>
+              <i class="fa fa-pencil"></i>
+          <% end %>
+        <% end %>
       </div>
       <h2>
         <i class="fa fa-history"></i>
@@ -12,15 +18,6 @@
     </div>
     <div class="block-top block-content-mini-padding">
       <div class="clearfix">
-        <% if (@prev_apply_status && @prev_apply_status.id == apply_status.id) || apply_status.current? %>
-          <%= link_to new_employers_apply_status_path(status_step_id:
-            status_step.id, apply_id: apply.id, apply_status_id: apply_status.id), remote: true do %>
-            <button type="submit" class="btn btn-sm btn-info pull-right">
-              <i class="fa fa-share-square"></i>
-              <%= t "employers.history.resend" %>
-            </button>
-          <% end %>
-        <% end %>
           <span class="btn btn-icon">
             <i class="fa fa-location-arrow"></i>
             <%= t "employers.applies.statuses.#{@data_step[:status_step_lastest].code}" %>

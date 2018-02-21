@@ -5,3 +5,4 @@ $('#apply-handling-content').html('');
   $('#step-history').html('');
 <% end %>
 $('#area-form-status').html('<%= j render partial: "employers/applies/form_status", locals: {status_step_scheduled_ids: @status_step_scheduled_ids, apply: @apply, current_step: @step, current_status_steps: @status_steps, is_prev_step: @data_step[:is_prev_step], step_main: @step} %>');
+$('.loading').fadeOut('slow');

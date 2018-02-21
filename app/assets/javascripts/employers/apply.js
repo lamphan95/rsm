@@ -5,6 +5,7 @@ $(document).on('change', '#form-apply-status-main input[type=radio]', function(e
   var value = $('#form-apply-status-main input[type=radio]:checked').val();
   var stepId = $('#area-form-status #step_main_id').val();
   if ($(this).is(':checked')) {
+    $('.loading').fadeIn('slow');
     if(is_prev_step == 'true'){
       $.get('/employers/steps/' + stepId + '?status_step_id=' + value + '&&apply_id=' + applyId);
     }else{
@@ -30,6 +31,7 @@ $(document).on('click', '.btn-apply-status', function(event){
   })
   .then(function(isConfirm){
     if (isConfirm) {
+      $('.loading').fadeIn('slow');
       element.commit.click();
     }
   });
@@ -47,6 +49,7 @@ $(document).on('click', '.btn-submit-apply-status-form', function(event){
   })
   .then(function(isConfirm){
     if (isConfirm) {
+      $('.loading').fadeIn('slow');
       apply_status_form.commit.click();
     }
   });
@@ -83,6 +86,7 @@ $(document).on('click', '#btn-block-apply', function(event){
   })
   .then(function(isConfirm){
     if (isConfirm) {
+      $('.loading').fadeIn('slow');
       $.ajax({
         type: 'PATCH',
         url: '/employers/applies/' + $('#apply_status_apply_id').val(),
@@ -97,8 +101,10 @@ $(document).on('click', '#btn-block-apply', function(event){
           } else {
             $('.overcast-custom').addClass('overcast-div');
           }
+          $('.loading').fadeOut('slow');
         },
         error: function(data){
+          $('.loading').fadeOut('slow');
           alertify.error(data.message);
         }
       });
@@ -119,6 +125,7 @@ $(document).on('click', '.send_email', function(event){
   })
   .then(function(isConfirm){
     if (isConfirm) {
+      $('.loading').fadeIn('slow');
       element.click();
     }
   });

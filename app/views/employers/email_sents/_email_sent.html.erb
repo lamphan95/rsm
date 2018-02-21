@@ -1,33 +1,32 @@
-<div class="row">
-  <span class="text-muted pull-right">
-    <button class="send_email btn btn-sm btn-info pull-right" >
-      <i class="fa fa-reply" aria-hidden="true"></i>
-      <%= t ".resend" %>
-    </button>
-    <%= link_to employers_send_email_path(email_sent), remote: true do %>
-    <% end %>
-  </span>
-</div>
 <li class="media">
-  <a href="page_ready_user_profile.html" class="pull-left">
+  <a href="javascript:void(0)" class="pull-left">
     <%= image_tag email_sent.user_picture.url, class: "sender-avatar img-circle" %>
   </a>
   <div class="media-body">
-    <span class="text-muted pull-right">
-      <small><em>
-        <%= t "employers.history.sent" %>
-        <%= time_ago_in_words(email_sent.created_at) %>
-        <%= t "employers.history.ago" %>
-      </em></small>
-    </span>
-    <a href="javascript:void(0)"><strong><%= email_sent.title %></strong></a>
-    <p>
-      <a data-toggle="modal" class= "label label-info" data-target="#my-<%= email_sent.id %>">
-        <i class="fa fa-eye"></i><%= t ".view" %>
-      </a>
-    </p>
+    <div class="col-md-12">
+      <span class="text-muted pull-right">
+        <small><em>
+          <%= t "employers.history.sent" %>
+          <%= time_ago_in_words(email_sent.created_at) %>
+          <%= t "employers.history.ago" %>
+        </em></small>
+      </span>
+      <a href="javascript:void(0)"><strong><%= email_sent.title %></strong></a>
+    </div>
+    <div class="col-md-12">
+      <button class="send_email btn btn-xs btn-info pull-right l-5" >
+        <i class="fa fa-reply" aria-hidden="true"></i>
+        <%= t ".resend" %>
+      </button>
+      <%= link_to "", employers_send_email_path(email_sent), remote: true %>
+      <button data-toggle="modal" class= "btn btn-xs btn-default pull-right" data-target="#my-<%= email_sent.id %>">
+        <i class="fa fa-eye"></i>
+      </button>
+    </div>
   </div>
 </li>
+<div class="clearfix"></div>
+
 <div class="modal fade" id="my-<%= email_sent.id %>" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
