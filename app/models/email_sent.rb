@@ -13,6 +13,7 @@ class EmailSent < ApplicationRecord
   validates :type, presence: true
 
   after_save :send_mail
+  after_update :send_mail
 
   def send_mail
     @sendmail_service = SendmailService.new self, self.user.companies.last
