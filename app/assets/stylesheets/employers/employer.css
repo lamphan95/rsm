@@ -21,10 +21,10 @@
  *= require plugins
  *= require main2
  *= require_tree ../../../../node_modules/alertify/themes
- *= require employers/employer_custom
  *= require_tree ../../../../node_modules/css-progress-wizard/sass
  *= require fancybox
  *= require employers/radio_button
  *= require employers/histories_step
  *= require import_font_awesome
+ *= require employers/employer_custom
  */

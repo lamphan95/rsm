@@ -4,3 +4,4 @@
   $('#pagination-history-apply').html('<%= j paginate @apply_statuses %>');
   swal(I18n.t('employers.send_emails.sent_email'), '', '<%= @messages %>');
 <% end %>
+$('.loading').fadeOut('slow');

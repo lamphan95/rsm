@@ -1,5 +1,5 @@
 <% if @apply.present? %>
-  $('#area-form-status').html('<%= j render partial: "employers/applies/form_status", locals: {apply: @apply, current_step: @current_step, current_status_steps: @current_status_steps, status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false} %>');
+  $('#area-form-status').html('<%= j render partial: "employers/applies/form_status", locals: {apply: @apply, current_step: @current_step, current_status_steps: @current_status_steps, status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false, step_main: @current_step} %>');
   $('#area-hisory-apply-load').html('<%= j render partial: "employers/apply_statuses/apply_status", collection: @apply_statuses, as: :apply_status %>');
   $('#pagination-history-apply').html('<%= j paginate @apply_statuses %>');
 <% end %>

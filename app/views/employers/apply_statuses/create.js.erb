@@ -15,5 +15,4 @@
   $('#apply-handling-content').html('<%= j (render partial: "employers/applies/apply_status_form", locals: {apply_status: @apply_status, apply: @apply, members: @members, appointments: @appointments, template_users: @template_users}) %>');
   $('#myonoffswitch_email').prop('checked', open_email);
 <% end %>
-$('#img-loading').hide();
-$('.config').css('opacity', 1);
+$('.loading').fadeOut('slow');
