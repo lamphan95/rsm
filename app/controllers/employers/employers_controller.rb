@@ -115,4 +115,8 @@ class Employers::EmployersController < BaseNotificationsController
     step_service = StepService.new @current_step, @apply, @company, @current_step
     @data_step = step_service.get_data_step
   end
+
+  def load_offer_status_step_pending
+    @offer_status_pending_id = @company.status_steps.load_by(Settings.offer_status_pending).pluck(:id)
+  end
 end

@@ -1,13 +1,19 @@
 <% if apply_status.present? && @company_steps_by_current.step_id > Settings.next_step %>
-  <button class="btn btn-info btn-apply-status btn-sm" >
-    <%= btn_name %>
-  </button>
-  <%= form_for [:employers, apply_status], class: "create-apply-status", remote: true do |f| %>
-    <%= f.hidden_field :step, value: t("employers.applies.statuses.#{step.name}"), class: "step-value" %>
-    <%= f.hidden_field :status_step_id %>
-    <%= f.hidden_field :apply_id %>
-    <%= f.hidden_field :is_current %>
-    <%= f.submit t("save"), class: "btn-apply-submit" %>
+  <% if btn_name == t("employers.applies.btn_name.prev") && is_offer_status_pending %>
+    <button class="btn btn-info btn-sm" disabled>
+      <%= btn_name %>
+    </button>
+  <% else %>
+    <button class="btn btn-info btn-apply-status btn-sm" >
+      <%= btn_name %>
+    </button>
+    <%= form_for [:employers, apply_status], class: "create-apply-status", remote: true do |f| %>
+      <%= f.hidden_field :step, value: t("employers.applies.statuses.#{step.name}"), class: "step-value" %>
+      <%= f.hidden_field :status_step_id %>
+      <%= f.hidden_field :apply_id %>
+      <%= f.hidden_field :is_current %>
+      <%= f.submit t("save"), class: "btn-apply-submit" %>
+    <% end %>
   <% end %>
 <% else %>
   <button class="btn btn-info btn-sm" disabled>
