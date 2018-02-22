@@ -231,11 +231,13 @@ en:
         all_categories: "All Categories"
         filter: "Search"
       create:
-        sussess: "Created Job success."
+        success: "Created Job success."
       destroy:
-        sussess: "Deleted Job success."
+        success: "Deleted Job success."
+      update:
+        success: "Updated job success."
       job_updated:
-        sussess: "Updated Job success."
+        success: "Updated Job success."
       form:
         job_name: "Job Name"
         description: "Description"
@@ -253,6 +255,7 @@ en:
         questions: "Survey questions"
         job: "Job"
         next: "Next"
+        expires_on: "Expires on"
       job:
         expires_on: "Expires on"
         expired: "Expired"
@@ -263,6 +266,7 @@ en:
         add_job: "Add New"
         urgent: "Urgent"
         top: "Top"
+        expired: "Expired"
         all: "All"
       reward_benefit_fields:
         remove: "X"

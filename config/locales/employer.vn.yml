@@ -228,11 +228,13 @@ vn:
         all_categories: "Tất cả các loại"
         filter: "Tìm kiếm"
       create:
-        sussess: "Tạo công việc thành công."
+        success: "Tạo công việc thành công."
       destroy:
-        sussess: "Xóa công việc thành công."
+        success: "Xóa công việc thành công."
+      update:
+        success: "Cập nhật công việc thành công."
       job_updated:
-        sussess: "Cập nhật công việc thành công."
+        success: "Cập nhật công việc thành công."
       form:
         job_name: "Tên công việc"
         description: "mô tả"
@@ -250,6 +252,7 @@ vn:
         questions: "Câu hỏi khảo sát"
         job: "Việc làm"
         next: "Tiếp"
+        expires_on: "Hết hạn"
       job:
         expires_on: "Hết hạn"
         expired: "hết hạn"
@@ -260,6 +263,7 @@ vn:
         add_job: "Thêm mới"
         urgent: "Khẩn cấp"
         top: "Top"
+        expired: "Hết hạn"
         all: "Tất cả"
       reward_benefit_fields:
         remove: "X"

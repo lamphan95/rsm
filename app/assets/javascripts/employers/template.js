@@ -74,3 +74,11 @@ $(document).on('change', '#template_type_of', function(){
     CKEDITOR.instances['template_template_body'].setData(I18n.t('employers.templates.show.content_template'));
   }
 });
+
+$(document).on('change', '#expire_on', function(){
+  if ($(this).is(':checked')) {
+    $('.job-form > form .display-job-end-time').slideDown();
+  } else {
+    $('.job-form > form .display-job-end-time').slideUp();
+  }
+});

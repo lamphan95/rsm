@@ -17,7 +17,7 @@
   <div class="col-sm-6 col-lg-3">
     <%= link_to "javascript:void(0)", class: "widget widget-hover-effect2",
       remote: true do %>
-      <div class="widget-extra themed-background-danger">
+      <div class="widget-extra themed-background-warning">
         <h4 class="widget-content-light">
           <strong><%= t ".urgent" %></strong>&nbsp;&nbsp;<%= t ".jobs" %>
         </h4>
@@ -32,14 +32,14 @@
   <div class="col-sm-6 col-lg-3">
     <%= link_to "javascript:void(0)", class: "widget widget-hover-effect2",
       remote: true do %>
-      <div class="widget-extra themed-background-dark">
+      <div class="widget-extra themed-background-danger">
         <h4 class="widget-content-light">
-          <strong><%= t ".top" %></strong>&nbsp;&nbsp;<%= t ".jobs" %>
+          <strong><%= t ".expired" %></strong>&nbsp;&nbsp;<%= t ".jobs" %>
         </h4>
       </div>
       <div class="widget-extra-full">
         <span class="h2 themed-color-dark animation-expandOpen">
-          <%= Job.count_top_of_company @company %>
+          <%= Job.count_expired_of_company @company %>
         </span>
       </div>
     <% end %>

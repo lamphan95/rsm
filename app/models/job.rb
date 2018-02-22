@@ -33,10 +33,14 @@ class Job < ApplicationRecord
   scope :sort_max_salary_and_target, -> do
     order(max_salary: :desc, target: :desc).limit Settings.job.limit
   end
-  scope :job_company, ->company {where company_id: company}
-  scope :sort_lastest, ->{order updated_at: :desc}
-  scope :get_top_jobs, ->company {where company_id: company}
-  scope :urgent_jobs, ->date_compare {where "end_time <= ?", date_compare}
+  scope :job_company, -> company {where company_id: company}
+  scope :sort_lastest, -> {order updated_at: :desc}
+  scope :get_top_jobs, -> company {where company_id: company}
+  scope :urgent_jobs, -> date_now, date_compare do
+    where "end_time >= ? AND end_time <= ?", date_now, date_compare
+  end
+  scope :unexpired_jobs, -> date_compare {where "end_time >= ? OR end_time IS NULL", date_compare}
+  scope :expired_jobs, -> date_compare {where "end_time < ?", date_compare}
 
   delegate :id, to: :company, prefix: true, allow_nil: true
 
@@ -60,7 +64,11 @@ class Job < ApplicationRecord
 
     def count_urgent_of_company company
       job_company(company.id)
-        .urgent_jobs(Time.zone.now + Settings.job.urrency.days).count
+        .urgent_jobs(Time.zone.now.to_date, Time.zone.now.to_date + Settings.job.urrency.days).count
+    end
+
+    def count_expired_of_company company
+      job_company(company.id).expired_jobs(Time.zone.now.to_date).count
     end
   end
 

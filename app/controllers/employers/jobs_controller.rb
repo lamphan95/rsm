@@ -5,6 +5,7 @@ class Employers::JobsController < Employers::EmployersController
   before_action :load_category_for_select_box, only: :index
   before_action :build_questions, only: :new
   before_action :check_params, only: :create
+  before_action :load_status_step, only: %i(index update)
 
   def show
     @appointment = @company.appointments.build
@@ -20,7 +21,8 @@ class Employers::JobsController < Employers::EmployersController
         @status_step = @company.company_steps.priority_lowest
           .last.step.status_steps
         @job.questions.build
-        format.js{ @message = t ".sussess"}
+        @message = t ".success"
+        format.js
       else
         @job.questions.build unless params[:onoffswitch]
         format.js
@@ -30,7 +32,6 @@ class Employers::JobsController < Employers::EmployersController
   end
 
   def index
-    @status_step = @company.company_steps.priority_lowest.last.step.status_steps
     @search = @company.jobs.includes(:applies).search params[:q]
     @jobs = @search.result(distinct: true).sort_lastest
       .page(params[:page]).per Settings.job.page
@@ -40,7 +41,8 @@ class Employers::JobsController < Employers::EmployersController
   def destroy
     respond_to do |format|
       if @job.destroy
-        format.js{@message = t ".sussess"}
+        @message = t ".success"
+        format.js
       else
         format.js
       end
@@ -52,7 +54,8 @@ class Employers::JobsController < Employers::EmployersController
   def update
     respond_to do |format|
       if @job.update_attributes job_params
-        format.js{@message = t ".sussess"}
+        @message = t ".success"
+        format.js
       else
         format.js
       end
@@ -68,10 +71,17 @@ class Employers::JobsController < Employers::EmployersController
 
   def job_params
     params[:job][:survey] = params[:job][:survey].to_i if params[:job]
-    params.require(:job).permit(:content, :name, :level, :language, :target,
-      :skill, :position, :company_id, :description, :min_salary, :max_salary,
-      :branch_id, :category_id, :survey, reward_benefits_attributes: %i(id content job_id _destroy),
-      questions_attributes: %i(id name _destroy))
+    if params[:expire_on] == Settings.jobs.form.check_box_expire_on
+      params.require(:job).permit(:content, :name, :level, :language, :target, :end_time, :skill,
+        :position, :company_id, :description, :min_salary, :max_salary, :branch_id, :category_id,
+        :survey, reward_benefits_attributes: %i(id content job_id _destroy),
+        questions_attributes: %i(id name _destroy))
+    else
+      params.require(:job).permit(:content, :name, :level, :language, :target, :skill,
+        :position, :company_id, :description, :min_salary, :max_salary, :branch_id, :category_id,
+        :survey, reward_benefits_attributes: %i(id content job_id _destroy),
+        questions_attributes: %i(id name _destroy)).merge! end_time: nil
+    end
   end
 
   def load_jobs
@@ -99,5 +109,9 @@ class Employers::JobsController < Employers::EmployersController
       params[:job][:survey] = Settings.default_value
       params[:job][:questions_attributes] = nil
     end
+  end
+
+  def load_status_step
+    @status_step = @company.company_steps.priority_lowest.last.step.status_steps
   end
 end

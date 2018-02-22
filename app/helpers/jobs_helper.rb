@@ -82,4 +82,8 @@ module JobsHelper
       status_step.get_status(Settings.status_apply.interview_passed).last.id
     ((job.apply_statuses.current.is_step(@count_id).size)/(job.target.to_f)*Settings.job.hundred).to_i
   end
+
+  def check_expire_job end_time
+    Time.zone.now.to_date > end_time
+  end
 end

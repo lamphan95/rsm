@@ -38,6 +38,8 @@ jobs:
   description:
     limit_show: 150
     maximum_length: 255
+  form:
+    check_box_expire_on: "on"
 employers:
 apply:
   image: 50
