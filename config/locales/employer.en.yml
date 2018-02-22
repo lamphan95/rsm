@@ -293,6 +293,8 @@ en:
         not_found_apply: "This job do not have applies"
       question_fields:
         remove_question: "Remove question"
+      add_survey:
+        questions: "Questions"
     members:
       form:
         name: "Name"

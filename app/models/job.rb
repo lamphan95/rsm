@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   acts_as_paranoid
+  attr_accessor :question_ids
 
   belongs_to :user
   belongs_to :company
@@ -8,13 +9,16 @@ class Job < ApplicationRecord
   has_many :bookmark_likes, dependent: :destroy
   has_many :reward_benefits, dependent: :destroy, inverse_of: :job
   has_many :apply_statuses, through: :applies
-  has_many :questions, dependent: :destroy
+  has_many :surveys, dependent: :destroy
+  has_many :questions, through: :surveys
   belongs_to :branch
   belongs_to :category
 
+  after_create :create_survey, unless: :survey_not_exist?
+
   accepts_nested_attributes_for :reward_benefits, allow_destroy: true,
     reject_if: ->(attrs){attrs["content"].blank?}
-  accepts_nested_attributes_for :questions, allow_destroy: true
+  accepts_nested_attributes_for :surveys, allow_destroy: true
 
   validates :name, presence: true
   validates :description, presence: true
@@ -24,11 +28,11 @@ class Job < ApplicationRecord
   validates :target, presence: true
   validates :category_id, presence: true
   validate :max_salary_less_than_min_salary
-  validates :survey, presence: true
+  validates :survey_type, presence: true
 
   enum position_types: {full_time_freshers: 0, full_time_careers: 1, part_time: 2, intern: 3, freelance: 4}
   enum status: [:opend, :closed]
-  enum survey: [:not_exist, :optional, :compulsory]
+  enum survey_type: [:not_exist, :optional, :compulsory]
 
   scope :sort_max_salary_and_target, -> do
     order(max_salary: :desc, target: :desc).limit Settings.job.limit
@@ -72,10 +76,29 @@ class Job < ApplicationRecord
     end
   end
 
+  def self_attr_after_create question_ids
+    self.question_ids = question_ids
+  end
+
+  def survey_not_exist?
+    self.not_exist?
+  end
+
   private
 
   def max_salary_less_than_min_salary
     return if min_salary.blank? || max_salary.blank?
     errors.add :max_salary, I18n.t("jobs.validates.check_max_salary") if max_salary < min_salary
+  end
+
+  def create_survey
+    questions = []
+    question_ids.each_with_index do |id, i|
+      next if id.blank?
+      questions << self.surveys.build(question_id: id)
+    end
+    Survey.transaction do
+      Survey.import! questions
+    end
   end
 end

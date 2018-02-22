@@ -2,6 +2,7 @@ class Company < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :jobs, dependent: :destroy
+  has_many :questions, dependent: :destroy
   has_many :applies, through: :jobs, dependent: :destroy
   has_many :members, dependent: :destroy
   has_many :users, through: :members, dependent: :destroy

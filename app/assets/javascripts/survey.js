@@ -16,10 +16,10 @@ $('.previous').click(function(){
 });
 $('#survey-checkbox').click(function(){
   if ($('#survey-checkbox:checkbox:checked').length > 0) {
-    $('.No-survey').hide(700);
+    $('.no-survey').hide(700);
     $('.has-survey').show(700);
   } else {
     $('.has-survey').hide(700);
-    $('.No-survey').show(700);
+    $('.no-survey').show(700);
   }
 });

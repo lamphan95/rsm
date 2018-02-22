@@ -1,0 +1,56 @@
+<div class="block margin-bottom-0">
+  <div class="block-title h-40">
+    <label class="control-label m-10">
+      <i class="fa fa-newspaper-o"></i>
+      <strong><%= t ".add_survey" %></strong>
+    </label>
+    <div class="onoffswitch">
+      <input type="checkbox" name="onoffswitch"
+        class="onoffswitch-checkbox" id="survey-checkbox">
+      <label class="onoffswitch-label" for="survey-checkbox">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+      </label>
+    </div>
+  </div>
+  <div class="has-survey display-none m-top-10">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="funkyradio form-group m-i-top-20">
+          <% Job.survey_types.drop(1).each do |key, value| %>
+            <%= radio_survey_type key, value, f %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline no-footer">
+            <table class="table table-vcenter table-condensed table-bordered dataTable no-footer">
+              <thead>
+                <tr role="row">
+                  <th class="text-center"></th>
+                  <th class="text-center"><%= t ".questions" %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render "table_question" %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="no-survey p-bottom-20">
+      <small><i><strong><%= t ".add_survey" %></strong></i></small>
+    </div>
+  </div>
+</div>
+<center>
+  <div class="centerize create-job-btn">
+    <%= f.button :submit, label: t("jobs.form.save_job"),
+      class: "btn btn-primary btn-sm w-105 m-top-20" %>
+  </div>
+</center>

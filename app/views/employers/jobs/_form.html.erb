@@ -46,7 +46,7 @@
       <%= f.select :category_id, @company.categories.map{|r| [r.name, r.id]},
         {include_blank: t(".please_selected")}, class: "form-control" %>
     <% end %>
-    <%= render partial: "jobs/add_survey", locals: {f: f} %>
+    <%= render partial: "add_survey", locals: {f: f} %>
   <% end %>
 </div>
 <%= javascript_include_tag "survey" %>

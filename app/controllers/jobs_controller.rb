@@ -146,13 +146,13 @@ class JobsController < BaseNotificationsController
   end
 
   def load_survey
-    @questions = @job.questions unless @job.not_exist?
+    @surveys = @job.surveys unless @job.not_exist?
   end
 
   def build_answer
-    return unless @questions
-    @questions.each do |question|
-      @apply.answers.build question_id: question.id
+    return unless @surveys
+    @surveys.each do |survey|
+      @apply.answers.build survey_id: survey.id
     end
   end
 
