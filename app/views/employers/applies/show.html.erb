@@ -81,7 +81,8 @@
         <div id="area-form-status" class="col-md-12">
         <%= render partial: "form_status", locals: {apply: @apply,
           current_step: @current_step, current_status_steps: @current_status_steps,
-          status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false, step_main: @current_step} %>
+          status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false,
+          step_main: @current_step, current_apply_status: @current_apply_status} %>
         </div>
         <ul class="media-list media-feed push content-media">
           <li class="media">

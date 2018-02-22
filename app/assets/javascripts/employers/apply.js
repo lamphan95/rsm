@@ -2,6 +2,8 @@ $(document).on('change', '#form-apply-status-main input[type=radio]', function(e
   event.preventDefault();
   var applyId = $('#form-apply-status-main #apply_status_apply_id').val();
   var is_prev_step = $('#area-form-status #is_prev_step').val();
+  var current_apply_status_id = $('#area-form-status #current_apply_status_id').val();
+  var current_status_step_id = $('#area-form-status #current_status_step_id').val();
   var value = $('#form-apply-status-main input[type=radio]:checked').val();
   var stepId = $('#area-form-status #step_main_id').val();
   if ($(this).is(':checked')) {
@@ -9,7 +11,11 @@ $(document).on('change', '#form-apply-status-main input[type=radio]', function(e
     if(is_prev_step == 'true'){
       $.get('/employers/steps/' + stepId + '?status_step_id=' + value + '&&apply_id=' + applyId);
     }else{
-      $.get('/employers/apply_statuses/new?status_step_id=' + value + '&&apply_id=' + applyId);
+      if(current_status_step_id === value){
+        $.get('/employers/apply_statuses/new?status_step_id=' + value + '&&apply_id=' + applyId + '&&apply_status_id=' + current_apply_status_id);
+      }else{
+        $.get('/employers/apply_statuses/new?status_step_id=' + value + '&&apply_id=' + applyId);
+      }
     }
   }
 });
