@@ -12,6 +12,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
   before_action :new_appointment, only: :new, if: :is_scheduled?
   before_action :load_appointments, only: [:create, :new, :update], if: :is_scheduled?
   before_action :build_offer, only: :new, if: :is_offer_sent?
+  before_action :load_offer_status_step_pending, only: %i(update create)
 
   def new
     respond_to :js

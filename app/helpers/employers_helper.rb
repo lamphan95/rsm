@@ -144,4 +144,8 @@ module EmployersHelper
   def disabled_block apply
     return "overcast-div" if apply.lock_apply?
   end
+
+  def is_offer_status_pending
+    @company.steps.last.id ==  @current_step.id && @offer_status_pending_id.last < @apply_status.status_step_id
+  end
 end
