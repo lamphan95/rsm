@@ -15,3 +15,5 @@
 <% end %>
 <%= hidden_field_tag :is_prev_step, is_prev_step %>
 <%= hidden_field_tag :step_main_id, step_main.id, id: "step_main_id" %>
+<%= hidden_field_tag :current_apply_status_id, current_apply_status.id, id: "current_apply_status_id" %>
+<%= hidden_field_tag :current_status_step_id, current_apply_status.status_step_id, id: "current_status_step_id" %>

@@ -1,7 +1,7 @@
 <% if @message.present? %>
   $('#apply-handling-content').html('');
   $('#area-status-progress').html('<%= j render partial: "employers/applies/status_progress", locals: {steps: @steps, current_step: @current_step, company_steps_by_step: @company_steps_by_step} %>');
-  $('#area-form-status').html('<%= j render partial: "employers/applies/form_status", locals: {apply: @apply, current_step: @current_step, current_status_steps: @current_status_steps, status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false, step_main: @current_step} %>');
+  $('#area-form-status').html('<%= j render partial: "employers/applies/form_status", locals: {apply: @apply, current_step: @current_step, current_status_steps: @current_status_steps, status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false, step_main: @current_step, current_apply_status: @current_apply_status} %>');
   $('#btn-prev-apply').html('<%= j render partial: "employers/applies/form_apply_status", locals: {apply_status: @prev_apply_status, btn_name: t("employers.applies.btn_name.prev"), step: @prev_step} %>');
   $('#btn-next-apply').html('<%= j render partial: "employers/applies/form_apply_status", locals: {apply_status: @next_apply_status, btn_name: t("employers.applies.btn_name.next"), step: @next_step} %>');
   $('#status-infor-apply').html('<%= j show_status_apply @current_apply_status.status_step %>');
