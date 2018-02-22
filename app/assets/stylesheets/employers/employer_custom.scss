@@ -319,3 +319,47 @@ label {
 .l-5 {
   margin-left: 5px;
 }
+
+.custom-checkbox {
+  > input[type='checkbox'] {
+    display: none;
+  }
+  > span {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13.7px;
+    position: relative;
+    > label {
+      cursor: pointer;
+    }
+    &::before {
+      border: 1px solid $blue-light-7;
+      color: $white;
+      font-size: 12px;
+      font-weight: bold;
+      height: 13px;
+      left: -18px;
+      line-height: 12px;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 13px;
+    }
+  }
+  > input[type='checkbox']:empty + span::before {
+    background-color: transparent;
+    content: '';
+  }
+
+  > input[type='checkbox']:checked + span::before {
+    background-color: $blue-light-7;
+    content: '✔';
+  }
+}
+
+.m-l-15 {
+  margin-left: 15px;
+}
+
+.display-none {
+  display: none;
+}

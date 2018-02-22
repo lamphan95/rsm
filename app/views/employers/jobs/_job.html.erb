@@ -27,7 +27,11 @@
     <td class="text-center color_date_job_expires">
       <strong>
       <% if job.end_time.present? %>
-        <%= t ".expires_on" %><br><%= l job.end_time.to_date, format: :long %>
+        <% if check_expire_job job.end_time %>
+          <%= t ".expired" %>
+        <% else %>
+          <%= t ".expires_on" %><br><%= l job.end_time.to_date, format: :long %>
+        <% end %>
       <% end %>
       </strong>
     </td>
