@@ -54,7 +54,7 @@ class Employers::AppliesController < Employers::EmployersController
 
   def update
     respond_to do |format|
-      if @apply.update_attribute :status, get_status
+      if @apply.update_columns status: get_status, updated_at: Time.now.getutc
         html_content = render_to_string(partial: "employers/applies/apply_btn",
           locals: {current_step: @current_step, steps: @steps,
           current_apply_status: @current_apply_status, current_status_steps: @current_status_steps})
