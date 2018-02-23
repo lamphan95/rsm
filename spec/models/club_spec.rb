@@ -6,16 +6,16 @@ RSpec.describe Club, type: :model do
   subject {club}
 
   context "associations" do
-    it {should belong_to :user}
+    it {is_expected.to belong_to :user}
   end
 
   context "columns" do
-    it {should have_db_column(:name).of_type(:string)}
-    it {should have_db_column(:user_id).of_type(:integer)}
-    it {should have_db_column(:start_time).of_type(:date)}
-    it {should have_db_column(:end_time).of_type(:date)}
-    it {should have_db_column(:content).of_type(:text)}
-    it {should have_db_column(:current).of_type(:boolean)}
+    it {is_expected.to have_db_column(:name).of_type(:string)}
+    it {is_expected.to have_db_column(:user_id).of_type(:integer)}
+    it {is_expected.to have_db_column(:start_time).of_type(:date)}
+    it {is_expected.to have_db_column(:end_time).of_type(:date)}
+    it {is_expected.to have_db_column(:content).of_type(:text)}
+    it {is_expected.to have_db_column(:current).of_type(:boolean)}
   end
 
   context "validates" do
