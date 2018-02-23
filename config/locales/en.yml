@@ -412,6 +412,10 @@ en:
               blank: "Min salary can not be blank"
             max_salary:
               blank: "Max salary can not be blank"
+            target:
+              blank: "Target can not be blank"
+            survey_type:
+              blank: "Survey_type can not be blank"
         reward_benefit:
           attributes:
             content:

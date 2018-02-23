@@ -2,18 +2,18 @@ require "rails_helper"
 
 RSpec.describe Appointment, type: :model do
   context "associations" do
-    it {should belong_to :apply}
-    it {should belong_to :company}
+    it {is_expected.to belong_to :apply_status}
+    it {is_expected.to belong_to :company}
     it {is_expected.to have_many :inforappointments}
 
   end
 
   context "columns" do
-    it {should have_db_column(:address).of_type(:text)}
-    it {should have_db_column(:start_time).of_type(:datetime)}
-    it {should have_db_column(:end_time).of_type(:datetime)}
-    it {should have_db_column(:apply_id).of_type(:integer)}
-    it {should have_db_column(:company_id).of_type(:integer)}
+    it {is_expected.to have_db_column(:address).of_type(:text)}
+    it {is_expected.to have_db_column(:start_time).of_type(:datetime)}
+    it {is_expected.to have_db_column(:end_time).of_type(:datetime)}
+    it {is_expected.to have_db_column(:apply_status_id).of_type(:integer)}
+    it {is_expected.to have_db_column(:company_id).of_type(:integer)}
   end
 
   context "validates" do

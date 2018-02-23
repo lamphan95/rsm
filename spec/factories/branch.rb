@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :branch do
-    is_primary "0"
+    name "ho minh huy"
+    phone Faker::Number.number(10)
     street "255 - 257 Hung Vuong"
     ward "Thach Thang"
     district "Hai Chau"

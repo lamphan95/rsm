@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
 
   let(:company){FactoryGirl.create :company}
   let!(:user1){FactoryGirl.create :user, company_id: company.id}
-  let(:user){FactoryGirl.create :user, company_id: company.id}
+  let(:user){FactoryGirl.create :user, email: "votri96@gmail.com", company_id: company.id}
 
   subject {user}
 
@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
     before {subject.email = user1.email}
     it "matches the error message" do
       subject.valid?
-      expect(subject.errors[:email].to_sentence).to eq I18n.t("users.form.empty")
+      subject.errors[:email].should include("already exist")
     end
   end
 

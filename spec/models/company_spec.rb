@@ -12,9 +12,9 @@ RSpec.describe Company, type: :model do
   end
 
   context "columns" do
-    it {should have_db_column(:name).of_type(:string)}
-    it {should have_db_column(:address).of_type(:text)}
-    it {should have_db_column(:phone).of_type(:string)}
-    it {should have_db_column(:majors).of_type(:string)}
+    it {is_expected.to have_db_column(:name).of_type(:string)}
+    it {is_expected.to have_db_column(:address).of_type(:text)}
+    it {is_expected.to have_db_column(:phone).of_type(:string)}
+    it {is_expected.to have_db_column(:majors).of_type(:string)}
   end
 end
