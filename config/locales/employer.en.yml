@@ -295,6 +295,12 @@ en:
         remove_question: "Remove question"
       add_survey:
         questions: "Questions"
+        add_survey: "Add survey"
+        survey_type: "Survey type"
+      search_question:
+        search_questions: "Search questions"
+      new_question:
+        add_question: "Add Question"
     members:
       form:
         name: "Name"

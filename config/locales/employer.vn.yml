@@ -290,6 +290,14 @@ vn:
         not_found_apply: "Công việc này không có hồ sơ ứng tuyển"
       question_fields:
         remove_question: "Xóa câu hỏi"
+      add_survey:
+        questions: "Câu hỏi"
+        add_survey: "Thêm survey"
+        survey_type: "Loại survey"
+      search_question:
+        search_questions: "Tìm câu hỏi"
+      new_question:
+        add_question: "Thêm câu hỏi"
     members:
       form:
         name: "Tên"
