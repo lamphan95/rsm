@@ -20,6 +20,7 @@ class StepService
 
     @email_sents = get_email_sents
     @appointment = get_appointment
+    @offers = get_offers
   end
 
   def get_data_step
@@ -31,6 +32,7 @@ class StepService
       company_step: @company_step,
       appointment: @appointment,
       email_sents: @email_sents,
+      offers: @offers
     }
   end
 
@@ -47,6 +49,11 @@ class StepService
   def get_email_sents
     return {} if @apply_statuses.blank?
     @apply_status_lastest.email_sents.includes :user
+  end
+
+  def get_offers
+    return if @apply_status_lastest.blank?
+    @apply_status_lastest.offers.get_newest.includes :user
   end
 
   def get_company_step step

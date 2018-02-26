@@ -1,0 +1,27 @@
+<li class="media">
+  <%= link_to offer.user, class: "pull-left" do %>
+    <%= image_tag offer.user.picture.url,
+      class: "sender-avatar img-circle" %>
+  <% end %>
+  <div class="media-body">
+    <div class="col-md-12">
+      <span class="text-muted pull-right m-l-5">
+        <small><em>
+          <%= t "employers.history.sent" %>
+          <%= time_ago_in_words offer.created_at %>
+          <%= t "employers.history.ago" %>
+        </em></small>
+      </span>
+      <a href="javascript:void(0)"><strong><%= t ".offer_send_by" %> <%= offer.user_name %></strong></a>
+    </div>
+    <div class="col-md-12">
+      <button data-toggle="modal" class= "btn btn-xs btn-default pull-right" data-target="#my-offer-<%= offer.id %>">
+        <i class="fa fa-eye"></i>
+      </button>
+    </div>
+  </div>
+</li>
+
+<div class="modal fade" id="my-offer-<%= offer.id %>" role="dialog">
+  <%= render partial: "employers/applies/offer_detail", locals: {offer: offer} %>
+</div>

@@ -50,3 +50,19 @@
     </div>
   </div>
 <% end %>
+
+<% if data_step[:offers].present? %>
+  <div class="col-md-6">
+    <div class="block full overcast-custom">
+      <div class="block-title">
+        <h2>
+          <i class="fa fa-history"></i>
+          <strong><%= t ".offer_history" %></strong>
+        </h2>
+      </div>
+      <ul class="media-list">
+        <%= render partial: "employers/applies/offers_list", collection: data_step[:offers], as: :offer %>
+      </ul>
+    </div>
+  </div>
+<% end %>

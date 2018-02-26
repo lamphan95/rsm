@@ -92,6 +92,14 @@ en:
         email: "Email"
         phone: "Phone"
         cv: "CV"
+      offers_list:
+        offer_send_by: "Offer was sent by"
+      offer_detail:
+        sender: "Sender"
+        salary: "Salary"
+        start_time: "Start time"
+        address: "Address company"
+        requirement: "Requirement"
     apply_statuses:
       confirm_send_email: "Do you want to send email for candidate ?"
       mgs_send_email_susscess: "You changed status success"
