@@ -52,13 +52,13 @@
             <tr class="border-dashed">
               <td>
                 <div class="form-group m-top-15">
-                  <label class="control-label col-md-3 p-0">
+                  <label class="control-label col-md-12 p-0">
                     <div class="pull-left">
                       <abbr title="required">*</abbr>
                       <%= t ".new_cv" %>
                     </div>
                   </label>
-                  <div class="input-group col-md-9 right-60 w-250">
+                  <div class="input-group col-md-12">
                     <%= text_field_tag nil, nil, class: "form-control", id: "choose-cv", readonly: true %>
                     <span class="input-group-addon btn btn-info btn-file">
                       <%= t ".browse" %><%= f.file_field :cv, class: "choose-cv" %>
