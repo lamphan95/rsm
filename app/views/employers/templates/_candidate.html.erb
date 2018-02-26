@@ -19,12 +19,10 @@
   <td class="text-center"><%= candidate.name %></td>
   <td class="text-center"><%= candidate.title %></td>
   <td class="text-center">
-    <button type="button" class = "show-inter form-control b0" value="<%= candidate.id %>">
-      <i class="fa fa-eye text-primary" aria-hidden="true"></i>
-    </button>
-  </td>
-  <td class="text-center">
     <div class="btn-group btn-group-xs">
+      <button type="button" class = "show-inter btn btn-default btn-xs" value="<%= candidate.id %>">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+      </button>
       <%= link_to edit_employers_template_path(candidate), remote: true,
         class: "btn btn-warning btn-xs", data: {toggle: "tooltip"} do %>
         <i class="fa fa-pencil" aria-hidden="true"></i>

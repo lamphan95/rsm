@@ -19,7 +19,7 @@
       <div role="tabpanel" class="tab-pane tab-pane-job-info box box-md animated fadeIn"
         id="job-info">
         <div class="block full">
-          <div class="block-title">
+          <div>
             <%= link_to new_employers_template_path, class: "btn btn btn-primary open-tab pull-right",
               remote: true do %>
               <i class="fa fa-plus" aria-hidden="true"><%= t ".add" %></i>
@@ -30,7 +30,6 @@
               <tr>
                 <th class="text-center"><%= t ".stt" %></th>
                 <th class="text-center"><%= t ".name" %></th>
-                <th class="text-center"><%= t ".template" %></th>
                 <th class="text-center"><%= t ".action" %></th>
               </tr>
             </thead>
@@ -45,7 +44,7 @@
       <div role="tabpanel" class="tab-pane tab-pane-company-info active box box-md animated fadeIn"
         id="company-info">
         <div class="block full">
-          <div class="block-title">
+          <div>
             <%= link_to new_employers_template_path, class: "btn btn btn-primary open-tab pull-right",
               remote: true do %>
               <i class="fa fa-plus" aria-hidden="true"><%= t ".add" %></i>
@@ -57,7 +56,6 @@
                 <th class="text-center"><%= t ".stt" %></th>
                 <th class="text-center"><%= t ".name" %></th>
                 <th class="text-center"><%= t ".title" %></th>
-                <th class="text-center"><%= t ".template" %></th>
                 <th class="text-center"><%= t ".action" %></th>
               </tr>
             </thead>
