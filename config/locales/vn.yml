@@ -1185,3 +1185,4 @@ vn:
     not_exist: "Not Create"
     compulsory: "compulsory"
     optional: "Optional"
+  no_question_choosen: "Chưa có câu hỏi nào đưọc chọn."

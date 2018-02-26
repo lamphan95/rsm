@@ -301,6 +301,8 @@ en:
         search_questions: "Search questions"
       new_question:
         add_question: "Add Question"
+      tag_question:
+        remove_tag: "Removing tag"
     members:
       form:
         name: "Name"
