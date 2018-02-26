@@ -8,10 +8,10 @@ class Employers::JobsController < Employers::EmployersController
   before_action :load_status_step, only: %i(index update)
 
   def show
-    @appointment = @company.appointments.build
-    applies = @job.applies
-    @apply_statuses = ApplyStatus.includes(:status_step).current
-      .get_by(applies.pluck(:id)).page(params[:page]).per Settings.apply.page
+    @applies = @job.applies.includes(:user).page(params[:page]).per Settings.apply.page
+    @apply_statuses = ApplyStatus.of_apply(@applies.pluck(:id)).includes(:status_step)
+      .current.group_by(&:apply_id)
+    @page = params[:page]
   end
 
   def create

@@ -248,6 +248,7 @@ vn:
       part_time: "Part time"
       intern: "Intern"
       freelance: "Freelance"
+      action: "Hành động"
     method:
       cant_find_job: "Không thể tìm thấy việc làm như yêu cầu"
       cant_find_bookmark: "Không thể tìm thấy trang đánh dấu của người dùng"

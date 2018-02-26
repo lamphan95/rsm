@@ -2,7 +2,7 @@
   <div class="block-title">
     <h2><%= t ".applyfor" %><strong><%= @job.name %></strong></h2>
   </div>
-  <% if @apply_statuses.present? %>
+  <% if @applies.present? %>
     <table class="table table-bordered table-striped table-vcenter">
       <thead>
         <tr>
@@ -12,13 +12,14 @@
           <th class="text-center"><%= t ".phone" %></th>
           <th class="text-center"><%= t ".date" %></th>
           <th class="text-center"><%= t ".status" %></th>
+          <th class="text-center"><%= t ".action" %></th>
         </tr>
       </thead>
       <tbody>
-        <%= render partial: "apply", collection: @apply_statuses, as: :apply_status %>
+        <%= render partial: "apply", collection: @applies, as: :apply %>
       </tbody>
     </table>
-    <%= paginate @apply_statuses %>
+    <%= paginate @applies %>
     <div id="area_apply_appointment">
     </div>
   <% else %>

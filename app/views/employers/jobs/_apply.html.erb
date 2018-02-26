@@ -1,25 +1,33 @@
-<tr id="apply_job_content_<%= apply_status.id %>">
-  <td class="text-center"><strong><%= apply_status.id %></strong></a></td>
+<tr>
+  <td class="text-center"><strong><%= count_page apply_counter, @page %></strong></a></td>
   <td class="text-center">
-    <% if apply_status.apply.user.present? %>
+    <% if apply.user.present? %>
     <strong>
-      <%= link_to apply_status.apply.user_name, employers_job_apply_path(@job, apply_status.apply) %>
+      <%= link_to apply.user_name, user_path(apply.user) %>
     </strong>
   </td>
-  <td class="text-center"><strong><%= apply_status.apply.user_email %></strong></td>
-  <td class="text-center"><strong><%= apply_status.apply.user_phone %></strong></td>
-  <td class="text-center visible-lg"><%= l apply_status.apply_created_at, format: :long %></td>
-  <td id="apply_content_<%= apply_status.apply.id %>" class="text-center hidden-xs">
+  <td class="text-center"><strong><%= apply.user_email %></strong></td>
+  <td class="text-center"><strong><%= apply.user_phone %></strong></td>
+  <td class="text-center visible-lg"><%= l apply.created_at, format: :long %></td>
+  <td class="text-center hidden-xs">
     <% else %>
     <strong>
-      <%= link_to apply_status.apply_information[:name], employers_job_apply_path(@job, apply_status.apply) %>
+      <%= apply.information[:name] %>
     </strong>
   </td>
-  <td class="text-center"><strong><%= apply_status.apply_information[:email] %></strong></td>
-  <td class="text-center"><strong><%= apply_status.apply_information[:phone] %></strong></td>
-  <td class="text-center visible-lg"><%= l apply_status.apply_created_at, format: :long %></td>
-  <td id="apply_content_<%= apply_status.apply.id %>"  class="text-center hidden-xs">
+  <td class="text-center"><strong><%= apply.information[:email] %></strong></td>
+  <td class="text-center"><strong><%= apply.information[:phone] %></strong></td>
+  <td class="text-center visible-lg"><%= l apply.created_at, format: :long %></td>
+  <td class="text-center hidden-xs">
     <% end %>
-    <%= show_status_apply apply_status.status_step %>
+    <% if @apply_statuses[apply.id].present? %>
+      <%= show_status_apply @apply_statuses[apply.id].first.status_step %>
+    <% end %>
+  </td>
+
+  <td class="text-center hidden-xs">
+      <%= link_to employers_job_apply_path(@job, apply), class: "btn btn-default btn-xs" do %>
+        <i class="fa fa-eye" aria-hidden="true"></i>
+      <% end %>
   </td>
 </tr>

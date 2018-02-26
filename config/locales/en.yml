@@ -243,6 +243,7 @@ en:
       part_time: "Part time"
       intern: "Intern"
       freelance: "Freelance"
+      action: "Action"
     method:
       cant_find_job: "Job can not be found"
       cant_find_bookmark: "Can not find user bookmared"
@@ -458,6 +459,7 @@ en:
       phone: "Phone"
       date: "Submit Date"
       status: "Status"
+      action: "Action"
       not_find: "Can not find"
       destroysuc: "Destroy successful"
       destroyfal: "Destroy fail"
