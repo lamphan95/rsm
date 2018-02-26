@@ -29,7 +29,7 @@
 
                     <% if @offer_sent_ids && (@offer_sent_ids.include? apply_status.status_step_id) %>
                       <%= f.simple_fields_for :offers do |offer| %>
-                        <% if filter_object offer.object %>
+                        <% if offer.object.new_record? %>
                           <%= render partial: "offers", locals: {f: offer} %>
                         <% end %>
                       <% end %>

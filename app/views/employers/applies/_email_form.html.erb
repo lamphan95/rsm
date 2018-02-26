@@ -31,7 +31,7 @@
             <div class="col-sm-12 col-lg-12">
               <div id = "email-content">
                 <%= apply_status_builder.simple_fields_for :email_sents do |email_sent_builder| %>
-                  <% if filter_object email_sent_builder.object %>
+                  <% if email_sent_builder.object.new_record? %>
                     <%= email_sent_builder.hidden_field :type, value: ApplyStatus.name %>
                     <%= email_sent_builder.hidden_field :sender_email, value: current_user.email %>
                     <%= email_sent_builder.hidden_field :user_id %>
