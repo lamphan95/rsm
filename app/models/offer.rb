@@ -5,4 +5,8 @@ class Offer < ApplicationRecord
   validates :salary, presence: true
   validates :start_time, presence: true
   validates :address, presence: true
+
+  delegate :name, to: :user, prefix: true, allow_nil: true
+
+  scope :get_newest, ->{order created_at: :desc}
 end

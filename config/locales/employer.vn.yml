@@ -92,6 +92,14 @@ vn:
         email: "Email"
         phone: "Điện thoại"
         cv: "Sơ yếu lý lịch"
+      offers_list:
+        offer_send_by: "Offer đưọc gởi bởi"
+      offer_detail:
+        sender: "Người gởi"
+        salary: "Lương"
+        start_time: "Ngày bắt đầu"
+        address: "Địa điểm"
+        requirement: "Yêu cầu"
     apply_statuses:
       confirm_send_email: "Bạn có muốn gửi email cho ứng cử viên?"
       mgs_send_email_susscess: "Thay đổi trạng thái thành công"

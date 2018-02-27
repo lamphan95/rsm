@@ -1,4 +1,13 @@
 vn:
+  number:
+    currency:
+      format:
+        unit: " VNĐ"
+        delimiter: ","
+        separator: "."
+        precision: 0
+        format: "%n%u"
+      short: "%d/%m/%Y"
   date:
     formats:
       default: "%Y-%m-%d"

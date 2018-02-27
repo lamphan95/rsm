@@ -1,4 +1,13 @@
 en:
+  number:
+    currency:
+      format:
+        unit: " $"
+        delimiter: ","
+        separator: "."
+        precision: 0
+        format: "%n%u"
+      short: "%d/%m/%Y"
   date:
     formats:
       default: "%Y-%m-%d"
