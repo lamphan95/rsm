@@ -33,6 +33,8 @@ vn:
       see_all: "Xem tất cả"
       read_all: "Đánh dấu đọc tất cả"
       time_ago: "%{time} trước"
+  fullcalendar:
+    error_mgs: "Không chọn lịch trong quá khứ"
   certificates:
     certificate:
       name: "Tên"

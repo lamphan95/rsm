@@ -72,6 +72,7 @@ en:
         action: "Action"
         not_applies: "No have applies"
         step: "Step"
+        no: "No"
       create:
         success: "Applied success"
         failure: "Applied failure"

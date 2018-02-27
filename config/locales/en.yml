@@ -29,6 +29,8 @@ en:
       see_all: "See all"
       read_all: "Mark all as read"
       time_ago: "%{time} ago"
+  fullcalendar:
+    error_mgs: "Do not pick schedule in the past"
   certificates:
     certificate:
       name: "Name"
