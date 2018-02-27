@@ -146,7 +146,7 @@ class JobsController < BaseNotificationsController
   end
 
   def load_survey
-    @surveys = @job.surveys unless @job.not_exist?
+    @surveys = @job.surveys.includes(:question) unless @job.not_exist?
   end
 
   def build_answer

@@ -1053,7 +1053,7 @@ vn:
       answer_survey_continues: "Chọn trả lời khảo sát để tiếp tục"
     survey:
       apply: "Apply"
-      last_page: "Trước"
+      previous_page: "Trang trước"
     update:
       success: "Bạn đã hủy bỏ thành công hồ sơ ứng tuyển"
       error: "Đã có lỗi xảy ra. Hủy bỏ hồ sơ ứng tuyển này thất bại."

@@ -980,7 +980,7 @@ en:
       survey: "Survey"
       apply: "Apply"
     survey:
-      last_page: "Last page"
+      previous_page: "Previous page"
       apply: "Apply"
     undefind_form_apply:
       introducing: "Introducing"
