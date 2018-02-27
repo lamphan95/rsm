@@ -7,7 +7,7 @@ class ExperiencesController < ApplicationController
   def create
     respond_to do |format|
       if @experience.save
-        format.js{@message = t "bookmark_likes.create_success"}
+        format.js{@message = t "experiences.create_success"}
       else
         format.js
       end
@@ -17,7 +17,7 @@ class ExperiencesController < ApplicationController
   def update
     respond_to do |format|
       if @experience.update_attributes params_experience
-        format.js{@message = t "bookmark_likes.update_success"}
+        format.js{@message = t "experiences.update_success"}
       else
         format.js
       end
@@ -27,9 +27,9 @@ class ExperiencesController < ApplicationController
   def destroy
     respond_to do |format|
       if @experience.destroy
-        format.js{@success = t "bookmark_likes.destroy_success"}
+        format.js{@success = t "experiences.destroy_success"}
       else
-        format.js{@fail = t "bookmark_likes.destroy_fail"}
+        format.js{@fail = t "experiences.destroy_fail"}
       end
     end
   end

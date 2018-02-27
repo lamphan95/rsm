@@ -7,7 +7,7 @@ class ClubsController < ApplicationController
   def create
     respond_to do |format|
       if @club.save
-        format.js{@message = t "bookmark_likes.create"}
+        format.js{@message = t "clubs.create_success"}
       else
         format.js
       end
@@ -17,7 +17,7 @@ class ClubsController < ApplicationController
   def update
     respond_to do |format|
       if @club.update_attributes params_club
-        format.js{@message = t "bookmark_likes.update_success"}
+        format.js{@message = t "clubs.update_success"}
       else
         format.js
       end
@@ -27,9 +27,9 @@ class ClubsController < ApplicationController
   def destroy
     respond_to do |format|
       if @club.destroy
-        format.js{@success = t "bookmark_likes.destroy_success"}
+        format.js{@success = t "clubs.destroy_success"}
       else
-        format.js{@fail = t "bookmark_likes.destroy_fail"}
+        format.js{@fail = t "clubs.destroy_fail"}
       end
     end
   end

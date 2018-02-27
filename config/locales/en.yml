@@ -502,6 +502,8 @@ en:
     companies:
       form:
         contact_phone: "Contact phone"
+    template:
+      create_success: "The template had been add into your profile"
     save: " Saved"
     insert: "Save"
     create: "Bookmark has been created"
@@ -828,6 +830,8 @@ en:
   index:
     recruit: "FramgiaRecruit"
   companies:
+    update_success: "The company had been update success"
+    update_fail: "Sorry, something was wrong! The company can't save update"
     homepage:
       hello: "Hello, world."
       question: "ARE YOU READY TO MAKE IT AWESOME WITH US?"
@@ -1131,6 +1135,7 @@ en:
       organization: "Organization"
     index:
       add: "Add"
+    create_success: "The achievements had been add into your profile"
   recruit: "Company %{company} recruiting"
   search: "Search.."
   app: "App Framgia"

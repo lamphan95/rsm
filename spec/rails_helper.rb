@@ -7,7 +7,6 @@ require 'shoulda/matchers'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
   config.use_transactional_fixtures = false
@@ -22,4 +21,5 @@ RSpec.configure do |config|
   end
   config.include Devise::TestHelpers, :type => :controller
   config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end

@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :user do
     name "phopham"
-    password "123123123"
-    password_confirmation "123123123"
+    password "123456"
+    password_confirmation "123456"
     sex 1
-    role "user"
+    role "admin"
     phone "0965600364"
     sequence(:email) {|n| "psrsson#{n}@example.com" }
     address "Tam Ky"

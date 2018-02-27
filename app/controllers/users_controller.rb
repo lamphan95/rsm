@@ -15,7 +15,7 @@ class UsersController < BaseNotificationsController
   def update
     respond_to do |format|
       if @user.update_attributes user_params
-        format.js{@message = t "users.new.update_success"}
+        format.js{@message = t "users.update_success"}
       else
         format.js
       end
