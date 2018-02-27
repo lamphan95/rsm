@@ -1172,3 +1172,4 @@ en:
     compulsory: "Compulsory"
     optional: "Optional"
   no_question_choosen: "No questions were choosen."
+  start_time_cannot_be_in_the_past: "Start time cannot be in the past"
