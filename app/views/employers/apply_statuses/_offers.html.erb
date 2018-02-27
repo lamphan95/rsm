@@ -19,6 +19,7 @@
         <abbr title="required">*</abbr> Start time
       </label>
       <%= f.text_field :start_time, class: "date_apply form-control", id: "datepicker" %>
+      <%= f.error :start_time %>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-12">
       <%= f.input :address, as: :string %>

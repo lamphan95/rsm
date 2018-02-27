@@ -1192,7 +1192,8 @@ vn:
       first: "Đầu tiên"
       previous: "Trước"
   survey:
-    not_exist: "Not Create"
-    compulsory: "compulsory"
-    optional: "Optional"
+    not_exist: "không tồn tại"
+    compulsory: "bắt buộc"
+    optional: "tùy chọn"
   no_question_choosen: "Chưa có câu hỏi nào đưọc chọn."
+  start_time_cannot_be_in_the_past: "thời gian bắt đầu không thể là quá khứ."
