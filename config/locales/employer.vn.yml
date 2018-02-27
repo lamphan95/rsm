@@ -298,6 +298,8 @@ vn:
         search_questions: "Tìm câu hỏi"
       new_question:
         add_question: "Thêm câu hỏi"
+      tag_question:
+        remove_tag: "Xóa thẻ"
     members:
       form:
         name: "Tên"

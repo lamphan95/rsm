@@ -1,16 +1,20 @@
 <% if @job.errors.any? %>
   $('.form-group').removeClass('has-error');
   $('#manage-job-form').html('<%= j render "form" %>');
-  $('#survey-checkbox').prop('checked', true);
-  $('.no-survey').hide(700);
-  $('.has-survey').show(700);
-  <% if params[:job] %>
+  <% if params[:onoffswitch] %>
+    $('#survey-checkbox').prop('checked', true);
+    $('.no-survey').hide(700);
+    $('.has-survey').show(700);
+  <% end %>
+  <% if @question_ids.present? %>
     $('#radio<%= params[:job][:survey_type] %>').prop('checked', true);
-    <% if params[:job][:question_ids].present? %>
-      <% params[:job][:question_ids].each do |id| %>
-        $('#job_question_ids_<%= id %>').prop('checked', true);
-      <% end %>
+    <% @question_ids.each do |id| %>
+      $('#job_question_ids_<%= id %>').prop('checked', true);
     <% end %>
+    $('.tagsinput').append('<%= j render "tag_question",
+      question_ids: @question_ids, question_names: @question_names %>');
+    $('#choosen-ids').val('<%= params[:choosen_ids] %>');
+    $('#name-question-choosen').val('<%= params[:name_question_choosen] %>');
   <% end %>
 <% else %>
   $('#manageJob').modal('hide');

@@ -1,0 +1,10 @@
+<% question_ids.each_with_index do |id, index| %>
+  <% next if id.blank? %>
+  <span class="tag" id="tag-<%= id %>" data-id="<%= id %>">
+    <span><%= question_names[index] %>&nbsp;&nbsp;</span>
+    <%= link_to "javascript:void(0)", class: "remove-tag",
+      title: t(".remove_tag") do %>
+      &#10007;
+    <% end %>
+  </span>
+<% end %>

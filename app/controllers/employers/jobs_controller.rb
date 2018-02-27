@@ -4,7 +4,7 @@ class Employers::JobsController < Employers::EmployersController
   before_action :load_branches_for_select_box, only: :index
   before_action :load_category_for_select_box, only: :index
   before_action :load_questions, :build_surveys, only: :new
-  before_action :check_params, only: :create
+  before_action :check_params, :convert_params_questions, only: :create
   before_action :load_status_step, only: %i(index update)
 
   def show
@@ -16,7 +16,7 @@ class Employers::JobsController < Employers::EmployersController
 
   def create
     @job = current_user.jobs.build job_params
-    @job.self_attr_after_create params[:job][:question_ids] if params[:job]
+    @job.self_attr_after_create @question_ids
     respond_to do |format|
       if @job.save
         @status_step = @company.company_steps.priority_lowest
@@ -115,5 +115,10 @@ class Employers::JobsController < Employers::EmployersController
 
   def load_questions
     @questions = @company.questions.get_newest
+  end
+
+  def convert_params_questions
+    @question_names = params[:name_question_choosen].split(",") if params[:name_question_choosen].present?
+    @question_ids = params[:choosen_ids].split(",") if params[:choosen_ids].present?
   end
 end
