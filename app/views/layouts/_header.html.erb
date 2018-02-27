@@ -29,6 +29,7 @@
                 <i class="fa fa-angle-down"></i>
               <% end %>
               <ul>
+                <li class="arrow-up"><span class="border-arrow"></span><span class="arrow"></span></li>
                 <% if current_user.is_employer? %>
                   <li>
                     <%= link_to employers_dashboards_url subdomain: current_user.get_company.subdomain do %>

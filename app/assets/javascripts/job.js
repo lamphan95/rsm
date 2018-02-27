@@ -30,12 +30,12 @@
 //= require social-share-button
 //= require alertify/lib/alertify.min.js
 //= require cocoon
-//= require ckeditor/init
-//= require config_ckeditor
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
+//= require ckeditor/init
 //= require ckeditor/config
+//= require config_ckeditor
 //= require cable
 //= require custom_height_layout.js
 //= require fancybox

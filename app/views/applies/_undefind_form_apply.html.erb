@@ -1,82 +1,80 @@
 <div id="form-apply">
-  <table class="col-md-12 table-responsive">
-    <label class="control-label" for="information">
-      <abbr title="required">*</abbr> <%= t ".information" %>
-    </label>
-    <%= f.simple_fields_for :information do |p| %>
-      <div id="apply_form">
-        <div class="form-group input-inline width-inline">
-          <div class="col-xs-12">
-            <div class="input-group">
-              <span class="input-group-addon apply-un">
-                <i class="fa fa-address-book" aria-hidden="true"></i>
-              </span>
-              <%= p.text_field :name, autofocus: true, class: "form-control input-md",
-                placeholder: t(".name") %>
-            </div>
+  <label class="control-label" for="information">
+    <abbr title="required">*</abbr> <%= t ".information" %>
+  </label>
+  <%= f.simple_fields_for :information do |p| %>
+    <div id="apply_form">
+      <div class="form-group input-inline width-inline">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon apply-un">
+              <i class="fa fa-address-book" aria-hidden="true"></i>
+            </span>
+            <%= p.text_field :name, autofocus: true, class: "form-control input-md",
+              placeholder: t(".name") %>
           </div>
         </div>
-        <div class="form-group input-inline width-inline">
-          <div class="col-xs-12">
-            <div class="input-group">
-              <span class="input-group-addon apply-un">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-              </span>
-              <%= p.text_field :email, autofocus: true, class: "form-control input-md",
-                placeholder: t(".email") %>
-            </div>
-          </div>
-        </div>
-        <div class="form-group input-inline width-inline">
-          <div class="col-xs-12">
-            <div class="input-group">
-              <span class="input-group-addon apply-un">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-              </span>
-              <%= p.text_field :phone, autofocus: true, class: "form-control input-md",
-                placeholder: t(".phone") %>
-            </div>
-          </div>
-        </div>
-        <div class="form-group input-inline width-inline display-none-important">
-          <div class="col-xs-12">
-            <div class="input-group">
-              <span class="input-group-addon apply-un"><i class="fa fa-user" aria-hidden="true"></i></span>
-              <%= f.text_field :broker, autofocus: true, class: "form-control input-lg",
-                placeholder: t(".broker") %>
-            </div>
-          </div>
-        </div>
-        <table class="col-md-12 table-user-information">
-          <tbody>
-            <tr class="border-dashed">
-              <td>
-                <div class="form-group m-top-15">
-                  <label class="control-label col-md-12 p-0">
-                    <div class="pull-left">
-                      <abbr title="required">*</abbr>
-                      <%= t ".new_cv" %>
-                    </div>
-                  </label>
-                  <div class="input-group col-md-12">
-                    <%= text_field_tag nil, nil, class: "form-control", id: "choose-cv", readonly: true %>
-                    <span class="input-group-addon btn btn-info btn-file">
-                      <%= t ".browse" %><%= f.file_field :cv, class: "choose-cv" %>
-                    </span>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr class="border-dashed">
-              <td>
-                  <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <%= render partial: "applies/buttons_survey", locals: {f: f} %>
       </div>
-    <% end %>
-  </table>
+      <div class="form-group input-inline width-inline">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon apply-un">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            <%= p.text_field :email, autofocus: true, class: "form-control input-md",
+              placeholder: t(".email") %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group input-inline width-inline">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon apply-un">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+            </span>
+            <%= p.text_field :phone, autofocus: true, class: "form-control input-md",
+              placeholder: t(".phone") %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group input-inline width-inline display-none-important">
+        <div class="col-xs-12">
+          <div class="input-group">
+            <span class="input-group-addon apply-un"><i class="fa fa-user" aria-hidden="true"></i></span>
+            <%= f.text_field :broker, autofocus: true, class: "form-control input-lg",
+              placeholder: t(".broker") %>
+          </div>
+        </div>
+      </div>
+      <table class="col-md-12 table-user-information">
+        <tbody>
+          <tr class="border-dashed">
+            <td>
+              <div class="form-group m-top-15">
+                <label class="control-label col-md-12 p-0">
+                  <div class="pull-left">
+                    <abbr title="required">*</abbr>
+                    <%= t ".new_cv" %>
+                  </div>
+                </label>
+                <div class="input-group col-md-12">
+                  <%= text_field_tag nil, nil, class: "form-control", id: "choose-cv", readonly: true %>
+                  <span class="input-group-addon btn btn-info btn-file">
+                    <%= t ".browse" %><%= f.file_field :cv, class: "choose-cv" %>
+                  </span>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="border-dashed">
+            <td>
+              <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%= render partial: "applies/buttons_survey", locals: {f: f} %>
+    </div>
+  <% end %>
 </div>
 <%= javascript_include_tag "choose_file" %>
