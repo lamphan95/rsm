@@ -7,6 +7,6 @@
     <% end %>
     <%= t ".answer" %>
   </label>
-  <%= f.input :name, label: false, input_html: {rows: Settings.rows_text_area} %>
+  <%= f.input :name, label: false, input_html: {rows: Settings.rows_text_area, class: "textarea-custom"} %>
   <%= f.hidden_field :survey_id, value: survey.id %>
 </div></br>

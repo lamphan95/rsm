@@ -37,4 +37,5 @@
  *= require companies/companies_custom
  *= require header_footer
  *= require flash_message
+ *= require form_custom
  */

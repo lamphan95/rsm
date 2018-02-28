@@ -997,6 +997,7 @@ en:
       email: "Email"
       phone: "Phone"
       broker: "Broker"
+      address: "Address"
       apply: "Apply"
     buttons_survey:
       answer_survey: "Answer survey"

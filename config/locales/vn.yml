@@ -1014,6 +1014,7 @@ vn:
       email: "Email"
       phone: "Số điện thoại"
       broker: "Broker"
+      address: "Địa chỉ"
       browse: "Browser"
     buttons_survey:
       answer_survey: "Trả lời khảo sát"

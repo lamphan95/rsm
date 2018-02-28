@@ -11,13 +11,13 @@
           <div class="login-title text-center">
             <h1>
               <i class="gi gi-flash"></i>
-              <strong><%= t ".app" %>&nbsp; <%= t ".framgia" %></strong><br>
+              <strong><%= t ".app" %>&nbsp;<%= t ".framgia" %></strong><br>
               <small>
                 <strong class="title-modal">
                   <%= @job.name %>
                   (<%= t ".slary" %>
                   <%= @job.min_salary.round.to_s + Settings.currency.dollar %> -
-                  <%= t ".working" %><%= @company.address %>)
+                  <%= t ".working" %>&nbsp;<%= @company.address %>)
                 </strong>
               </small>
             </h1>
