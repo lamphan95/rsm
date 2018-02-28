@@ -7,7 +7,7 @@ class CertificatesController < ApplicationController
   def create
     respond_to do |format|
       if @certificate.save
-        format.js{@message = t "bookmark_likes.create"}
+        format.js{@message = t "certificate.create_success"}
       else
         format.js
       end
@@ -17,7 +17,7 @@ class CertificatesController < ApplicationController
   def update
     respond_to do |format|
       if @certificate.update_attributes params_certificate
-        format.js{@message = t "bookmark_likes.update_success"}
+        format.js{@message = t "certificate.update_success"}
       else
         format.js
       end
@@ -27,9 +27,9 @@ class CertificatesController < ApplicationController
   def destroy
     respond_to do |format|
       if @certificate.destroy
-        format.js{@success = t "bookmark_likes.destroy_success"}
+        format.js{@success = t "certificate.destroy_success"}
       else
-        format.js{@fail = t "bookmark_likes.destroy_fail"}
+        format.js{@fail = t "certificate.destroy_fail"}
       end
     end
   end

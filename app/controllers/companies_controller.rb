@@ -16,9 +16,9 @@ class CompaniesController < BaseNotificationsController
 
   def update
     if @company.update_attributes company_params
-      flash[:success] = t "bookmark_likes.update_success"
+      flash[:success] = t "companies.update_success"
     else
-      flash[:danger] = t "bookmark_likes.can_not_update"
+      flash[:danger] = t "companies.update_fail"
     end
     redirect_to company_path
   end

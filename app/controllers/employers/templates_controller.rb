@@ -9,7 +9,7 @@ class Employers::TemplatesController < Employers::EmployersController
   def create
     respond_to do |format|
       if @template.save
-        format.js{@message = t".create"}
+        format.js{@message = t"employers.template.create_success"}
       else
         @type_template = Template.type_ofs
         format.js
