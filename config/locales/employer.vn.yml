@@ -72,6 +72,7 @@ vn:
         action: "Hành động"
         not_applies: "Không có CV nào"
         step: "Bước"
+        no: "STT"
       create:
         success: "Đã tạo đơn thành công"
         failure: "Tạo đơn thất bại"
