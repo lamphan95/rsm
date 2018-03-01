@@ -44,6 +44,16 @@
                 </a>
               </td>
             </tr>
+            <% if @answers.present? %>
+              <tr class="background-none">
+                <td class="text-right"><strong><%= t "employers.survey" %></strong></td>
+                <td>
+                  <a data-toggle="modal" class= "label label-info" data-target="#area-survey-apply">
+                    <i class="fa fa-eye"></i><b><%= t "employers.view" %></b>
+                  </a>
+                </td>
+              </tr>
+            <% end %>
 
           </tbody>
         </table>
@@ -159,5 +169,53 @@
 
 <div class="modal fade" id="job-applied" role="dialog"></div>
 
+<div class="modal fade modal-survey-apply" id="area-survey-apply" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          <i class="fa fa-clone" aria-hidden="true"></i>
+          <strong><%= t "employers.survey" %></strong>
+        </h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="timeline block-content-full">
+              <ul class="timeline-list timeline-hover" id="area-survey-apply-load">
+                <div class="row col-md-12 answers">
+                  <% if @answers.present? %>
+                    <table id="ecom-orders" role="grid" aria-describedby="ecom-orders_info"
+                      class="table table-bordered table-striped table-vcenter dataTable no-footer">
+                      <thead>
+                        <tr role="row">
+                          <th class="text-center"></th>
+                          <th class="text-center"><%= t "survey.question" %></th>
+                          <th class="text-center"><%= t "survey.answer" %></th>
+                        </tr>
+                      </thead>
+                      <tbody class="answers-tbody">
+                        <%= render partial: "employers/applies/survey",
+                          collection: @answers, as: :answer %>
+                      </tbody>
+                    </table>
+                    <div id="pagination-answers" class="row text-center pag pag-answers">
+                      <%= paginate @answers %>
+                    </div>
+
+                  <% else %>
+                    <h5 class="text-center btn-info"><%= t "survey.no_survey" %></h5>
+                  <% end %>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= hidden_field_tag :apply_id, @apply.id %>
 <%= hidden_field_tag :job_id, @apply.job_id %>

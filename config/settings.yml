@@ -166,6 +166,7 @@ default_survey: 0
 survey:
   optional: 1
   compulsory: 2
+  max_record: 10
 step_1: "1"
 step_2: "2"
 companies: "@company@"

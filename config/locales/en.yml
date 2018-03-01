@@ -433,7 +433,12 @@ en:
           attributes:
             content:
               blank: "Content can not be blank"
+  survey:
+    question: "Question"
+    answer: "Answer"
+    no_survey: "This job has no survey"
   employers:
+    survey: "Survey"
     members:
       index:
         id: "ID"

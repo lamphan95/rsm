@@ -70,6 +70,12 @@ $(document).on('click', '#pagination-history-apply .pagination a', function (eve
   return false;
 });
 
+$(document).on('click', '#pagination-answers .pagination a', function (event) {
+  event.preventDefault();
+  $.getScript($(this).attr('href'));
+  return false;
+});
+
 $(document).on('click', '#cancel-apply-email', function (event) {
   $('#apply-handling-content').html('');
   $('#form-apply-status-main')[0].reset();

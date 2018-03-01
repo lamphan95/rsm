@@ -1,0 +1,7 @@
+<tr role="row" class="answer-<%= answer.id %>">
+  <td class="text-center">
+    <%= index_count_page answer_counter, params[:page], Settings.survey.max_record %>
+  </td>
+  <td><%= answer.survey.question_name %></td>
+  <td><%= answer.name %></td>
+</tr>
