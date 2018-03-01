@@ -8,7 +8,7 @@ class Employers::AppliesController < Employers::EmployersController
   before_action :permission_employer_company, only: :create
   before_action :load_steps, only: :index
   before_action :load_statuses, only: :index
-  before_action :load_offer_status_step_pending, only: :show
+  before_action :load_offer_status_step_pending, only: %i(show update)
 
   def index
     applies_status = @company.apply_statuses.current
