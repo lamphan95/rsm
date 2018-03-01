@@ -6,6 +6,7 @@ $(document).ready(function() {
 
   $('.date_apply').datepicker({
     dateFormat: I18n.t('datepicker.format'),
-    startView: 'months'
+    startView: 'months',
+    minDate: 0
   });
 });
