@@ -1,9 +1,5 @@
 <%= stylesheet_link_tag "survey" %>
-<% unless @job.not_exist? %>
-  <%= render partial: "applies/step_by_step",
-    locals: {step: t(".apply")} %>
-<% end %>
-<%= simple_form_for @apply , remote: :true, class: "form-horizontal form-bordered" do |f| %>
+<%= simple_form_for @apply , remote: :true, class: "form-horizontal" do |f| %>
   <%= f.hidden_field :job_id %>
   <%= f.hidden_field :user_id %>
   <%= render partial: "applies/form_apply", locals: {f: f} %>

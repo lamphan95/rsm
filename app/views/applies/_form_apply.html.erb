@@ -1,93 +1,68 @@
 <div id="form-apply">
-  <table class="col-md-12 table-user-information">
-    <%= f.simple_fields_for :information do |p| %>
-      <%= p.hidden_field :name, value: current_user.name %>
-      <%= p.hidden_field :email, value: current_user.email %>
-      <%= p.hidden_field :phone, value: current_user.phone %>
-      <tr>
-        <div class="form-group input-inline boder-left display-none-important">
-          <div class="col-xs-24 lout">
-            <div class="input-group">
-              <span class="input-group-addon apply-un">
-                <i class="fa fa-user text-primary" aria-hidden="true"></i>
-              </span>
-              <%= p.text_field :broker, autofocus: true, class: "form-control input-lg",
-                placeholder: t(".who") %>
-            </div>
-          </div>
+  <%= f.simple_fields_for :information do |p| %>
+    <%= p.hidden_field :name, value: current_user.name %>
+    <%= p.hidden_field :email, value: current_user.email %>
+    <%= p.hidden_field :phone, value: current_user.phone %>
+    <%= p.hidden_field :address, value: current_user.address %>
+    <div class="form-group input-inline boder-left display-none-important">
+      <div class="col-xs-24 lout">
+        <div class="input-group">
+          <span class="input-group-addon apply-un">
+            <i class="fa fa-user text-primary" aria-hidden="true"></i>
+          </span>
+          <%= p.text_field :broker, autofocus: true, class: "form-control input-lg",
+            placeholder: t(".who") %>
         </div>
-      </tr>
-      <% if current_user.cv.present? %>
-        <tr class="border-dashed">
-          <strong class="control-label col-md-3 p-0">
-            <div class="pull-left">
-              <abbr title="required">*</abbr>
-              <%= t ".new_cv" %>
-            </div>
-          </strong>
-        </tr>
-        <tr>
-          <td>
-            <div class="radio">
-              <input id="radio-1" name="radio" type="radio" checked value="checked">
-              <label for="radio-1" class="radio-label">
-                <%= current_user.cv_identifier %>
-                <span class="update-at">
-                  <%= cv_update_at current_user %>
-                </span>
-              </label>
-            </div>
-            <div class="radio">
-              <input id="radio-2" name="radio" type="radio">
-              <label for="radio-2" class="radio-label">
-                <label class="fileContainer">
-                  <p class="check-p text-primary">
-                    <%= t ".select-cv" %>
-                    <i class="fa fa-upload load-up"></i>
-                  </p>
-                  <%= f.file_field :cv, id: "cv-file", class: " file-up transparent absolute" %>
-                </label>
-              </label>
-            </div>
-          </td>
-        </tr>
-        <tr class="files_field">
-          <td>
-            <strong class="col-md-3">
-              <%= t ".new_cv" %>
-            </strong>
-            <span class="btn btn-default btn-file col-md-2">
-              <%= t ".browse" %><%= f.file_field :cv, id: "file_cv", class: "transparent absolute" %>
+      </div>
+    </div>
+    <% if current_user.cv.present? %>
+      <div class="form-group m-top-15">
+        <label class="control-label col-md-12 p-0">
+          <div class="pull-left">
+            <abbr title="required">*</abbr>
+            <%= t ".new_cv" %>
+          </div>
+        </label>
+        <div class="radio">
+          <input id="radio-1" name="radio" type="radio" checked value="checked" class="hidden">
+          <label for="radio-1" class="radio-label pd-5">
+            <%= current_user.cv_identifier %>
+            <span class="update-at">
+              <%= cv_update_at current_user %>
             </span>
-          </td>
-        </tr>
-      <% else %>
-        <tr class="border-dashed">
-          <td>
-            <div class="form-group m-top-15">
-              <div class="control-label col-md-12 p-0">
-                <div class="pull-left">
-                  <abbr title="required">*</abbr>
-                  <%= t ".new_cv" %>
-                </div>
-              </div>
-              <div class="input-group col-md-12">
-                <%= text_field_tag nil, nil, class: "form-control", id: "choose-cv", readonly: true %>
-                <span class="input-group-addon btn btn-info btn-file">
-                  <%= t ".browse" %><%= f.file_field :cv, class: "choose-cv" %>
-                </span>
-              </div>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-      <tr class="border-dashed">
-        <td>
-          <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
-        </td>
-      </tr>
+          </label>
+        </div>
+        <div class="radio">
+          <input id="radio-2" name="radio" type="radio" class="hidden">
+          <label for="radio-2" class="radio-label pd-5 btn-change-cv">
+            <span class="text-primary"><%= t ".select-cv" %></span>
+            <i class="fa fa-upload load-up"></i>
+          </label>
+          <%= f.file_field :cv, id: "change-cv", class: "hidden", accept: Settings.send_cv.type %>
+        </div>
+      </div>
+    <% else %>
+      <div class="form-group m-top-15">
+        <label class="control-label col-md-12 p-0">
+          <div class="pull-left">
+            <abbr title="required">*</abbr>
+            <%= t ".new_cv" %>
+          </div>
+        </label>
+        <div class="input-group">
+          <%= text_field_tag nil, nil, class: "form-control", id: "choose-cv", readonly: true %>
+          <span class="input-group-addon btn btn-info btn-file btn-choose-cv">
+            <%= t ".browse" %>
+          </span>
+          <%= f.file_field :cv, class: "choose-cv hidden", accept: Settings.send_cv.type %>
+        </div>
+      </div>
     <% end %>
-  </table>
+    <div class="form-group">
+      <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
+      <div class="error-message p-l-10 error-introducing"></div>
+    </div>
+  <% end %>
   <%= render partial: "applies/buttons_survey", locals: {f: f} %>
 </div>
 <%= javascript_include_tag "choose_file" %>

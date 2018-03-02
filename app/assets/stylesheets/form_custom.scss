@@ -38,7 +38,11 @@
   .input-inline {
     display: inline-block;
     width: 49.7%;
-    border-left: 1px dashed $gray-light-3 !important;
+    border: 1px dashed $gray-light-3 !important;
+  }
+  .input-full {
+    display: block;
+    border: 1px dashed $gray-light-3 !important;
   }
 }
 
@@ -50,7 +54,7 @@
 }
 
 .switch {
-  margin: 1px 0;
+  margin: 1px 0 !important;
   position: relative;
   cursor: pointer;
   display: inline-block;

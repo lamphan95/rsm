@@ -1,4 +1,5 @@
 class AppliesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create, if: -> {params[:check_info_valid].present?}
   before_action :load_job, only: :create
   load_and_authorize_resource param_method: :apply_params
 
@@ -14,14 +15,25 @@ class AppliesController < ApplicationController
 
   def create
     respond_to do |format|
-      unless @error
-        if user_signed_in? && current_user.cv.present?
-          @apply.cv = current_user.cv if params[:radio] == Settings.apply.checked
-        end
+      if params[:check_info_valid].present?
         @apply.information = params[:apply][:information].permit!.to_h if params[:apply]
-        save_apply
+        @valid_information = @apply.valid_attribute?(:information) ? true : false
+        if @valid_information
+          format.json {render json: {valid_information: @valid_information}}
+        else
+          @apply.errors.delete "answers.name"
+          format.json {render json: {valid_information: @valid_information, errors: @apply.errors}}
+        end
+      else
+        unless @error
+          if user_signed_in? && current_user.cv.present?
+            @apply.cv = current_user.cv if params[:radio] == Settings.apply.checked
+          end
+          @apply.information = params[:apply][:information].permit!.to_h if params[:apply]
+          save_apply
+        end
+        format.js
       end
-      format.js
     end
   end
 

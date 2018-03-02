@@ -189,3 +189,11 @@ step:
 default_size: 0
 offer_salary: 0
 offer_salary_increase_step: 10
+apply:
+  model:
+    name_max_length: 50
+    name_min_length: 6
+    introducing_max_length: 1000
+    introducing_min_length: 20
+    phone_max_length: 13
+    phone_min_length: 10

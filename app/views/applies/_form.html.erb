@@ -11,94 +11,56 @@
           <div class="login-title text-center">
             <h1>
               <i class="gi gi-flash"></i>
-              <strong><%= t ".app" %>&nbsp; <%= t ".framgia" %></strong><br>
+              <strong><%= t ".app" %>&nbsp;<%= t ".framgia" %></strong><br>
               <small>
                 <strong class="title-modal">
                   <%= @job.name %>
                   (<%= t ".slary" %>
                   <%= @job.min_salary.round.to_s + Settings.currency.dollar %> -
-                  <%= t ".working" %><%= @company.address %>)
+                  <%= t ".working" %>&nbsp;<%= @company.address %>)
                 </strong>
               </small>
             </h1>
           </div>
         </div>
-        <div class="modal-body modal-create-form" id="job-create-form">
-          <div class="container bootstrap snippet">
-            <div class="panel-body inf-content">
-              <div class="row">
-                <div class="col-md-3 map-right">
-                  <% if current_user.picture.present? %>
-                    <%= image_tag current_user.picture.url, class: "img-circle img-thumbnail isTooltip",
-                      size: Settings.img_cv %>
-                  <% else %>
-                    <%= image_tag "avatar_2x.png", class: "img-circle img-thumbnail isTooltip", size: Settings.img_cv %>
-                  <% end %>
-                </div>
-                <div class="col-md-5 hear-right">
-                  <strong><%= t ".information" %></strong><br>
-                  <div class="table-responsive">
-                    <table class="table-user-information">
-                      <tbody>
-                        <tr class="border-dashed">
-                          <td>
-                            <strong>
-                              <span class="glyphicon glyphicon-user text-primary"></span>
-                              <%= t ".name" %>
-                            </strong>
-                          </td>
-                          <td class="text-primary">
-                            <%= current_user.name %>
-                          </td>
-                        </tr>
-                        <tr class="border-dashed">
-                          <td>
-                            <strong>
-                              <span class="glyphicon glyphicon-envelope text-primary"></span>
-                              <%= t ".email" %>
-                            </strong>
-                          </td>
-                          <td class="text-primary">
-                            <%= current_user.email %>
-                          </td>
-                        </tr>
-                        <tr class="border-dashed">
-                          <td>
-                            <strong>
-                              <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                              <%= t ".address" %>
-                            </strong>
-                          </td>
-                          <td class="text-primary">
-                            <%= current_user.address %>
-                          </td>
-                        </tr>
-                        <tr class="border-dashed">
-                          <td>
-                            <strong>
-                              <span class="glyphicon glyphicon-phone text-primary"></span>
-                              <%= t ".phone" %>
-                            </strong>
-                          </td>
-                          <td class="text-primary">
-                            <%= current_user.phone %>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+        <div class="modal-body" id="job-create-form">
+          <% unless @job.not_exist? %>
+            <%= render partial: "applies/step_by_step",
+              locals: {step: t(".apply")} %>
+          <% end %>
+          <p><label class="control-label" for="information">
+            <abbr title="required">*</abbr>&nbsp;<%= t ".information" %>
+          </label></p>
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-address-book"></i></span>
+              <%= text_field_tag :name, current_user.name, class: "form-control input-md input-custom",
+                placeholder: t(".name"), disabled: true %>
             </div>
           </div>
-          <div class="bootstrap snippet">
-            <div class="panel-body inf-content">
-              <div class= "row">
-                <div id="content-apply">
-                  <%= render "applies/content", locals: {apply: @apply} %>
-                </div>
-              </div>
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+              <%= text_field_tag :email, current_user.email, class: "form-control input-md input-custom",
+                placeholder: t(".email"), disabled: true %>
             </div>
+          </div>
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+              <%= text_field_tag :phone, current_user.phone, class: "form-control input-md input-custom",
+                placeholder: t(".phone"), disabled: true %>
+            </div>
+          </div>
+          <div class="form-group input-inline form-custom">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <%= text_field_tag :address, current_user.address, class: "form-control input-md input-custom",
+                placeholder: t(".address"), disabled: true %>
+            </div>
+          </div>
+          <div id="content-apply">
+            <%= render "applies/content", locals: {apply: @apply} %>
           </div>
         </div>
       </div>
