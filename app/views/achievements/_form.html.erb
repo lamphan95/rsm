@@ -1,74 +1,75 @@
 <%= javascript_include_tag "format_datepicker", "data-turbolinks-track": "reload" %>
 <%= simple_form_for @achievement, html: {class: "new-section"}, remote: true do |f| %>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :name, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".name" %>
-        <% end %>
-        <%= f.text_field :name, autofocus: true, class: "form-control edit-control",
-        placeholder: t(".name") %>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-user" aria-hidden="true" title="<%= t '.name' %>"></i>
+        </span>
+        <%= f.text_field :name, autofocus: true, class: "form-control input-custom input-lg",
+          placeholder: t(".name") %>
       </div>
-      <span class="error-message">
+    </div>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-star" aria-hidden="true" title="<%= t '.majors' %>"></i>
+        </span>
+        <%= f.text_field :majors, class: "form-control input-custom input-lg",
+          placeholder: t(".majors") %>
+      </div>
+    </div>
+    <div class="contain-float">
+      <div class="error-message animation-slideDown pull-left w-50-percent">
         <%= f.error :name %>
-      </span>
-    </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :majors, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".majors" %>
-        <% end %>
-        <%= f.text_field :majors, autofocus: true, class: "form-control edit-control",
-        placeholder: t(".majors") %>
       </div>
-      <span class="error-message">
-          <%= f.error :majors %>
-        </span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :organization, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".organization" %>
-        <% end %>
-        <%= f.text_field :organization, autofocus: true, class: "form-control edit-control",
-        placeholder: t(".organization") %>
+      <div class="error-message animation-slideDown pull-right w-50-percent">
+        <%= f.error :majors %>
       </div>
-      <span class="error-message">
-          <%= f.error :organization %>
-        </span>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :received_time, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".received_time" %>
-        <% end %>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-map-marker" aria-hidden="true" title="<%= t '.organization' %>"></i>
+        </span>
+        <%= f.text_field :organization, class: "form-control input-custom input-lg",
+          placeholder: t(".organization") %>
+      </div>
+    </div>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-calendar" aria-hidden="true" title="<%= t '.received_time' %>"></i>
+        </span>
         <% if @achievement.received_time.present? %>
-        <%= f.text_field :received_time, data: {provide: "datepicker"},
-        class: "datepick form-control edit-control", value: @achievement.received_time.strftime(t "date_format") %>
+          <%= f.text_field :received_time, data: {provide: "datepicker"},
+            class: "datepick form-control input-custom input-lg", placeholder: t(".received_time"),
+            value: @achievement.received_time.strftime(t "date_format") %>
         <% else %>
-        <%= f.text_field :received_time, data: {provide: "datepicker"}, class: "datepick form-control edit-control" %>
+          <%= f.text_field :received_time, data: {provide: "datepicker"},
+            class: "datepick form-control input-custom input-lg", placeholder: t(".received_time") %>
         <% end %>
       </div>
-      <span class="error-message">
-          <%= f.error :received_time %>
-        </span>
+    </div>
+    <div class="contain-float">
+      <div class="error-message animation-slideDown pull-left w-50-percent">
+        <%= f.error :organization %>
+      </div>
+      <div class="error-message animation-slideDown pull-right w-50-percent">
+        <%= f.error :received_time %>
+      </div>
     </div>
   </div>
-  <div class="form-group push-top-md edit-field">
-    <div class="col-sm-6" >(<strong class="text-red">*</strong>)<%= t ".required" %></div>
-    <div class="row">
-      <div class="col-sm-6 text-right">
-        <button id="<%= define_cancel_achievement_id @achievement %>" type="button"
-          class="btn-cancel btn btn-default" value="<%= @achievement.id %>">
-          <%= t ".cancle" %>
-        </button>
-        <%= f.submit t(".save"), class: "btn-save btn btn-primary" do  %>
-        <i class="fa fa-plus"></i>
-        <% end %>
-        <span class="achievement-received_time-invalid error-message"></span>
-      </div>
-    </div>
+  <p class="text-right">(<strong class="text-red">*</strong>)&nbsp;<%= t ".required" %></p>
+  <div class="row text-center m-40">
+    <%= f.submit t(".save"), class: "btn btn-primary btn-custom" %>
+    <button id="<%= define_cancel_achievement_id @achievement %>" type="button"
+      class="btn btn-default" value="<%= @achievement.id %>">
+      <%= t ".cancel" %>
+    </button>
   </div>
 <% end %>

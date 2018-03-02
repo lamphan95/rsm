@@ -7,12 +7,12 @@
       <div class="col-md-7">
         <% if can? :modify, certificate %>
           <span class="form-btn-edit">
-            <%= link_to certificate, method: :delete, data: {confirm: t(".confirm")},
-              class: "btn btn-sm btn-danger", remote: true do %>
-              <i class="glyphicon glyphicon-trash"></i>
-            <% end %>
-            <%= link_to edit_certificate_path(certificate), class: "btn btn-sm btn-warning", remote: true do %>
+            <%= link_to edit_certificate_path(certificate), class: "custom-gly text-primary", remote: true do %>
               <i class="glyphicon glyphicon-pencil"></i>
+            <% end %>
+            <%= link_to certificate, method: :delete, data: {confirm: t(".confirm")},
+              class: "custom-gly text-danger", remote: true do %>
+              <i class="glyphicon glyphicon-trash"></i>
             <% end %>
           </span>
         <% end %>

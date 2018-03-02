@@ -41,7 +41,7 @@
           </div>
         </div>
         <% if can? :update, @user %>
-          <%= link_to edit_user_path(current_user), class: "btn-absolute", remote:true do %>
+          <%= link_to edit_user_path(current_user), class: "btn-absolute", remote: true do %>
             <i class="glyphicon glyphicon-pencil"></i>
           <% end %>
         <% end %>

@@ -120,6 +120,7 @@ vn:
       pos: "Vị trí"
       from: "Từ"
       to: "Đến"
+      position: "Vị trí"
       present: "Hiện tại"
       content: "Nội dung"
       required: "Thông tin bắt buộc"
