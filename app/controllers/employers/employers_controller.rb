@@ -4,6 +4,7 @@ class Employers::EmployersController < BaseNotificationsController
   before_action :authenticate_user!
   load_and_authorize_resource
   before_action :load_company
+  before_action :load_search_form
   before_action :check_permissions_employer
   before_action :current_ability
   before_action :load_notifications

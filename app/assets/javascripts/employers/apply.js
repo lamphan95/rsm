@@ -136,3 +136,16 @@ $(document).on('click', '.send_email', function(event){
     }
   });
 });
+
+$(document).ready(function(){
+  $("#input_button_search" ).click(function() {
+    $('#button_search').css('visibility','visible');
+  });
+
+  $(document).click(function(event) {
+    var form = $('#form_search_email');
+    if (!form.is(event.target) && form.has(event.target).length === 0) {
+      $('#button_search').css('visibility', 'hidden');
+    }
+  });
+})
