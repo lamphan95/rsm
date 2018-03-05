@@ -20,6 +20,8 @@
 /.rubocop_disabled.yml
 /.rubocop_enabled.yml
 /config/database.yml
+/vendor/assets/stylesheets/employer/fonts/*
+/vendor/assets/stylesheets/fonts/*
 test/*
 
 config/settings.local.yml

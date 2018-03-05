@@ -1201,3 +1201,7 @@ vn:
     optional: "tùy chọn"
   no_question_choosen: "Chưa có câu hỏi nào đưọc chọn."
   start_time_cannot_be_in_the_past: "thời gian bắt đầu không thể là quá khứ."
+  oauth:
+    google:
+      connect: "Click OK to để kết nối tài khoản google."
+      disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."

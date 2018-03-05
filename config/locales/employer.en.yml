@@ -107,9 +107,12 @@ en:
       create:
         success: "Created success."
         fail: "Created fail"
+        disconnect_gmail: "Please connect gmail to send mail."
       offers:
         imformation: "Imformation"
         offer: "Offer"
+      update:
+        disconnect_gmail: "Please connect gmail to send mail."
     appointments:
       appointment:
         click: "Click"
@@ -364,6 +367,8 @@ en:
       not_find_item: "Not Find Item"
       create:
         success: "Created success"
+      show:
+        disconnect_gmail: "Please connect gmail to send mail."
     templates:
       create: "Create"
       update: "Update"

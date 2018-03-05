@@ -215,6 +215,8 @@ en:
         company: "Company"
         template: "Template"
         applies: "Applies"
+        connect_gmail: "Connect gmail"
+        connected_gmail: "Connected gmail"
       header_employer:
         messages: "Messasges"
         profile: "Profile"

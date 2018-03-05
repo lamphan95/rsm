@@ -42,6 +42,10 @@ en:
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
+      connect_gmail: "Connected gmail."
+      connect_gmail_failure: "Connected gmail failure."
+      account_invalid: "Account invalid."
+      account_connected: "Account was authentication."
     passwords:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."

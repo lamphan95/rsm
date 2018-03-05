@@ -1,4 +1,20 @@
-<% if @mail_service.blank? %>
+<% if @oauth.blank?  %>
+  swal({
+    title: I18n.t('jobs.apply.confirm_change_status'),
+    text: I18n.t('oauth.google.disconnect_gmail'),
+    icon: 'warning',
+    buttons: true,
+    primaryMode: true,
+  })
+  .then(function(isConfirm){
+    if (isConfirm) {
+      $('.loading').fadeIn('slow');
+      window.location.href = '/devises/auth/google_oauth2?apply_id=' +
+        <%= @mail_service.apply_status.apply_id %> + '&job_id=' +
+        <%= @mail_service.apply_status.job_id %>;
+    }
+  });
+<% elsif @mail_service.blank? %>
   alertify.warning('<%= t "employers.email_sents.email_sent.fail" %>');
 <% else %>
   alertify.success('<%= t "employers.email_sents.email_sent.success" %>');

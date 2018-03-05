@@ -1,4 +1,18 @@
-<% if @message.present? %>
+<% if @oauth.blank? %>
+  swal({
+    title: I18n.t('jobs.apply.confirm_change_status'),
+    text: I18n.t('oauth.google.disconnect_gmail'),
+    icon: 'warning',
+    buttons: true,
+    primaryMode: true,
+  })
+  .then(function(isConfirm){
+    if (isConfirm) {
+      $('.loading').fadeIn('slow');
+      window.location.href = '/devises/auth/google_oauth2?apply_id=' + <%= @apply.id %> + '&job_id=' + <%= @apply.job_id %>;
+    }
+  });
+<% elsif @message.present? %>
   $('#apply-handling-content').html('');
   $('#step-history').html('<%= j render partial: "employers/applies/step_history", locals:{data_step: @data_step, status_step: @current_apply_status.status_step, apply_status: @current_apply_status, apply: @apply, current_apply_status: @current_apply_status} %>');
   alertify.success('<%= @message %>');

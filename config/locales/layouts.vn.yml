@@ -215,6 +215,8 @@ vn:
         company: "Công ty"
         template: "Bản mẫu"
         applies: "Hồ sơ ứng tuyển"
+        connect_gmail: "Kết nối gmail"
+        connected_gmail: "Đã kết nối gmail"
       header_employer:
         messages: "Tin nhắn"
         profile: "Hồ sơ cá nhân"

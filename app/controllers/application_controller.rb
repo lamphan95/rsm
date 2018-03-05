@@ -47,6 +47,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: %i(name phone address sex birthday company_id))
   end
 
+  def load_oauth
+    @oauth = current_user.oauth
+  end
+
   private
 
   def set_locale

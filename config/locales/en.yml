@@ -1183,3 +1183,7 @@ en:
   no_question_choosen: "No questions were choosen."
   start_time_cannot_be_in_the_past: "Start time cannot be in the past"
   date_format: "%d-%m-%Y"
+  oauth:
+    google:
+      connect: "Click OK to connect google account."
+      disconnect_gmail: "Please connect gmail to send mail."

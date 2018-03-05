@@ -12,13 +12,14 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
   before_action :new_appointment, only: :new, if: :is_scheduled?
   before_action :load_appointments, only: [:create, :new, :update], if: :is_scheduled?
   before_action :build_offer, only: :new, if: :is_offer_sent?
-  before_action :load_offer_status_step_pending, only: %i(update create)
+  before_action :load_offer_status_step_pending, :check_send_mail, only: %i(update create)
 
   def new
     respond_to :js
   end
 
   def create
+    return if @oauth.blank?
     ApplyStatus.transaction do
       set_not_current
       respond_to do |format|
@@ -41,6 +42,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
   end
 
   def update
+    return if @oauth.blank?
     ApplyStatus.transaction do
       respond_to do |format|
         if @apply_status.update_attributes apply_status_params
@@ -169,5 +171,13 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
     status_step_id = params[:status_step_id] || apply_status_params[:status_step_id]
     return false if @offer_sent_ids.blank?
     @offer_sent_ids.include? status_step_id.to_i
+  end
+
+  def check_send_mail
+    if params[:onoffswitch]
+      load_oauth
+      return if @oauth.blank?
+      @oauth.check_access_token
+    end
   end
 end
