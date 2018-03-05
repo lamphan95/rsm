@@ -35,9 +35,31 @@
       <% end %>
     </div>
     <div class="pull-right">
-      <%= f.button :submit, class: "btn btn-sm btn-primary" do %>
+      <%= f.button :submit, class: "btn btn-sm-custom btn-primary-custom" do %>
         <%= t ".login_to" %>
       <% end %>
+    </div>
+  </div>
+
+  <div class="form-group form-custom p-15">
+    <div class="text-center">
+      <div>
+        <small><%= t ".or" %></small>
+        <strong><%= t ".sign_in" %></strong>
+        <small><%= t ".with" %></small>
+        <%= link_to "/devises/auth/facebook", class: "btn btn-primary btn-sm btn-facebook",
+          title: Settings.omniauth.facebook do %>
+          <i class="fa fa-facebook"></i>
+        <% end %>
+        <%= link_to "/devises/auth/google_oauth2", class: "btn btn-danger btn-sm",
+          title: Settings.omniauth.google do %>
+          <i class="fa fa-google"></i>
+        <% end %>
+        <%= link_to "/devises/auth/linkedin", class: "btn btn-primary btn-sm",
+          title: Settings.omniauth.linkedin do %>
+          <i class="fa fa-linkedin"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 

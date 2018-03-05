@@ -135,6 +135,9 @@ vn:
         password: "Mật khẩu"
         create_new: "Đăng ký tài khoản"
         login_to: "Đăng nhập vào Bảng điều khiển"
+        or: "Hoặc"
+        sign_in: "Đăng nhập"
+        with: "với"
       form_forgot_password:
         send: "Gửi"
         register: "Đăng ký"

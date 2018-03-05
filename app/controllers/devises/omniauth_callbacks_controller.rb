@@ -1,8 +1,22 @@
 class Devises::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_action :load_user, only: %i(facebook linkedin)
+
   def google_oauth2
-    return unless current_user
-    save_oauth request.env["omniauth.auth"]
-    redirect_after_save_oauth request.env["omniauth.params"]
+    if current_user
+      save_oauth request.env["omniauth.auth"]
+      redirect_after_save_oauth request.env["omniauth.params"]
+    else
+      load_user
+      sign_in_social Settings.omniauth.google_oauth2
+    end
+  end
+
+  def facebook
+    sign_in_social Settings.omniauth.facebook
+  end
+
+  def linkedin
+    sign_in_social Settings.omniauth.linkedin
   end
 
   private
@@ -33,5 +47,35 @@ class Devises::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       redirect_to employers_dashboards_url
     end
+  end
+
+  def load_user
+    @user = User.find_by email: request.env["omniauth.auth"].info.email
+  end
+
+  def new_user data
+    @user = User.new email: data.email, name: data.name,
+      password: Devise.friendly_token.first(Setings.password.length),
+      remote_picture_url: data.image
+  end
+
+  def sign_in_social provider
+    if @user && @user.persisted?
+      sign_in @user
+      flash[:success] = t "devise.omniauth_callbacks.success",
+        kind: provider
+    else
+      new_user request.env["omniauth.auth"].info
+      @user.skip_confirmation!
+      if @user.save
+        sign_in @user
+        flash[:success] = t "devise.omniauth_callbacks.success",
+          kind: provider
+      else
+        flash[:danger] = t "devise.omniauth_callbacks.failure",
+          kind: provider
+      end
+    end
+    redirect_to root_url
   end
 end

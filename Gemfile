@@ -56,6 +56,9 @@ gem "redis"
 gem "gmail"
 gem "omniauth"
 gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
+gem "omniauth-linkedin"
+
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara", "~> 2.13"

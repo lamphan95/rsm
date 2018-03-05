@@ -135,6 +135,9 @@ en:
         password: "Password"
         create_new: "Register Account"
         login_to: "Login to Dashboard"
+        or: "Or"
+        sign_in: "Sign In"
+        with: "With"
       form_forgot_password:
         send: "Send"
         register: "Register"

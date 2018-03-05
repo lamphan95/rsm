@@ -199,3 +199,9 @@ apply:
     phone_min_length: 10
 sessions:
   user_return_to: "user_return_to"
+omniauth:
+  facebook: "Facebook"
+  google_oauth2: "Google"
+  linkedin: "Linkedin"
+password:
+  length: 10
