@@ -3,7 +3,7 @@
   <%= simple_form_for [:employers, @job], remote: true do |f| %>
     <%= f.hidden_field :company_id %>
     <%= f.input :name, label: t(".job_name"), input_html: {class: "job-create-name"} %>
-    <%= f.input :description, label: t(".description") %>
+    <%= f.input :description, label: t(".description"), as: :ckeditor %>
     <div class="row">
       <div class="col-md-6">
         <%= f.input :min_salary %>
@@ -36,7 +36,7 @@
     <%= f.input :position, label: t(".position") %>
     <%= f.input :level, label: t(".level") %>
     <%= f.input :skill, label: t(".skill") %>
-    <%= f.input :content, label: t(".content"),
+    <%= f.input :content, label: t(".content"), as: :ckeditor,
       input_html: {class: "job-create-content"} %>
     <%= f.input :branch_id do %>
       <%= f.select :branch_id, @company.branches.map{|r| [r.district, r.id]},

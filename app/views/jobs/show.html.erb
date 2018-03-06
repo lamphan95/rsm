@@ -232,13 +232,13 @@
               <div class="job-description mobile-box">
                 <h2><%= t ".job_description" %></h2>
                 <div class="job_content">
-                  <p><%= @job.description %></p>
+                  <p><%= raw @job.description %></p>
                 </div>
               </div>
               <div class="job-requirements mobile-box">
                 <h2><%= t ".job_requirement" %></h2>
                 <div class="job_content">
-                  <p><%= @job.content %></p>
+                  <p><%= raw @job.content %></p>
                 </div>
               </div>
             </div>
