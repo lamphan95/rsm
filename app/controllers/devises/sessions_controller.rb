@@ -39,11 +39,15 @@ class Devises::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for resource
-    stored_location_for(resource) || root_path
+    if request.referer == root_path
+      super
+    else
+      stored_location_for(resource) || session[Settings.sessions.user_return_to] || request.referer || root_path
+    end
   end
 
   def after_sign_out_path_for resource
-    stored_location_for(resource) || root_path
+    stored_location_for(resource) || request.referer || root_path
   end
 
   def is_user_active?

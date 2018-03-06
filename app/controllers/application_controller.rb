@@ -59,5 +59,16 @@ class ApplicationController < ActionController::Base
     return unless Rails.env.in? environments
     Rack::MiniProfiler.authorize_request
   end
+
+  protected
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      session[Settings.sessions.user_return_to] = request.url
+      redirect_to root_path(require_login: true), notice: t("devise.failure.unauthenticated")
+    end
+  end
 end
 

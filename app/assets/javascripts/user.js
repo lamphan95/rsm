@@ -9,6 +9,9 @@ $(document).ready(function() {
   });
 
   $(document).on('change', '#user_cv', function(event){
+    if ($('.view-cv').hasClass('not-active')) {
+      $('.view-cv').removeClass('not-active');
+    }
     $('.view-cv').prop('href', URL.createObjectURL(event.target.files[0]));
   })
 

@@ -9,6 +9,17 @@ $(document).ready(function() {
     removeError();
   };
 
+  function show_login_form(){
+    $('.opacity').animate({'width': 'show'}, 300);
+    $('#login-ajax').animate({'height': 'show'}, 300);
+    $('html, body').css({overflow: 'hidden'});
+    $('#login-email').focus();
+  }
+
+  if ((typeof gon !== 'undefined') && gon.show_login){
+    show_login_form();
+  }
+
   function removeError(){
     $('#login-ajax .help-block').remove();
     $('#login-ajax .form-group').removeClass('has-success has-error');
@@ -25,10 +36,7 @@ $(document).ready(function() {
   });
 
   $(document).on('click', '.btn-login', function(){
-    $('.opacity').animate({'width': 'show'}, 300);
-    $('#login-ajax').animate({'height': 'show'}, 300);
-    $('html, body').css({overflow: 'hidden'});
-    $('#login-email').focus();
+    show_login_form();
   });
 
   $(document).on('click', '.close-form-login', function(){
