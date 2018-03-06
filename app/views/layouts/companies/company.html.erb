@@ -4,7 +4,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= favicon_link_tag "frc.png" %>
     <%= csrf_meta_tags %>
-
+    <%= Gon::Base.render_data %>
     <%= stylesheet_link_tag "companies/company", media: "all", "data-turbolinks-track": "reload" %>
     <%= stylesheet_link_tag "companies/f-style", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "company", "data-turbolinks-track": "reload" %>

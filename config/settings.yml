@@ -197,3 +197,5 @@ apply:
     introducing_min_length: 20
     phone_max_length: 13
     phone_min_length: 10
+sessions:
+  user_return_to: "user_return_to"

@@ -17,7 +17,8 @@
       <div class="col-sm-12 col-xs-12 text-center">
         <%= f.label :cv, t(".change_curriculum"), class: "edit-user-img change-cv", title: t(".change_curriculum") %>
         <%= f.file_field :cv, class: "hide", accept: Settings.send_cv.type %>
-        <a href="<%= @user.cv.url %>" data-fancybox class="edit-user-img view-cv" title="<%= t '.view_cv' %>">
+        <a href="<%= @user.cv.url %>" data-fancybox title="<%= t '.view_cv' %>"
+          class="edit-user-img view-cv <%= @user.cv.present? ? '' : 'not-active' %>">
           <i class="fa fa-eye"></i>
         </a>
       </div>
