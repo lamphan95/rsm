@@ -2,7 +2,7 @@ class Offer < ApplicationRecord
   belongs_to :user
   belongs_to :apply_status
 
-  validates :salary, presence: true
+  validates :salary, presence: true, numericality: { greater_than: 0}
   validates :start_time, presence: true
   validates :address, presence: true
   validate :start_time_cannot_be_in_the_past, if: :start_time?

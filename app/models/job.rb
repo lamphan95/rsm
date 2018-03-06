@@ -25,7 +25,7 @@ class Job < ApplicationRecord
   validates :min_salary, presence: true
   validates :position, presence: true
   validates :branch_id, presence: true
-  validates :target, presence: true
+  validates :target, presence: true, numericality: { greater_than: 0}
   validates :category_id, presence: true
   validate :max_salary_less_than_min_salary
   validates :survey_type, presence: true
