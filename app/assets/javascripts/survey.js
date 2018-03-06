@@ -56,9 +56,11 @@ $(document).on('change', '#apply_information_name, #apply_information_email, #ap
   check_value();
 });
 
-CKEDITOR.instances['apply_information_introducing'].on('change', function() {
-  check_value();
-});
+if (CKEDITOR.instances['apply_information_introducing'] !== undefined) {
+  CKEDITOR.instances['apply_information_introducing'].on('change', function() {
+    check_value();
+  });
+}
 
 function check_value() {
   var name = $('#apply_information_name').val();
