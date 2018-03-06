@@ -8,27 +8,11 @@ $(document).ready(function() {
     $('.tab-custom-content > .tab-content').eq(index).addClass('active');
   });
 
-  $(document).on('click', '.container-avatar .profile-label', function(){
-    $('#bannerSelect').click();
-  });
-
   $(document).on('change', '#user_cv', function(event){
-    $('.contain-cv .thumbnail-cv').prop('href', URL.createObjectURL(event.target.files[0]));
-    $('.contain-cv iframe').prop('src', URL.createObjectURL(event.target.files[0]));
+    $('.view-cv').prop('href', URL.createObjectURL(event.target.files[0]));
   })
 
-  $('.contain-cv iframe').fancybox({
-    buttons: ['close'],
-    transitionIn: 'elastic',
-    transitionOut: 'elastic',
-    speedIn: 400,
-    speedOut: 400,
-    type: 'iframe',
-    iframe: {
-      preload: false // fixes issue with iframe and IE
-    },
-    width: '100%',
-    height: '100%',
-    padding: 0
+  $(document).on('click', '.container-avatar .profile-label', function(){
+    $('#bannerSelect').click();
   });
 });

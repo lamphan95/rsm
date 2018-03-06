@@ -1,95 +1,97 @@
 <%= javascript_include_tag "format_datepicker", "data-turbolinks-track": "reload" %>
 <%= simple_form_for @club, html: {class: "new-section"}, remote: true do |f| %>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :name, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".name" %>
-        <% end %>
-        <%= f.text_field :name, autofocus: true, class: "form-control edit-control" %>
-        <span class="error-message">
-          <%= f.error :name %>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-user" aria-hidden="true" title="<%= t '.name' %>"></i>
         </span>
+        <%= f.text_field :name, autofocus: true, class: "form-control input-custom input-lg",
+          placeholder: t(".name") %>
       </div>
     </div>
-    <div class="col-sm-6">
-      <div class="form-group">
-        <%= f.label :position, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".pos" %>
-        <% end %>
-        <%= f.text_field :position, class: "form-control edit-control" %>
-        <span class="error-message">
-          <%= f.error :position %>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-map-marker" aria-hidden="true" title="<%= t '.position' %>"></i>
         </span>
+        <%= f.text_field :position, class: "form-control input-custom input-lg",
+          placeholder: t(".position") %>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= f.label :start_time, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".from" %>
-        <% end %>
+    <div class="contain-float">
+      <div class="error-message animation-slideDown pull-left w-50-percent">
+        <%= f.error :name %>
+      </div>
+      <div class="error-message animation-slideDown pull-right w-50-percent">
+        <%= f.error :position %>
+      </div>
+    </div>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-calendar" aria-hidden="true" title="<%= t '.from' %>"></i>
+        </span>
         <% if @club.start_time.present? %>
           <%= f.text_field :start_time, data: {provide: "datepicker"},
-            class: "datepick form-control", value: @club.start_time.strftime(t "date_format") %>
+            class: "datepick form-control input-custom input-lg", placeholder: t(".from"),
+            value: @club.start_time.strftime(t "date_format") %>
         <% else %>
           <%= f.text_field :start_time, data: {provide: "datepicker"},
-            class: "datepick form-control" %>
+            class: "datepick form-control input-custom input-lg", placeholder: t(".from") %>
         <% end %>
-        <span class="error-message">
-          <%= f.error :start_time %>
-        </span>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= f.label :end_time, class: "profile_label" do %>
-          <strong class="text-red">*</strong><%= t ".to" %>
-        <% end %>
+    <div class="form-group form-custom input-inline">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <strong class="text-red">*</strong>
+          <i class="fa fa-calendar" aria-hidden="true" title="<%= t '.to' %>"></i>
+        </span>
         <% if @club.end_time.present? %>
           <%= f.text_field :end_time, data: {provide: "datepicker"},
-            class: "datepick form-control", value: @club.end_time.strftime(t "date_format") %>
+            class: "datepick form-control input-custom input-lg", placeholder: t(".to"),
+            value: @club.end_time.strftime(t "date_format") %>
         <% else %>
           <%= f.text_field :end_time, data: {provide: "datepicker"},
-            class: "datepick form-control" %>
+            class: "datepick form-control input-custom input-lg", placeholder: t(".to") %>
         <% end %>
-        <span class="error-message">
-          <%= f.error :end_time %>
-        </span>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="form-group">
-        <div class="m-t-lg hidden-xs"></div>
-        <span>
-          <%= f.check_box :current, class: "to-present-checkbox" %>
-          <%= f.label :current, t(".present"), class: "profile_label" %>
-        </span>
+    <div class="contain-float">
+      <div class="error-message animation-slideDown pull-left w-50-percent">
+        <%= f.error :start_time %>
+      </div>
+      <div class="error-message animation-slideDown pull-right w-50-percent">
+        <%= f.error :end_time %>
       </div>
     </div>
+    <div>
+      <%= f.label :current, class: "custom-checkbox" do %>
+        <%= f.check_box :current %><%= t(".present") %>
+        <span class="span-custom"></span>
+      <% end %>
+    </div>
+    <div class="form-group p-0">
+      <div>
+        <%= f.label :content, t(".content"), class: "form-control text-left label-custom" %>
+        <%= f.input :content, as: :ckeditor, label: false,
+          input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
+      </div>
+      <div class="error-message animation-slideDown">
+        <%= f.error :content %>
+      </div>
+    </div>
+    <p class="text-right">(<strong class="text-red">*</strong>)&nbsp;<%= t ".required" %></p>
   </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <%= f.label :content, t(".content"), class: "control-label profile_label" %>
-        <%= f.text_area :content, class: "form-control" %>
-        <span class="club-position-invalid error-message">
-          <%= show_errors @club, :content, t(".content") %>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="form-group push-top-md edit-field">
-    <div class="col-sm-6">(<strong class="text-red">*</strong>)<%= t ".required" %></div>
-    <div class="row">
-      <div class="col-sm-6 text-right">
-        <button id="<%= define_cancel_club_id @club %>" type="button"
-          class="btn-cancel btn btn-default" value="<%= @club.id %>">
-          <%= t ".cancel" %>
-        </button>
-        <%= f.submit t(".save"), class: "btn-save btn btn-primary" %>
-      </div>
-    </div>
+  <div class="row text-center m-40">
+    <%= f.submit t(".save"), class: "btn btn-primary btn-custom" %>
+    <button id="<%= define_cancel_club_id @club %>" type="button"
+      class="btn btn-default" value="<%= @club.id %>">
+      <%= t ".cancel" %>
+    </button>
   </div>
 <% end %>

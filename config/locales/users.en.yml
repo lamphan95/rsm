@@ -28,3 +28,5 @@ en:
       curriculum_your: "Curriculum vitae of you:"
       change_curriculum: "Change curriculum vitae"
       change_avatar: "Change avatar"
+      view_cv: "View CV"
+    update_success: "Update success"
