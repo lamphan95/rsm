@@ -49,6 +49,8 @@ class ApplicationController < ActionController::Base
 
   def load_oauth
     @oauth = current_user.oauth
+    return if @oauth
+    @disconnect_gmail = t "oauth.google.disconnect_gmail"
   end
 
   private
