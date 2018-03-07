@@ -411,35 +411,3 @@ label {
     float: left;
     height: 50px;
 }
-
-.navbar-form-custom .form-control {
-    padding: 10px 20px;
-    margin: 0;
-    height: 40px;
-    font-size: 15px;
-    background: transparent;
-    width:400px;
-    z-index: 2000;
-    float:left;
-    border: 1px solid $dark-gray-light-1;
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.navbar-form-custom .form-control:focus {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    font-size: 15px;
-    padding: 10px 20px;
-    margin-left: 50px;
-}
-
-.navbar-form-custom .button_search{
-    margin-left: 420px;
-    padding: 7px 0 7px 0;
-    visibility: hidden;
-    width:75px;
-}
