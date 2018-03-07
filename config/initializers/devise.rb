@@ -282,4 +282,7 @@ Devise.setup do |config|
       approval_prompt: "force",
       access_type: "offline"
     }
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"],
+    {scope: "email"}
+  config.omniauth :linkedin, ENV["LINKEDIN_APP_ID"], ENV["LINKEDIN_APP_SECRET"]
 end

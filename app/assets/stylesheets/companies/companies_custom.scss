@@ -150,7 +150,7 @@
   .remember-login {
     padding: 15px 30px 15px 15px !important;
   }
-  .btn-sm {
+  .btn-sm-custom {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
@@ -160,7 +160,7 @@
     text-transform: none;
     width: auto;
   }
-  .btn-primary {
+  .btn-primary-custom {
     background-color: $light-green-6;
     border: 1px solid $blue-light;
     color: $white;
@@ -222,4 +222,8 @@
   .job-apply-btn .post-job {
     width: 201px;
   }
+}
+.btn-facebook {
+  width: 32.3px;
+  margin-left: 15px;
 }
