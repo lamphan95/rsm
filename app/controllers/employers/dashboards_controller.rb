@@ -3,6 +3,7 @@ class Employers::DashboardsController < BaseNotificationsController
 
   before_action :authenticate_user!
   before_action :load_company
+  before_action :load_search_form
   before_action :check_permissions_employer
   before_action :current_ability
   before_action :load_notifications

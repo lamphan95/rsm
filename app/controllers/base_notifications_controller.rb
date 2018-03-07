@@ -45,4 +45,9 @@ class BaseNotificationsController < ApplicationController
     end
     @notify_unread = @notifications - @notify_readed
   end
+
+  def load_search_form
+    applies_status = @company.apply_statuses.current
+    @q = applies_status.search params[:q]
+  end
 end

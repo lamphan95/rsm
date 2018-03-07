@@ -5,6 +5,7 @@ class ApplyStatus < ApplicationRecord
   has_one :step, through: :status_step
   has_one :job, through: :apply
   has_one :appointment, dependent: :destroy
+  has_one :user, through: :apply
   has_many :offers, dependent: :destroy
 
   has_many :email_sents, class_name: EmailSent.name, foreign_key: :type_id, dependent: :destroy

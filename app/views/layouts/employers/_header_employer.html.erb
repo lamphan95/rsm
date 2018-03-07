@@ -7,11 +7,17 @@
       <% end %>
     </li>
   </ul>
-  <form action="page_ready_search_results.html" method="post" class="navbar-form-custom" role="search">
+  <%= search_form_for @q, url: employers_applies_path, id: "form_search_email", class: "navbar-form-custom" do |f| %>
     <div class="form-group">
-      <input type="text" id="top-search" name="top-search" class="form-control" placeholder="<%= t ".search" %>">
+      <%= f.search_field :user_email_cont, class: "form-control", id: "input_button_search", placeholder: t(".search") %>
+      <div class="button_search" id= "button_search">
+        <%= f.button :submit, class: "btn btn-primary" do %>
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <%= t ".filter" %>
+        <% end %>
+      </div>
     </div>
-  </form>
+  <% end %>
   <ul class="nav navbar-nav-custom navbar-right">
     <%= render "shared/notification" %>
     <li class="dropdown">
