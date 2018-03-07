@@ -411,3 +411,7 @@ label {
     float: left;
     height: 50px;
 }
+
+a.disabled {
+  pointer-events: none;
+}

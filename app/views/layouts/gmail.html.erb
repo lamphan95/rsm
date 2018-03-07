@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      .column {
+        float: left;
+        margin-bottom: 16px;
+        padding: 0 8px;
+        background-color: #ffffff;
+      }
+
+      @media (max-width: 650px) {
+        .column {
+          width: 100%;
+          display: block;
+        }
+      }
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+      .container::after, .row::after {
+        clear: both;
+        display: table;
+      }
+
+      .title {
+        color: grey;
+      }
+      .bot-border{
+        padding:0px 20px 15px 20px;background-color:#fff;margin:20px 0;
+      }
+      p .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #bfbebd;
+        text-align: center;
+        cursor: pointer;
+        width: 97%;
+      }
+
+      .button:hover {
+        background-color: #555;
+      }
+      .container{
+        font-size:14px;
+        line-height:1.4;
+        font-weight:400;
+        margin:0px;
+        background:#ffffff;
+        color:#363636;
+        font-weight:500;
+        padding-top:20px;
+      }
+      .body-build{
+        max-width:580px;
+        width:100%;
+        padding:0px;
+        margin-right:auto;
+        margin-left:auto;
+        background:#eeeeee;
+        font-weight:500;
+      }
+      .body-first{
+        background-color:#ffffff;
+        border-radius:0px;
+        float:left;width:100%;
+        margin-bottom:20px;
+        border:1px solid #ddd;
+        margin:0;
+        padding-bottom:17px;
+      }
+      .first-a{
+        margin-top:15px;
+        padding-left:20px;
+        padding-right:20px;
+      }
+      .a-left{
+        float: left;
+      }
+      .month{
+        color:#47a743;
+        margin-top:12px;
+        float:right;
+        font-size:18px!important;
+        margin-left: 190px;
+      }
+      .c-first {
+        background-color: red;
+        width: 100%;
+        height: 5px;
+        margin-top: 5px;
+        display: block;
+      }
+      .botton-div{
+        border-bottom:2px solid #46a741;
+        width:100%;
+        display:block;
+      }
+      .img-a{
+        width: 160px;
+        vertical-align:middle;
+        border: 0;
+      }
+      .img-center{
+        vertical-align:middle;
+        border:0;
+        width:43px;
+      }
+      .clear-both{
+        clear: both;
+      }
+      .b-first{
+        background-color:#46a741;
+        width:100%;
+        height:5px;
+        margin-top: 5px;
+        display:block;
+      }
+      .b-body{
+        padding:20px;
+        background-color:#fff;
+        font-size:14px!important;
+      }
+      .start-body{
+        margin-top:15px;
+        padding-left:20px;
+        padding-right:20px
+      }
+      .menu-body{
+        background-color:#fff;
+        font-size:14px;
+        color:#464646;
+      }
+      .title-first{
+        margin-top:6px;
+        margin-bottom:17px;
+      }
+      .model-botg{
+        width:50px;
+        height:55px;
+        display:table-cell;
+        vertical-align:top;
+      }
+      .count{
+        margin-bottom:5px;
+      }
+      .a-left .normal{
+        color: #46a741;
+        margin-top:12px;
+        float:right;
+        font-size:18px!important;
+        font-weight: 700;
+        font-size: 20px;
+      }
+      .bodyname{
+        background-color:white;
+        margin-top:6px;
+        padding-top:5px;
+      }
+      .bottom-name{
+        font-size:16px;
+        font-weight:bold;
+        margin-top:10px;
+        color:#491f66;
+        margin-bottom:5px;
+      }
+      .border-top{
+        border-bottom:2px solid #46a741;
+        width:100%;
+        display:block;
+      }
+      .img-name{
+        width:40%;
+        margin: 0px 30px;
+      }
+      .img-lasts{
+        vertical-align:middle;
+        border:0;
+        width:60px;
+      }
+      .img-lastss{
+        vertical-align:middle;
+        border:0;
+        width: 49px;
+      }
+      .bot-last{
+        background-color:#f2e7fa;
+        padding:14px 20px 5px;
+      }
+      .contact{
+        background-color:#f2e7fa;
+        padding:14px 20px 5px;
+      }
+      .b-contac{
+        margin-top:5px;
+      }
+      .hr{
+        color:rgb(8,114,212);
+        font-size:14px;
+      }
+      .hotline{
+        margin-top:5px;
+        margin-bottom:5px;
+      }
+      .toppading{
+        margin-top:15px;
+      }
+      .botlast{
+        padding:0px 20px 15px 20px;
+        background-color:#fff;
+        margin:20px 0;
+        border:2px solid #46a741;
+      }
+      .secondlast{
+        margin-top:15px;
+      }
+      .font-last{
+        margin:0;
+        margin-bottom:5px;
+        color:#464646;
+        padding-left: 59px;
+        padding-top: 13px;
+      }
+      .vooter{
+        width:50px;
+        height:55px;
+        display:table-cell;
+        vertical-align:top;
+      }
+      .bottom-high{
+        display:table-cell;
+        padding-left:15px;
+        vertical-align:top;
+      }
+      .footer-ls{
+        margin:0;
+        margin-bottom:5px;
+        color:#464646;
+      }
+      body{
+        background-color: #eee;
+      }
+      .button {
+        background-color: green;
+        border-radius: 5px;
+        color: #BDBDBD;
+        padding: .5em;
+        text-decoration: none;
+        display:block;
+      }
+      .button:focus,
+      .button:hover {
+        background-color: DarkGreen;
+      }
+      .buttona {
+      background-color: #F3F781;
+      border-radius: 5px;
+      color: black;
+      padding: .5em;
+      text-decoration: none;
+      display:block;
+      }
+      .buttona:focus,
+      .buttona:hover {
+        background-color: #DF3A01;
+      }
+      .floatl{
+        float: left;
+      }
+      .floata{
+        float: left;
+        padding-left: 70px;
+      }
+      .clear{
+        clear: both;
+      }
+      .margin-top{
+        margin-top: 20px;
+      }
+      .backgroud-content {
+        background: white !important;
+        font-size: 17px !important;
+        border: 0px !important;
+      }
+      .img-company{
+        vertical-align:middle;
+        border:0;
+        width: 49px;
+        padding-top: 10px;
+      }
+      .container-mailer {
+        width: 80%;
+        margin: auto;
+        border-width: 20px;
+        border-style: solid;
+        border-color: #07313a;
+      }
+
+      .header-mailer {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #b3b3b3;
+        background-color: #5CCCE4;
+      }
+
+      .header-mailer h1 {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+        font-size: 35px;
+        margin: 10px 0 0;
+      }
+
+      .header-mailer > img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .divider {
+        margin: 2px;
+        background-color: #f0f0f0;
+      }
+
+      .footer-mailer {
+        color: white;
+        text-align: center;
+        background-color: #07313a;
+        padding-top: 20px;
+      }
+
+      .link-website {
+        display: inline-block;
+        text-decoration: none;
+        padding: 10px 20px;
+        background-color: #5CCCE4;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      .user-info {
+        display: block;
+        width: 90%;
+        margin: auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+
+      .image-function {
+        text-align: center;
+        padding-left: 20px;
+      }
+
+      .text-function {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="container-mailer" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td class="header-mailer" align="center" valign="middle" colspan="2">
+            <%= image_tag @logo_url %>
+            <h1><%= t "devise.mailer.header.app_name" %></h1>
+          </td>
+        </tr>
+        <%= yield %>
+        <tr>
+          <td class="footer-mailer" align="center" valign="middle"  colspan="2"
+            style="padding: 20px 0 0">
+            <%= t "devise.mailer.footer.year" %>
+            <strong><%= t "devise.mailer.footer.author" %></strong>
+            <span><%= t "devise.mailer.footer.copyright" %></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

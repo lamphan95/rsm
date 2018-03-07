@@ -1,4 +1,18 @@
-<% if @message.present? %>
+<% if @oauth.blank? %>
+  swal({
+    title: I18n.t('jobs.apply.confirm_change_status'),
+    text: I18n.t('oauth.google.disconnect_gmail'),
+    icon: 'warning',
+    buttons: true,
+    primaryMode: true,
+  })
+  .then(function(isConfirm){
+    if (isConfirm) {
+      $('.loading').fadeIn('slow');
+      window.location.href = '/devises/auth/google_oauth2?apply_id=' + <%= @apply.id %> + '&job_id=' + <%= @apply.job_id %>;
+    }
+  });
+<% elsif @message.present? %>
   $('#apply-handling-content').html('');
   $('#area-status-progress').html('<%= j render partial: "employers/applies/status_progress", locals: {steps: @steps, current_step: @current_step, company_steps_by_step: @company_steps_by_step} %>');
   $('#area-form-status').html('<%= j render partial: "employers/applies/form_status", locals: {apply: @apply, current_step: @current_step, current_status_steps: @current_status_steps, status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false, step_main: @current_step, current_apply_status: @current_apply_status} %>');

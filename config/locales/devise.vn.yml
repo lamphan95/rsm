@@ -42,6 +42,10 @@ vn:
     omniauth_callbacks:
       failure: "Không thể xác thực bạn từ% {kind} bởi vì \"%{reason}\"."
       success: "Chứng thực thành công từ tài khoản %{kind}."
+      connect_gmail: "Đã kết nối gmail."
+      connect_gmail_failure: "Kết nối gmail thất bại."
+      account_invalid: "Tài khoản không hợp lệ."
+      account_connected: "Tài khoản đã từng được xác nhận."
     passwords:
       no_token: "Bạn không thể truy cập trang này mà không cần đến từ email đặt lại mật khẩu. Nếu bạn đến từ email đặt lại mật khẩu, hãy đảm bảo bạn đã sử dụng URL đầy đủ được cung cấp."
       send_instructions: "Bạn sẽ nhận được email với hướng dẫn về cách đặt lại mật khẩu trong vài phút."

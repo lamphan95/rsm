@@ -271,7 +271,7 @@ Job.limit(10).each_with_index do |job, index|
       name: user.name,
       email: user.email,
       phone: Faker::Number.number(10),
-      introducing: "abc"
+      introducing: Faker::Lorem.sentence(50)
     }
   )
   ApplyStatus.create!(

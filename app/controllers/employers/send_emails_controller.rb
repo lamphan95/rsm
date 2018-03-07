@@ -1,5 +1,6 @@
 class Employers::SendEmailsController < ApplicationController
   before_action :load_company, :load_apply, :load_apply_status, :load_apply_statuses, except: :show
+  before_action :load_oauth, only: :show
 
   def create
     SendEmailUserJob.perform_later params[:title], @apply, params[:template_content], @company, @apply_status
@@ -11,8 +12,9 @@ class Employers::SendEmailsController < ApplicationController
 
   def show
     @mail_service = EmailSent.find_by(id: params[:id])
-    return if @mail_service.blank?
-    @mail_service.send_mail
+    return if @mail_service.blank? || @oauth.blank?
+    @oauth.check_access_token
+    @mail_service.send_mail current_user
     respond_to :js
   end
 

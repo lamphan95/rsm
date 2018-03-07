@@ -1,11 +1,8 @@
 class SendEmailUserJob < ApplicationJob
   queue_as :default
 
-  def perform content, company, title, email
-    @content = content
-    @company = company
-    @title = title
-    @email = email
-    CompanyMailer.send_mailer_candidate(@content, @company, @title, @email).deliver_later
+  def perform content, company, title, email, email_sender, access_token
+    SendmailService.send_mail_by_gmail content,
+      company, title, email, email_sender, access_token
   end
 end

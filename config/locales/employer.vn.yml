@@ -107,6 +107,9 @@ vn:
       create:
         success: "Update success"
         fail: "Update fail"
+        disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
+      update:
+        disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
     appointments:
       appointment:
         click: "Nhấp chuột"
@@ -361,6 +364,8 @@ vn:
       not_find_item: "Không tìm thấy item"
       create:
         success: "Tạo mới thành công"
+      show:
+        disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
     templates:
       create: "Tạo mới"
       update: "Cập nhật"

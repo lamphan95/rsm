@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :confirmable, :recoverable,
+    :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: %i(facebook google_oauth2)
+
   has_many :achievements, dependent: :destroy
   has_many :clubs, dependent: :destroy
   has_many :templates, dependent: :destroy
@@ -20,6 +22,7 @@ class User < ApplicationRecord
   has_many :applies, dependent: :destroy
   has_many :inforappointments
   has_many :offers, dependent: :destroy
+  has_one :oauth, dependent: :destroy
 
   validates :name, presence: true
   validates :email, uniqueness: { scope: :company_id,
@@ -27,6 +30,8 @@ class User < ApplicationRecord
 
   enum role: %i(user employer admin)
   enum sex: {female: 0, male: 1}
+
+  delegate :token, to: :oauth, prefix: true, allow_nil: true
 
   scope :search_name_or_mail, ->(content){where("name LIKE ? or email LIKE ?", "%#{content}%", "%#{content}%")}
   scope :not_member, ->{where("id NOT IN (SELECT user_id FROM members where end_time IS NUll)")}
