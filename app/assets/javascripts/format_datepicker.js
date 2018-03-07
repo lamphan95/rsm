@@ -9,4 +9,10 @@ $(document).ready(function() {
     startView: 'months',
     minDate: 0
   });
+
+  $('.datepick-birthday').datepicker( {
+    format: I18n.t('datepicker.long'),
+    startView: 'months',
+    endDate: '+0d'
+  });
 });
