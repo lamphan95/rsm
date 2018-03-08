@@ -29,4 +29,7 @@ vn:
       change_curriculum: "Đổi sơ yếu lí lịch"
       change_avatar: "Đổi ảnh đại diện"
       view_cv: "Xem CV"
+      birthday:
+        required: "Mời nhập ngày sinh của bạn"
+        validate: "Không thể trong tương lai"
     update_success: "Cập nhật thành công"

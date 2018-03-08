@@ -29,4 +29,7 @@ en:
       change_curriculum: "Change curriculum vitae"
       change_avatar: "Change avatar"
       view_cv: "View CV"
+      birthday:
+        required: "Please enter your birthday"
+        validate: "can't be in the future"
     update_success: "Update success"

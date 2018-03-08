@@ -28,6 +28,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, uniqueness: { scope: :company_id,
     message: I18n.t("users.form.empty") }
+  validates :birthday, presence: true
+  validate :birthday_cannot_be_in_the_future
 
   enum role: %i(user employer admin)
   enum sex: {female: 0, male: 1}
@@ -69,5 +71,11 @@ class User < ApplicationRecord
 
   def is_applied? job
     self.applies.pluck(:job_id).include? job
+  end
+
+  def birthday_cannot_be_in_the_future
+    if birthday.present? && birthday > Date.today
+      errors.add :birthday, I18n.t("users.form.birthday.validate")
+    end
   end
 end
