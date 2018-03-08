@@ -39,10 +39,9 @@ class Employers::JobsController < Employers::EmployersController
   def destroy
     respond_to do |format|
       if @job.destroy
-        format.js{@message = t "jobs.destroy.job_destroyed"}
-      else
-        format.js
+        @message = t ".success"
       end
+      format.js
     end
   end
 

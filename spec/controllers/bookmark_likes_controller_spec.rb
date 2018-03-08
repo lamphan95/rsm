@@ -17,7 +17,7 @@ RSpec.describe BookmarkLikesController, type: :controller do
   describe "POST #create" do
     it "create bookmark_like success" do
       post :create, params: {bookmark_like: {bookmark:
-        "bookmark", user_id: user.id, job_id: job.id}, :format => :json}, xhr: true, format: "js"
+        "bookmark", user_id: user.id, job_id: job.id}}, xhr: true, format: "js"
       expect(assigns[:success]).to match I18n.t("bookmark_likes.create")
     end
 

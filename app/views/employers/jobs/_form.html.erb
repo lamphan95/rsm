@@ -32,11 +32,11 @@
       </div>
     </div>
     <%= f.input :target, label: t(".target"), input_html: {type: "number"} %>
-    <%= f.input :language, label: t(".language") %>
+    <%= f.input :language, label: t(".foreign_language") %>
     <%= f.input :position, label: t(".position") %>
     <%= f.input :level, label: t(".level") %>
     <%= f.input :skill, label: t(".skill") %>
-    <%= f.input :content, label: t(".content"), as: :ckeditor,
+    <%= f.input :content, label: t(".request"), as: :ckeditor,
       input_html: {class: "job-create-content"} %>
     <%= f.input :branch_id do %>
       <%= f.select :branch_id, @company.branches.map{|r| [r.district, r.id]},
