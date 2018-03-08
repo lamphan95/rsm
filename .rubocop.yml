@@ -270,8 +270,8 @@ Style/HashSyntax:
     - ruby19
     - hash_rockets
 
-Style/IfUnlessModifier:
-  MaxLineLength: 80
+Metrics/LineLength:
+  Max: 80
 
 # Checks the indentation of the first key in a hash literal.
 Layout/IndentHash:
@@ -495,9 +495,6 @@ Naming/VariableName:
   SupportedStyles:
     - snake_case
     - camelCase
-
-Style/WhileUntilModifier:
-  MaxLineLength: 80
 
 Style/WordArray:
   MinSize: 0
