@@ -19,7 +19,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
   end
 
   def create
-    return if @oauth.blank?
+    return if @disconnect_gmail
     ApplyStatus.transaction do
       set_not_current
       respond_to do |format|
@@ -42,7 +42,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
   end
 
   def update
-    return if @oauth.blank?
+    return if @disconnect_gmail
     ApplyStatus.transaction do
       respond_to do |format|
         if @apply_status.update_attributes apply_status_params
