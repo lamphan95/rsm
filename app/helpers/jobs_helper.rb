@@ -4,8 +4,11 @@ module JobsHelper
   end
 
   def information_job job, commany
-    job.max_salary.present? ? content_share_job(job, commany, salary_job(job.max_salary)):
+    if job.max_salary.present?
+      content_share_job(job, commany, salary_job(job.max_salary))
+    else
       content_share_job(job, commany, salary_job(job.min_salary))
+    end
   end
 
   def salary_job job_salary
