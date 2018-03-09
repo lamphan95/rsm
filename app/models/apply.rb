@@ -43,8 +43,6 @@ class Apply < ApplicationRecord
     validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
     validates :phone, presence: true, length: {maximum: Settings.apply.model.phone_max_length,
       minimum: Settings.apply.model.phone_min_length}, numericality: true
-    validates :introducing, presence: true, length: {maximum: Settings.apply.model.introducing_max_length,
-      minimum: Settings.apply.model.introducing_min_length}
   end
 
   def of_user? user
