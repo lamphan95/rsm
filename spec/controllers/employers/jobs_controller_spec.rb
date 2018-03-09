@@ -21,6 +21,12 @@ RSpec.describe Employers::JobsController, type: :controller do
         xhr: true, format: "js"
       expect(assigns[:message]).to match I18n.t("employers.jobs.destroy.success")
     end
+
+    it "redirects to jobs#index" do
+      delete :destroy, params: {id: subject.id},
+        xhr: true, format: "js"
+      expect(response).to redirect_to(employers_job_path)
+    end
   end
 
   describe "PATCH #update" do
@@ -52,6 +58,36 @@ RSpec.describe Employers::JobsController, type: :controller do
     it "create jobs fail" do
       post :create, params: {job:{name: "Ruby on rails"}},
         xhr: true, format: "js"
+    end
+  end
+
+  describe "GET #show" do
+    before {request.host = "#{company.subdomain}.lvh.me:3000"}
+    before :each do
+      get :show, xhr: true, params: {id: subject.id}
+    end
+
+    it "assigns the requested job to @job" do
+      expect(assigns(:job)).to eq subject
+    end
+
+    it "renders the #show view" do
+      expect(response).to render_template :show
+    end
+  end
+
+  describe "GET #index" do
+    before {request.host = "#{company.subdomain}.lvh.me:3000"}
+    before :each do
+      get :index, xhr: true
+    end
+
+    it "populates an array of jobs" do
+      expect(assigns(:jobs)).to eq([subject])
+    end
+
+    it "renders the #index view" do
+      expect(response).to render_template :index
     end
   end
 end
