@@ -5,14 +5,21 @@ module JobsHelper
 
   def information_job job, commany
     if job.max_salary.present?
-      content_share_job(job, commany, salary_job(job.max_salary))
+      content_share_job job, commany, salary_job(job)
     else
-      content_share_job(job, commany, salary_job(job.min_salary))
+      content_share_job job, commany, salary_job(job)
     end
   end
 
-  def salary_job job_salary
-    job_salary.round.to_s + Settings.currency.dollar
+  def salary_job job
+    if job.max_salary.present?
+      t "salary_job", min_salary: number_with_delimiter(job.min_salary.round, delimiter: Settings.delimiter),
+        max_salary: number_with_delimiter(job.max_salary.round,
+        delimiter: Settings.delimiter), sign: job.currency_sign
+    else
+      t "salary_job_up_to", min_salary: number_with_delimiter(job.min_salary.round,
+        delimiter: Settings.delimiter), sign: job.currency_sign
+    end
   end
 
   def content_share_job job, commany, salary

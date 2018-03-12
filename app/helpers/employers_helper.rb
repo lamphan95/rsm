@@ -155,4 +155,8 @@ module EmployersHelper
   def is_offer_status_pending
     @company.steps.last.id == @current_step.id && @offer_status_pending_id.last < @apply_status.status_step_id
   end
+
+  def show_salary offer
+    t "salary_offer", salary: number_with_delimiter(offer.salary.round, delimiter: Settings.delimiter), sign: offer.currency.sign
+  end
 end

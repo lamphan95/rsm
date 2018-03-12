@@ -27,7 +27,7 @@ class Employers::EmployersController < BaseNotificationsController
   end
 
   def load_templates
-    @template_users = Template.all
+    @template_users = @company.templates.get_newest
   end
 
   def check_permissions_employer
@@ -119,5 +119,9 @@ class Employers::EmployersController < BaseNotificationsController
 
   def load_offer_status_step_pending
     @offer_status_pending_id = @company.status_steps.load_by(Settings.offer_status_pending).pluck(:id)
+  end
+
+  def load_currency
+    @currencies = @company.currencies.get_newest
   end
 end

@@ -21,8 +21,9 @@
 
             <tr>
               <td class="w-150"><%= t ".salary" %></td>
-              <td class="detail-content"><%= number_to_currency offer.salary %></td>
+              <td class="detail-content"><%= show_salary offer %></td>
             </tr>
+
             <tr>
               <td class="w-150"><%= t ".start_time" %></td>
               <td class="detail-content"><%= offer.start_time %></td>
@@ -33,7 +34,7 @@
               <td class="detail-content"><%= offer.address %></td>
             </tr>
 
-            <tr>
+            <tr class="break">
               <td class="w-150"><%= t ".requirement" %></td>
               <td class="detail-content"><%= raw offer.requirement %></td>
             </tr>

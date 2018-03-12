@@ -13,6 +13,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.references :company, foreign_key: true
       t.references :branch, foreign_key: true
       t.references :category, foreign_key: true
+      t.references :currency
       t.integer :survey_type, default: 0
       t.timestamps
     end

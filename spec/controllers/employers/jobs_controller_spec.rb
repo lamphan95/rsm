@@ -8,8 +8,10 @@ RSpec.describe Employers::JobsController, type: :controller do
   let(:step) {FactoryGirl.create :step}
   let!(:company_step) {FactoryGirl.create :company_step, company_id: company.id, step_id: step.id}
   let!(:member) {FactoryGirl.create :member, company_id: company.id, user_id: user.id}
+  let(:currency) {FactoryGirl.create :currency, company_id: company.id}
   let :job do
-    FactoryGirl.create :job, company_id: company.id, branch_id: branch.id, category_id: category.id
+    FactoryGirl.create :job, company_id: company.id, branch_id: branch.id,
+      category_id: category.id, currency_id: currency.id
   end
   subject {job}
   before { sign_in user }
@@ -50,7 +52,7 @@ RSpec.describe Employers::JobsController, type: :controller do
     it "create jobs success" do
       post :create, params: {job: {name: "Ruby on rails",
         description: "IT", min_salary: 500, position: "Manager", target: 10,
-        survey_type: "not_exist", user_id: user.id, company_id: company.id,
+        survey_type: "not_exist", user_id: user.id, company_id: company.id, currency_id: currency.id,
         branch_id: branch.id, category_id: category.id}}, xhr: true, format: "js"
       expect(assigns[:message]).to match I18n.t("employers.jobs.create.success")
     end

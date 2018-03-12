@@ -4,7 +4,7 @@ RSpec.describe Employers::TemplatesController, type: :controller do
   let(:user) {FactoryGirl.create :user, confirmed_at: Time.current}
   let(:company) {FactoryGirl.create :company}
   let!(:member) {FactoryGirl.create :member, company_id: company.id, user_id: user.id}
-  let(:template) {FactoryGirl.create :template}
+  let(:template) {FactoryGirl.create :template, company_id: company.id}
   subject {template}
   before {sign_in user}
 

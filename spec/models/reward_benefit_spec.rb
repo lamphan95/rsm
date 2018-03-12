@@ -1,13 +1,14 @@
 require "rails_helper"
 
 RSpec.describe RewardBenefit, type: :model do
-  let!(:company) {FactoryGirl.create :company}
-  let!(:branch) {FactoryGirl.create :branch, company_id: company.id}
-  let!(:category) {FactoryGirl.create :category, company_id: company.id}
+  let(:company) {FactoryGirl.create :company}
+  let(:branch) {FactoryGirl.create :branch, company_id: company.id}
+  let(:category) {FactoryGirl.create :category, company_id: company.id}
+  let(:currency) {FactoryGirl.create :currency, company_id: company.id}
 
   let!(:job) do
     FactoryGirl.create :job, company_id: company.id,
-      branch_id: branch.id, category_id: category.id
+      branch_id: branch.id, category_id: category.id, currency_id: currency.id
   end
 
   let(:reward_benefit) { FactoryGirl.create :reward_benefit, job_id: job.id }

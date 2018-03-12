@@ -6,9 +6,9 @@
           <div class="col-md-10">
             <h4>
               <% if job.max_salary.present? %>
-                <%= link_to (job.name + t(".up_to") + salary_job(job.max_salary)), job %>
+                <%= link_to (job.name + salary_job(job)), job %>
               <% else %>
-                <%= link_to (job.name + t(".up_to") + salary_job(job.min_salary)), job %>
+                <%= link_to (job.name + salary_job(job)), job %>
               <% end %>
             </h4>
           </div>

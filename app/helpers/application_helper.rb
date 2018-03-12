@@ -65,6 +65,7 @@ module ApplicationHelper
       gsub("@offer_address@", information[:offer_address].present? ? information[:offer_address] : "").
       gsub("@requirement@", information[:requirement].present? ? information[:requirement] : "").
       gsub("@salary@", information[:salary].present? ? information[:salary] : "").
+      gsub("@currency_unit@", information[:currency_unit].present? ? information[:currency_unit] : "").
       gsub("@date_offer@", information[:date_offer].present? ? information[:date_offer] : "").
       gsub("@image_page@", image_tag("framgia.png", size:Settings.apply.image))).html_safe
   end

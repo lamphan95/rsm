@@ -6,7 +6,11 @@ RSpec.describe Job, type: :model do
   let!(:category) {FactoryGirl.create :category, company_id: company.id}
 
   let(:job) do
-    FactoryGirl.create :job, company_id: company.id, branch_id: branch.id, category_id: category.id
+    FactoryGirl.create :job, company_id: company.id, branch_id: branch.id,
+      category_id: category.id, currency_id: currency.id
+  end
+  let(:currency) do
+    FactoryGirl.create :currency, company_id: company.id
   end
 
   subject {job}
@@ -16,6 +20,7 @@ RSpec.describe Job, type: :model do
     it {is_expected.to belong_to :company}
     it {is_expected.to belong_to :branch}
     it {is_expected.to belong_to :category}
+    it {is_expected.to belong_to :currency}
     it {is_expected.to have_many :applies}
     it {is_expected.to have_many :feedbacks}
     it {is_expected.to have_many :bookmark_likes}

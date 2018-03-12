@@ -1,6 +1,7 @@
 class Employers::TemplatesController < Employers::EmployersController
   before_action :load_templates, only: %i(index create)
   before_action :load_type_template, expect: %i(index)
+  before_action :load_currency, only: :show
 
   def index; end
 
@@ -22,6 +23,7 @@ class Employers::TemplatesController < Employers::EmployersController
       start_time: params[:start_time], end_time: params[:end_time],
       salary: params[:salary], offer_address: params[:offer_address],
       requirement: params[:requirement], date_offer: params[:date_offer]}
+    @information[:currency_unit] = @currency ? @currency.sign : nil
     @template = Template.find_by id: params[:id]
     respond_to :js
   end
@@ -62,6 +64,10 @@ class Employers::TemplatesController < Employers::EmployersController
 
   def load_type_template
     @type_template = Template.type_ofs
+  end
+
+  def load_currency
+    @currency = Currency.find_by id: params[:currency_id]
   end
 end
 

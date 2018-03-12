@@ -195,6 +195,10 @@ companies.each do |company|
       offer_sent: true, offer_accepted: true, offer_declined: true, joined: true
     }
   )
+
+  Currency.create! nation: "VietNam", unit: "VND", sign: "VND", company_id: company.id
+  Currency.create! nation: "Japan", unit: "JPY", sign: "¥", company_id: company.id
+  Currency.create! nation: "USA", unit: "USD", sign: "$", company_id: company.id
 end
 
 
@@ -247,6 +251,7 @@ Job.delete_all
     level: "University",
     company_id: 1,
     user_id: 11,
+    currency_id: Random.rand(1..3),
     min_salary: 500,
     max_salary: 1000,
     language: "Vietnamese, Japan",
@@ -319,7 +324,8 @@ Template.create!(
   user_id: 1,
   name: "template review",
   title: "Thông báo về việc xem xét cv",
-  type_of: 1
+  type_of: 1,
+  company_id: 1
 )
 Template.create!(
   template_body:"@company@
@@ -329,7 +335,8 @@ Template.create!(
   user_id: 1,
   name: "template passed",
   title: "Thông báo bạn đã passed vào vòng trong",
-  type_of: 1
+  type_of: 1,
+  company_id: 1
 )
 Template.create!(
   template_body:"@company@
@@ -341,19 +348,21 @@ Template.create!(
   user_id: 1,
   title: "Thông báo gửi lịch hẹn phỏng vấn",
   name: "template interview",
-  type_of: 1
+  type_of: 1,
+  company_id: 1
 )
 Template.create!(
   template_body:"<p>@company@<br />
   Hello you @user@<br />
   We would like to send you a mail to inform you that from @date_offer@ is your official time,
-  the place is @offer_address@. Your starting salary is @ salary @, however this number may increase according to your capacity.
+  the place is @offer_address@. Your starting salary is @salary@ @currency_unit@, however this number may increase according to your capacity.
   Also we have some requirements such as @requirement@</p>
   ",
   user_id: 1,
   title: "Thông báo gửi offer",
   name: "template offer",
-  type_of: 1
+  type_of: 1,
+  company_id: 1
 )
 
 1.upto(10) do |n|

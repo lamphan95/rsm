@@ -19,6 +19,7 @@
                   <%= f.hidden_field :apply_id, value: apply.id %>
                   <%= f.hidden_field :status_step_id %>
                   <%= f.hidden_field :is_current %>
+                  <%= f.hidden_field :size_offers, value: @apply.offers.size %>
 
                   <div class="content-form-apply" id="area-appointment">
                     <% if @status_step_scheduled_ids.include? apply_status.status_step_id %>

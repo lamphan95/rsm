@@ -1205,3 +1205,6 @@ vn:
     google:
       connect: "Click OK to để kết nối tài khoản google."
       disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
+  salary_job: " (%{min_salary} %{sign} - %{max_salary} %{sign})"
+  salary_job_up_to: " (Hơn %{min_salary} %{sign})"
+  salary_offer: "%{salary} %{sign}"

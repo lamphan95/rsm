@@ -112,6 +112,8 @@ en:
       offers:
         imformation: "Imformation"
         offer: "Offer"
+        start_time: "Start time"
+        currency: "Currency"
       update:
         disconnect_gmail: "Please connect gmail to send mail."
     appointments:
@@ -269,6 +271,7 @@ en:
         job: "Job"
         next: "Next"
         expires_on: "Expires on"
+        currency: "Currency"
       job:
         expires_on: "Expires on"
         expired: "Expired"
@@ -427,7 +430,7 @@ en:
         delete: "Delete"
         post_job: "Post Job"
       show:
-        offer_content: "@company@ <br> Hello you @user@ <br> We would like to send you a mail to inform you that from @date_offer@ is your official time, the place is @offer_address@. Your starting salary is @ salary @, however this number may increase according to your capacity. Also we have some requirements such as @requirement@"
+        offer_content: "@company@ <br> Hello you @user@ <br> We would like to send you a mail to inform you that from @date_offer@ is your official time, the place is @offer_address@. Your starting salary is @ salary @ @currency_unit@, however this number may increase according to your capacity. Also we have some requirements such as @requirement@"
         content_template: "@company@</br>Hello you @user@</br>Please come at @start_time@ in @address@ to interview, later on @end_time@"
         of_company: " of company "
         template_error: "Can not find teample. Please try again later"

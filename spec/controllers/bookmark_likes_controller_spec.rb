@@ -5,8 +5,10 @@ RSpec.describe BookmarkLikesController, type: :controller do
   let(:company) {FactoryGirl.create :company}
   let(:branch) {FactoryGirl.create :branch, company_id: company.id}
   let(:category) {FactoryGirl.create :category, company_id: company.id}
+  let(:currency) {FactoryGirl.create :currency, company_id: company.id}
   let :job do
-    FactoryGirl.create :job, company_id: company.id, branch_id: branch.id, category_id: category.id
+    FactoryGirl.create :job, company_id: company.id, branch_id: branch.id,
+      category_id: category.id, currency_id: currency.id
   end
   let(:bookmark_like) {FactoryGirl.create :bookmark_like, job_id: job.id}
 
