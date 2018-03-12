@@ -41,6 +41,9 @@ vn:
       date_month_year_v1: "%d-%m-%Y"
       date_month_year_v3: "%m-%d-%Y"
       format_datetime_v2: "%H:%M %m-%d-%Y"
+      datetimepicker: "H:i d/m/Y"
+      datetimepicker_full_calendar: "HH:mm DD/MM/YYYY"
+      format_datetime_v3: "%H:%M %d/%m/%Y"
   datetime:
     distance_in_words:
       x_minutes:

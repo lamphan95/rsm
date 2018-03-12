@@ -2,7 +2,7 @@ var CompCalendar = function() {
   var calendarEvents  = $('.calendar-events');
   var initEvents = function() {
     $('.calendar-events').find('li').each(function() {
-      var eventObject = { title: $.trim($(this).text()), color: $(this).css('background-color') };
+      var eventObject = {is_new: true, title: $.trim($(this).text()), color: $(this).css('background-color')};
       $(this).data('eventObject', eventObject);
       $(this).draggable({ zIndex: 999, revert: true, revertDuration: 0 });
     });
@@ -35,6 +35,7 @@ var CompCalendar = function() {
 
       if(startValue !== null && startValue !== ''){
         event = {
+          is_new: true,
           title: eventName,
           start: moment(new Date(startDate)),
           end: moment(new Date(endDate)),
@@ -63,6 +64,11 @@ var CompCalendar = function() {
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
         },
+        timezone: false,
+        axisFormat: 'HH:mm',
+        timeFormat: {
+            agenda: 'HH:mm'
+        },
         eventDrop: function(event, delta, revertFunc) {
           var day = event.start.clone();
           day.startOf('day');
@@ -73,7 +79,6 @@ var CompCalendar = function() {
         firstDay: 1,
         editable: true,
         droppable: true,
-
         drop: function(date, allDay) {
           var originalEventObject = $(this).data('eventObject');
           var copiedEventObject = $.extend({}, originalEventObject);
@@ -90,8 +95,8 @@ var CompCalendar = function() {
             $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
             $(this).remove();
 
-            setValueDate('.apply-appointment-start-time', moment(startTime).format(I18n.t('time.formats.format_datetime_picker')));
-            setValueDate('.apply-appointment-end-time', moment(endTime).format(I18n.t('time.formats.format_datetime_picker')));
+            setValueDate('.apply-appointment-start-time', moment(startTime).format(I18n.t('time.formats.datetimepicker_full_calendar')));
+            setValueDate('.apply-appointment-end-time', moment(endTime).format(I18n.t('time.formats.datetimepicker_full_calendar')));
           }
         },
 
@@ -99,12 +104,12 @@ var CompCalendar = function() {
         eventRender: function( event, element, view ) {
           if(event.changing){
             if(event.start !== null) {
-              var startTime = event.start.format(I18n.t('time.formats.format_datetime_picker'));
+              var startTime = moment(event.start).format(I18n.t('time.formats.datetimepicker_full_calendar'));
               setValueDate ('.apply-appointment-start-time', startTime);
             }
 
             if(event.end !== null) {
-              var endTime = event.end.format(I18n.t('time.formats.format_datetime_picker'));
+              var endTime = moment(event.end).format(I18n.t('time.formats.datetimepicker_full_calendar'));
               setValueDate ('.apply-appointment-end-time', endTime);
             }
           }
@@ -129,8 +134,30 @@ var CompCalendar = function() {
         },
 
         eventResize: function(event, delta, revertFunc) {
-          var endTime = event.end.format(I18n.t('time.formats.format_datetime_picker'));
+          var endTime = event.end.format(I18n.t('time.formats.datetimepicker_full_calendar'));
           setValueDate ('.apply-appointment-end-time', endTime);
+        }
+      });
+
+      $('.apply-appointment-start-time').datetimepicker({
+        format: I18n.t('time.formats.datetimepicker'),
+        minDate: new Date(),
+        minTime: '7:45',
+        maxTime: '17:00',
+        step: 15,
+        onClose: function() {
+          after_close_datetimepicker_start();
+        }
+      });
+
+      $('.apply-appointment-end-time').datetimepicker({
+        format: I18n.t('time.formats.datetimepicker'),
+        minTime: '7:45',
+        maxTime: '17:00',
+        step: 15,
+        minDate: new Date(),
+        onClose: function() {
+          after_close_datetimepicker_end();
         }
       });
     }
@@ -164,8 +191,88 @@ function getEndDay(startTime){
   return new Date(y, m, d, 16, 45);
 }
 
+function getStartDay(endTime){
+  var d = endTime.getDate();
+  var m = endTime.getMonth();
+  var y = endTime.getFullYear();
+  return new Date(y, m, d, 7, 45);
+}
+
 function convertStringToTime(stringTime){
   if(stringTime !== null){
-    return Date.parse(stringTime)
+    return moment(stringTime, I18n.t('time.formats.datetimepicker_full_calendar')).toDate()
+  }
+}
+
+function convertTimetoString(time) {
+  if (time !== null) {
+    var d = time.getDate();
+    var m = time.getMonth() + 1;
+    var y = time.getFullYear();
+    var h = time.getHours();
+    var min = time.getMinutes();
+    return `${h}:${min} ${d}/${m}/${y}`;
+  }
+}
+
+function after_close_datetimepicker_start() {
+  var start_time = moment($('#apply_status_appointment_attributes_start_time').val(), I18n.t('time.formats.datetimepicker_full_calendar')).toDate();
+  if (start_time !== null) {
+    if ($('#apply_status_appointment_attributes_end_time').val() === '') {
+      var end_time = getEndDay(start_time);
+      $('#apply_status_appointment_attributes_end_time').val(convertTimetoString(end_time));
+      handling_event(start_time, end_time);
+    } else {
+      var end_time = moment($('#apply_status_appointment_attributes_end_time').val(), I18n.t('time.formats.datetimepicker_full_calendar')).toDate();
+
+      if (end_time < start_time) {
+        alertify.error(I18n.t('clubs.model.date1'));
+      }
+      else {
+        handling_event(start_time, end_time);
+      }
+    }
+  }
+}
+
+function after_close_datetimepicker_end() {
+  var end_time = moment($('#apply_status_appointment_attributes_end_time').val(), I18n.t('time.formats.datetimepicker_full_calendar')).toDate();
+
+  if (end_time !== null) {
+    if ($('#apply_status_appointment_attributes_start_time').val() === '') {
+      var start_time = getStartDay(end_time);
+      $('#apply_status_appointment_attributes_start_time').val(convertTimetoString(start_time));
+      handling_event(start_time, end_time);
+    } else {
+      var start_time = moment($('#apply_status_appointment_attributes_start_time').val(), I18n.t('time.formats.datetimepicker_full_calendar')).toDate();
+      if (end_time < start_time) {
+        alertify.error(I18n.t("clubs.model.date1"));
+      }
+      else {
+        handling_event(start_time, end_time);
+      }
+    }
+  }
+}
+
+function handling_event(start_time, end_time) {
+  var eventName = $('#apply-appointments').data('name');
+  var events = $('#calendar').fullCalendar('clientEvents');
+  var event = events.find(x => x.is_new === true);
+  if (event !== undefined) {
+    event.start = start_time;
+    event.end = end_time;
+    $('#calendar').fullCalendar('updateEvent', event);
+  } else {
+    var myEvent = {
+      is_new: true,
+      title: eventName,
+      start: start_time,
+      end: end_time,
+      allDay: false,
+      color: 'rgb(52, 152, 219);'
+    };
+    $('#calendar').fullCalendar('renderEvent', myEvent);
+    $('.calendar-events').hide();
   }
 }
