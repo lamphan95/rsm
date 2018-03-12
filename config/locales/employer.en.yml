@@ -69,6 +69,7 @@ en:
         introducing: "Introducing"
         status: "Status"
         applied: "Applied"
+        updated: "Update Date"
         action: "Action"
         not_applies: "No have applies"
         step: "Step"
