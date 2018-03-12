@@ -72,7 +72,7 @@ function check_value() {
     cv = $('#apply_cv')[0].files[0];
   }
   var introducing = CKEDITOR.instances['apply_information_introducing'].getData();
-  if (name == '' || email == '' || phone == '' || introducing == '' || (dom_cv != undefined && cv == undefined)) {
+  if (name == '' || email == '' || phone == '' || (dom_cv != undefined && cv == undefined)) {
     $('.next').attr('disabled', true);
   } else {
     $('.next').attr('disabled', false);
@@ -85,4 +85,18 @@ $(document).on('click', '.btn-choose-cv', function() {
 
 $(document).on('click', '.btn-change-cv', function() {
   $('#change-cv').click();
+});
+
+$(document).ready(function(){
+  var name = $('#apply_information_name').val();
+  var email = $('#apply_information_email').val();
+  var phone = $('#apply_information_phone').val();
+  var cv;
+  dom_cv = document.getElementById('apply_cv');
+  if (dom_cv != undefined) {
+    cv = $('#apply_cv')[0].files[0];
+  }
+  if (name == '' || email == '' || phone == '' || (dom_cv != undefined && cv == undefined)) {
+    $('.next').attr('disabled', true);
+  }
 });

@@ -59,7 +59,11 @@
       </div>
     <% end %>
     <div class="form-group">
-      <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols, rows: Settings.text_area.rows} %>
+      <label class="control-label ckeditor" for="apply_information_introducing">
+        <span><%= t ".introducing" %></span>
+      </label>
+      <%= p.input :introducing, as: :ckeditor, input_html: {cols: Settings.text_area.cols,
+        rows: Settings.text_area.rows}, label: false %>
       <div class="error-message p-l-10 error-introducing"></div>
     </div>
   <% end %>
