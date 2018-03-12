@@ -27,4 +27,5 @@
  *= require employers/histories_step
  *= require import_font_awesome
  *= require employers/employer_custom
+ *= require jquery.datetimepicker
  */

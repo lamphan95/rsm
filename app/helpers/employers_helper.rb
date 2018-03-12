@@ -66,7 +66,7 @@ module EmployersHelper
 
   def show_time time
     return if time.blank?
-    I18n.l time.to_s.to_datetime, format: :format_datetime
+    l time.to_s.to_datetime, format: :format_datetime_v3
   end
 
   def filter_object object
