@@ -11,7 +11,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
   before_action :load_members, only: [:create, :new]
   before_action :new_appointment, only: :new, if: :is_scheduled?
   before_action :load_appointments, only: [:create, :new, :update], if: :is_scheduled?
-  before_action :build_offer, only: :new, if: :is_offer_sent?
+  before_action :build_offer, :load_currency, only: :new, if: :is_offer_sent?
   before_action :load_offer_status_step_pending, :check_send_mail, only: %i(update create)
 
   def new
@@ -33,6 +33,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
           load_history_apply_status
           format.js{@message = t ".success"}
         else
+          load_currency
           build_email_sent unless had_build_email_sent?
           raise ActiveRecord::Rollback
           format.js{@errors = t ".fail"}
@@ -53,6 +54,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
           load_history_apply_status
           format.js{@message = t ".success"}
         else
+          load_currency
           build_email_sent unless had_build_email_sent?
           raise ActiveRecord::Rollback
           format.js{@errors = t ".fail"}
@@ -67,7 +69,7 @@ class  Employers::ApplyStatusesController < Employers::EmployersController
     params.require(:apply_status).permit :apply_id, :status_step_id, :is_current,
       appointment_attributes: %i(user_id address company_id start_time end_time type_appointment),
       email_sents_attributes: %i(title content type receiver_email sender_email _destroy user_id),
-      offers_attributes: %i(salary start_time address requirement user_id)
+      offers_attributes: %i(salary start_time currency_id address requirement user_id)
   end
 
   def create_inforappointments

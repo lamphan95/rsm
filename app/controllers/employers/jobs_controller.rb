@@ -1,10 +1,11 @@
 class Employers::JobsController < Employers::EmployersController
   before_action :create_job, only: %i(index new)
-  before_action :load_jobs, only: :index
+  before_action :load_jobs, only: %i(index create update)
   before_action :load_branches_for_select_box, only: :index
   before_action :load_category_for_select_box, only: :index
   before_action :load_questions, :build_surveys, only: :new
   before_action :check_params, :convert_params_questions, only: :create
+  before_action :load_currency, only: %i(edit new)
   before_action :load_status_step, only: %i(index update)
 
   def show
@@ -22,9 +23,10 @@ class Employers::JobsController < Employers::EmployersController
         @status_step = @company.company_steps.priority_lowest
           .last.step.status_steps
         @message = t ".success"
+      else
+        load_questions
+        load_currency
       end
-      load_questions
-      load_jobs
       format.js
     end
   end
@@ -53,10 +55,10 @@ class Employers::JobsController < Employers::EmployersController
         @message = t ".success"
         format.js
       else
+        load_currency
         format.js
       end
     end
-    load_jobs
   end
 
   private
@@ -70,12 +72,12 @@ class Employers::JobsController < Employers::EmployersController
     if params[:expire_on] == Settings.jobs.form.check_box_expire_on
       params.require(:job).permit :content, :name, :level, :language, :target, :end_time, :skill,
         :position, :company_id, :description, :min_salary, :max_salary, :branch_id, :category_id,
-        :survey_type, reward_benefits_attributes: %i(id content job_id _destroy),
+        :survey_type, :currency_id, reward_benefits_attributes: %i(id content job_id _destroy),
         surveys_attributes: [:id, :_destroy, question_attributes: %i(name company_id _destroy)]
     else
       params.require(:job).permit(:content, :name, :level, :language, :target, :skill,
         :position, :company_id, :description, :min_salary, :max_salary, :branch_id, :category_id,
-        :survey_type, reward_benefits_attributes: %i(id content job_id _destroy),
+        :survey_type, :currency_id, reward_benefits_attributes: %i(id content job_id _destroy),
         surveys_attributes: [:id, :_destroy, question_attributes: %i(name company_id _destroy)])
         .merge! end_time: nil
     end

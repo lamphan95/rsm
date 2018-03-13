@@ -5,11 +5,19 @@
     <%= f.input :name, label: t(".job_name"), input_html: {class: "job-create-name"} %>
     <%= f.input :description, label: t(".description"), as: :ckeditor %>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <%= f.input :min_salary %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <%= f.input :max_salary %>
+      </div>
+      <div class="col-md-2">
+        <label class="control-label">
+          <abbr title="required">*</abbr> <%= t ".currency" %>
+        </label>
+        <%= f.input :currency_id, as: :select, collection: @currencies.map{|x| [x.unit, x.id]},
+          label: false %>
+        <%= f.full_error :currency, class: "m-top-10-minus" %>
       </div>
     </div>
     <div class="form-group">

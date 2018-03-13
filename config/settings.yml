@@ -177,6 +177,7 @@ offer_address: "@offer_address@"
 requirement: "@requirement@"
 salary: "@salary@"
 date_offer: "@date_offer@"
+currency_unit: "@currency_unit@"
 input:
   row_10: 10
 priority:
@@ -205,3 +206,4 @@ omniauth:
   linkedin: "Linkedin"
 password:
   length: 10
+delimiter: "."

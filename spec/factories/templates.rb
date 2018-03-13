@@ -5,5 +5,6 @@ FactoryGirl.define do
     template_body "index.html"
     title "admin"
     association :user, factory: :user
+    association :company, factory: :company
   end
 end

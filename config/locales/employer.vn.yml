@@ -110,6 +110,11 @@ vn:
         disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
       update:
         disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
+      offers:
+        imformation: "Thông tin"
+        offer: "Đề nghị"
+        start_time: "Thời gian bắt đầu"
+        currency: "Đơn vị tiền tệ"
     appointments:
       appointment:
         click: "Nhấp chuột"
@@ -128,6 +133,7 @@ vn:
         please_selected: "--- Vui lòng chọn ---"
         interview: "Người phỏng vấn"
         approve: "Phê duyệt"
+        currency: "Đơn vị tiền tệ"
     branches:
     companies:
       activity_fields:
@@ -423,7 +429,9 @@ vn:
         delete: "Xóa"
         post_job: "Đăng việc"
       show:
-        offer_content: "@company@<br>Hello you @user@<br>Chúng tôi xin gửi mail cho bạn để thông báo rằng từ ngày @date_offer@ là thời gian bạn làm chính thức, địa điểm là @offer_address@. mức lương khởi điểm của bạn là @salary@, tuy nhiên con số này có thể tăng lên theo năng lực của bạn<br>Ngoài ra chúng tôi còn có yêu cầu một số thứ như @requirement@"
+        offer_content: "@company@<br>Hello you @user@<br>Chúng tôi xin gửi mail cho bạn để thông báo rằng từ ngày @date_offer@ là
+          thời gian bạn làm chính thức, địa điểm là @offer_address@. mức lương khởi điểm của bạn là @salary@ @currency_unit@,
+          tuy nhiên con số này có thể tăng lên theo năng lực của bạn<br>Ngoài ra chúng tôi còn có yêu cầu một số thứ như @requirement@"
         content_template: "@company@</br>Hello you @user@</br> Vui lòng đến vào lúc @start_time@ tại @address@  để phỏng vấn, chậm nhất là vào @end_time@"
         of_company: " của công ty "
         template_error: "Không thể tìm thấy mẫu. Hãy thử lại sau"

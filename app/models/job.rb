@@ -4,6 +4,10 @@ class Job < ApplicationRecord
 
   belongs_to :user
   belongs_to :company
+  belongs_to :branch
+  belongs_to :category
+  belongs_to :currency
+
   has_many :applies, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
   has_many :bookmark_likes, dependent: :destroy
@@ -11,8 +15,6 @@ class Job < ApplicationRecord
   has_many :apply_statuses, through: :applies
   has_many :surveys, dependent: :destroy
   has_many :questions, through: :surveys
-  belongs_to :branch
-  belongs_to :category
 
   after_create :create_survey, unless: :survey_not_exist?
 
@@ -47,6 +49,7 @@ class Job < ApplicationRecord
   scope :expired_jobs, -> date_compare {where "end_time < ?", date_compare}
 
   delegate :id, to: :company, prefix: true, allow_nil: true
+  delegate :sign, to: :currency, prefix: true, allow_nil: true
 
   include PublicActivity::Model
 

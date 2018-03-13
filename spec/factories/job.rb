@@ -11,5 +11,6 @@ FactoryGirl.define do
     target 1
     description Faker::Lorem.paragraphs
     association :user, factory: :user
+    association :currency, factory: :currency
    end
 end

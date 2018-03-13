@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :user
   belongs_to :apply_status
+  belongs_to :currency
 
   validates :salary, presence: true, numericality: { greater_than: 0}
   validates :start_time, presence: true
@@ -8,6 +9,7 @@ class Offer < ApplicationRecord
   validate :start_time_cannot_be_in_the_past, if: :start_time?
 
   delegate :name, to: :user, prefix: true, allow_nil: true
+  delegate :sign, to: :currency, prefix: true, allow_nil: :true
 
   scope :get_newest, ->{order created_at: :desc}
 

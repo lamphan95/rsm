@@ -4,6 +4,7 @@ RSpec.describe Offer, type: :model do
   context "associations" do
     it {is_expected.to belong_to :user}
     it {is_expected.to belong_to :apply_status}
+    it {is_expected.to belong_to :currency}
   end
 
   context "columns" do
@@ -12,6 +13,7 @@ RSpec.describe Offer, type: :model do
     it {is_expected.to have_db_column(:address).of_type :text}
     it {is_expected.to have_db_column(:requirement).of_type :text}
     it {is_expected.to have_db_column(:user_id).of_type :integer}
+    it {is_expected.to have_db_column(:currency_id).of_type :integer}
     it {is_expected.to have_db_column(:apply_status_id).of_type :integer}
   end
 
