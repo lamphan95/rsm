@@ -1,6 +1,6 @@
-<strong>
-  <span class="text-danger">&nbsp;*</span><%= t ".information" %>
-</strong><br>
+<label class="control-label ">
+  <abbr title="required">*</abbr> <%= t ".information" %>
+</label><br>
 <div class="table-responsive">
   <%= f.simple_fields_for :information do |p| %>
     <div class="form-group form-custom input-inline width-inline">
@@ -15,6 +15,7 @@
         <span class="error-message-name"></span>
       </div>
     </div>
+
     <div class="form-group form-custom input-inline width-inline">
       <div class="col-xs-12">
         <div class="input-group">
@@ -25,6 +26,7 @@
         <span class="error-message-email"></span>
       </div>
     </div>
+
     <div class="form-group form-custom input-inline width-inline">
       <div class="col-xs-12">
         <div class="input-group">
@@ -35,32 +37,33 @@
         <span class="error-message-phone"></span>
       </div>
     </div>
+
     <table class="table table-condensed table-responsive table-user-information">
       <tbody>
         <tr>
           <td colspan="2" class="no-boder">
-            <strong>
-              <span class="text-primary"></span>
-              <span class="text-danger">&nbsp;*</span><%= t ".introducing" %>
-            </strong>
-            <%= p.text_area :introducing,
-              class: "form-control form-custom ckeditor input-introducing",
-              cols: Settings.text_area.cols, rows: Settings.text_area.rows %>
+            <label class="control-label ">
+              <%= t ".introducing" %>
+            </label>
+            <%= p.input :introducing, as: :ckeditor, label: false  %>
             <span class="error-message-introducing input-introducing"></span>
           </td>
         </tr>
         <tr>
           <td>
-            <strong>
-              <span class="glyphicon glyphicon-tag text-primary"></span>
-              <span class="text-danger">&nbsp;*</span><%= t ".new_cv" %>
-            </strong>
+            <label class="control-label ">
+              <abbr title="required">*</abbr> <%= t ".new_cv" %>
+            </label>
           </td>
           <td>
-            <span class="btn btn-default btn-file">
-              <%= f.file_field :cv, id: "file_cv", class: "transparent absolute" %>
-            </span>
-            <span class="error-message-cv"></span>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="btn btn-default btn-file">
+                  <%= f.file_field :cv, id: "file_cv" %>
+                </span>
+                <span class="error-message-cv"></span>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

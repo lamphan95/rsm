@@ -1181,6 +1181,7 @@ en:
     compulsory: "Compulsory"
     optional: "Optional"
   no_question_choosen: "No questions were choosen."
+  no_job_choosen: "No job were choosen."
   start_time_cannot_be_in_the_past: "Start time cannot be in the past"
   date_format: "%d-%m-%Y"
   oauth:
@@ -1190,4 +1191,3 @@ en:
   salary_job: " (%{min_salary} %{sign} - %{max_salary} %{sign})"
   salary_job_up_to: " (Up To %{min_salary} %{sign})"
   salary_offer: "%{salary} %{sign}"
-

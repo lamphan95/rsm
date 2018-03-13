@@ -16,9 +16,9 @@
       .css('border-color','red','important')
   <% end %>
   alertify.error('<%= @error %>');
-<% elsif @message %>
+<% elsif @success %>
   $('#add-apply').modal('hide');
-  alertify.success('<%= @message %>');
-<% else %>
+  alertify.success('<%= @success %>');
+<% elsif @error %>
   alertify.error('<%= @error %>');
 <% end %>

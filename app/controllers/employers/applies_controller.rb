@@ -5,7 +5,6 @@ class Employers::AppliesController < Employers::EmployersController
     :load_prev_step, :build_apply_statuses, :load_status_step_scheduled,
     :load_statuses_by_current_step, :build_next_and_prev_apply_statuses,
     :load_apply_statuses, :load_history_apply_status, only: %i(show update)
-  before_action :permission_employer_company, only: :create
   before_action :load_steps, only: :index
   before_action :load_statuses, only: :index
   before_action :load_offer_status_step_pending, only: %i(show update)
@@ -32,24 +31,21 @@ class Employers::AppliesController < Employers::EmployersController
   end
 
   def new
-    company_manager = Member.search_relation(Member.roles[:employer], current_user.id)
-      .pluck :company_id
-    @q = Job.job_company(company_manager).search params[:q]
+    @q = @company.jobs.search params[:q]
     @jobs = @q.result
   end
 
   def create
-    respond_to do |format|
-      unless @error
-        @apply.information = params[:apply][:information].permit!.to_h
-        if @apply.save
-          @message = t ".success"
-        else
-          @error = t ".failure"
-        end
-      end
-      format.js
+    information = params[:apply][:information].permit!.to_h
+    job_ids = params[:job_ids]
+
+    if job_ids[1].blank?
+      save_apply information
+    else
+      import_applies job_ids, information
     end
+  rescue ActiveRecord::RecordInvalid
+    @error = t ".failure"
   end
 
   def update
@@ -74,20 +70,32 @@ class Employers::AppliesController < Employers::EmployersController
       .merge! apply_statuses_attributes: [status_step_id: status_id, is_current: :current]
   end
 
-  def permission_employer_company
-    company_manager = Member.search_relation(Member.roles[:employer], current_user.id)
-      .pluck :company_id
-    @apply = Apply.new apply_params
-    if @apply.job_id
-      return if !@apply.user_id && company_manager.include?(@apply.job.company_id)
-      @error = t "company_mailer.fail"
-    else
-      @error = t ".job_nil"
-    end
-  end
-
   def get_status
     return Apply.statuses["unlock_apply"] if @apply.lock_apply?
     Apply.statuses["lock_apply"]
+  end
+
+  def save_apply information
+    @apply = Apply.new apply_params
+    @apply.information = information
+    if @apply.save
+      @success = t ".success"
+    else
+      @error = t ".failure"
+    end
+  end
+
+  def import_applies job_ids, information
+    Apply.transaction requires_new: true do
+      applies = []
+      job_ids.each do |id|
+        next if id.blank?
+        params[:apply][:job_id] = id
+        apply = Apply.new apply_params
+        apply.information = information
+        apply.save!
+      end
+      @success = t ".success"
+    end
   end
 end
