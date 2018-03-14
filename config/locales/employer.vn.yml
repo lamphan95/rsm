@@ -270,7 +270,9 @@ vn:
         questions: "Câu hỏi khảo sát"
         job: "Việc làm"
         next: "Tiếp"
+        preview: "Xem lại"
         expires_on: "Hết hạn"
+        back: "Trở về"
       job:
         expires_on: "Hết hạn"
         expired: "hết hạn"
@@ -318,6 +320,19 @@ vn:
         add_question: "Thêm câu hỏi"
       tag_question:
         remove_tag: "Xóa thẻ"
+      preview_job:
+        expire_at: "Hết hạn vào lúc"
+        reward_benefit: "Lợi ích"
+        job_description: "Mô tả công việc"
+        job_requirements: "Yêu cầu công việc"
+        job_category: "Loại công việc"
+        target: "Mục tiêu"
+        position: "Vị trí"
+        form: "Form"
+        level: "Yêu cầu"
+        skill: "Kĩ năng"
+        language: "Ngôn ngữ"
+        survey: "Khảo sát"
     members:
       form:
         name: "Tên"

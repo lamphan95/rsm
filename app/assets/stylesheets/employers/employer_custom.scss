@@ -433,3 +433,231 @@ a.disabled {
 .h-569 {
   min-height: 569px;
 }
+
+.w-90 {
+  width: 90px;
+}
+
+.job-header-info {
+  .time_ago {
+    color: $gray-medium-1;
+  }
+}
+
+.job-site-section-top {
+  height: 84px;
+  padding-top: 0px;
+}
+
+.job_requirement {
+  li {
+    padding: 0 10px;
+    font-size: 15px;
+    text-transform: uppercase;
+    list-style-type: none;
+    margin: 10px 0px 10px 0px;
+  }
+  ul {
+    padding-left: 0px;
+  }
+  i {
+    margin-right: 5px;
+  }
+}
+
+.job_content {
+  p {
+    white-space: pre-line;
+    font-size: 15px
+  }
+
+  .list:before {
+    content: "- ";
+    text-indent: -5px;
+  }
+}
+
+.page-job-detail {
+  position: relative;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.page-job-detail.page-job-detail_no-background .page-background {
+  background-image: linear-gradient(-180deg, $light-blue-1 2%, $light-blue-2 100%);
+  height: 160px;
+}
+
+.page-job-detail .page-background {
+  height: 238px;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  background-position: top center;
+  background-size: cover;
+}
+.page-job-detail .page-background2 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  background-position: top center;
+  background-size: cover;
+}
+
+.page-job-detail.page-job-detail_no-background .page-background2 {
+  background-color: $grey-light1;
+  margin-top: 200px;
+  height: 80%;
+  z-index: 0;
+}
+
+.page-job-detail.page-job-detail_no-background .page-job-detail__header {
+  margin-top: 130px;
+}
+
+.page-job-detail__detail .tab-pane-job-info .tab-sidebar {
+  left: 70%;
+}
+
+.page-job-detail__detail .tab-sidebar {
+  width: 30%;
+}
+
+.page-job-detail__detail .box-summary {
+  border: 1px solid rgba(0, 185, 242, 0.5);
+  padding: 23px;
+  background-color: $blue-super-light;
+  border-radius: 3px;
+}
+
+.page-job-detail__detail .tab-pane-job-info .tab-main-content {
+  right: 30%;
+}
+
+.page-job-detail__detail .tab-main-content {
+  width: 70%;
+  padding-right: 40px;
+}
+
+.page-job-detail__header .logo-wrapper {
+  height: auto;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  img {
+    max-height: 105px;
+  }
+}
+
+.page-job-detail__detail h2 {
+  font-size: 21px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: Roboto, Arial, sans-serif;
+  margin-top: 12px;
+  margin-bottom: 17px;
+  border-bottom: 2px solid rgba(206, 211, 213, 0.5);
+}
+
+.page-job-detail__detail .nav-tabs li a {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 100;
+  font-size: 13px;
+  border: 0;
+  line-height: 17px;
+  padding: 12px 35px 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background: $grey-light1;
+  color: $gray-dark-hard-2
+}
+
+.page-job-detail__detail .presentation .nav>li.active {
+  background-color: $gray-light-1
+}
+
+.page-job-detail__detail .box-summary .summary-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(206, 211, 213, 0.5);
+}
+
+.box-summary .summary-content .content-label {
+  text-transform: uppercase;
+  color: $gray-medium-1;
+  display: block;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.page-job-detail__header .job-title {
+  font-weight: 500;
+  font-size: 27px;
+  margin-bottom: 8px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.summary-icon {
+  i {
+    font-size: 30px;
+  }
+}
+
+.page-job-detail__header .company-name {
+  text-transform: uppercase;
+  display: inline;
+}
+
+.col-btn {
+  display: flex;
+  align-items: center;
+}
+
+.job-apply-btn {
+  .post-job {
+    margin-left: 16px;
+    margin-bottom: 10px;
+    width: 183px;
+    background-color: $orange-light;
+    border-color: $orange-light;
+    color: $white;
+    font-size: 20px;
+    left: 10px;
+  }
+  .lock{
+    background: $white;
+    font-size: 16px;
+    color: $light-yellow;
+    margin-top: 10px;
+  }
+  .post-job:focus, .btn-primary:hover, .post-job:active, .post-job.active, .open .post-job.dropdown-toggle {
+    background-color: $orange-medium;
+    border-color: $orange-dark;
+    color: $white;
+  }
+}
+.label-applied{
+  width: 170px;
+  background-color: $white;
+  border-color: $orange-light;
+  color: $orange-light;
+  font-size: 20px;
+  left: 10px;
+}
+.salary {
+  .text-primary {
+    color: $orange-light;
+    font-size: 25px;
+  }
+}
+.banner-top {
+  img {
+    width: 100%;
+  }
+}
+.m-t-22 {
+  margin-top: 22px !important;
+}
+.h-150 {
+  min-height: 150px;
+}

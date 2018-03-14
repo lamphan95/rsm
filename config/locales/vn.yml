@@ -1205,7 +1205,11 @@ vn:
     google:
       connect: "Click OK to để kết nối tài khoản google."
       disconnect_gmail: "Vui lòng kết nối với tài khoản gmail để gửi mail."
-  salary_job: " (%{min_salary} %{sign} - %{max_salary} %{sign})"
-  salary_job_up_to: " (Hơn %{min_salary} %{sign})"
+  salary_job: " %{min_salary} %{sign} - %{max_salary} %{sign}"
+  salary_job_up_to: " Hơn %{min_salary} %{sign}"
   salary_offer: "%{salary} %{sign}"
   no_job_choosen: "Không có công việc nào đưọc chọn."
+  none_content: "Không có nội dung."
+  branch_in: "Chi Nhánh tại "
+  up_to: "Trên "
+  expire_at: "Hết hạn lúc "

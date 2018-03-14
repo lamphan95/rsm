@@ -1,68 +1,130 @@
+<%= stylesheet_link_tag "employer/jquery-ui" %>
 <%= stylesheet_link_tag "survey" %>
-<div class="job-form">
-  <%= simple_form_for [:employers, @job], remote: true do |f| %>
+<%= simple_form_for [:employers, @job], remote: true do |f| %>
+  <div class="job-form">
     <%= f.hidden_field :company_id %>
-    <%= f.input :name, label: t(".job_name"), input_html: {class: "job-create-name"} %>
-    <%= f.input :description, label: t(".description"), as: :ckeditor %>
+    <div class="col-md-12">
+      <%= f.input :name, label: t(".job_name"), input_html: {class: "job-create-name"} %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :description, label: t(".description"), as: :ckeditor %>
+    </div>
+
     <div class="row">
-      <div class="col-md-5">
-        <%= f.input :min_salary %>
+      <div class="col-md-12">
+        <div class="col-md-5">
+          <%= f.input :min_salary %>
+        </div>
+        <div class="col-md-5">
+          <%= f.input :max_salary %>
+        </div>
+        <div class="col-md-2">
+          <label class="control-label">
+            <abbr title="required">*</abbr> <%= t ".currency" %>
+          </label>
+          <%= f.input :currency_id, as: :select, collection: @currencies.map{|currency| [currency.unit, currency.id]},
+            label: false %>
+          <%= f.full_error :currency, class: "m-top-10-minus" %>
+        </div>
       </div>
-      <div class="col-md-5">
-        <%= f.input :max_salary %>
-      </div>
-      <div class="col-md-2">
-        <label class="control-label">
-          <abbr title="required">*</abbr> <%= t ".currency" %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="custom-checkbox m-l-15">
+          <%= check_box_tag :expire_on, nil, @job.end_time.present? %>
+          <span><%= t ".expires_on" %></span>
         </label>
-        <%= f.input :currency_id, as: :select, collection: @currencies.map{|x| [x.unit, x.id]},
-          label: false %>
-        <%= f.full_error :currency, class: "m-top-10-minus" %>
+        <div class="display-job-end-time <%= @job.end_time.present? ? '' : 'display-none' %>">
+          <%= f.input :end_time, as: :string, label: false, input_html: {class: "datepick", id: "end-s"} %>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <label class="custom-checkbox m-l-15">
-        <%= check_box_tag :expire_on, nil, @job.end_time.present? %>
-        <span><%= t ".expires_on" %></span>
+
+    <div class="col-md-12">
+      <label class="control-label">
+        <%= t ".benefit" %>
       </label>
-      <div class="display-job-end-time <%= @job.end_time.present? ? '' : 'display-none' %>">
-        <%= f.input :end_time, label: false %>
+      <div class="reward_benefits">
+        <%= f.fields_for :reward_benefits do |reward| %>
+          <%= render "reward_benefit_fields", f: reward %>
+        <% end %>
+        <div class="links add_benefit_links">
+          <%= link_to_add_association t(".add_benefit"), f, :reward_benefits,
+            class: "btn btn-primary", partial: "reward_benefit_fields" %>
+        </div>
       </div>
     </div>
-    <p><strong><%= t ".benefit" %></strong></p>
-    <div class="reward_benefits">
-      <%= f.fields_for :reward_benefits do |reward| %>
-        <%= render "reward_benefit_fields", f: reward %>
+
+    <div class="col-md-12">
+      <%= f.input :target, label: t(".target"), input_html: {type: "number"} %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :language, label: t(".foreign_language") %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :position, label: t(".position") %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :level, label: t(".level") %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :skill, label: t(".skill") %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :content, label: t(".request"), as: :ckeditor,
+        input_html: {class: "job-create-content"} %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.input :branch_id do %>
+        <%= f.select :branch_id, @company.branches.map{|r| [r.district, r.id]},
+          {include_blank: t(".please_selected")}, class: "form-control" %>
       <% end %>
-      <div class="links add_benefit_links">
-        <%= link_to_add_association t(".add_benefit"), f, :reward_benefits,
-          class: "btn btn-primary", partial: "reward_benefit_fields" %>
-      </div>
     </div>
-    <%= f.input :target, label: t(".target"), input_html: {type: "number"} %>
-    <%= f.input :language, label: t(".foreign_language") %>
-    <%= f.input :position, label: t(".position") %>
-    <%= f.input :level, label: t(".level") %>
-    <%= f.input :skill, label: t(".skill") %>
-    <%= f.input :content, label: t(".request"), as: :ckeditor,
-      input_html: {class: "job-create-content"} %>
-    <%= f.input :branch_id do %>
-      <%= f.select :branch_id, @company.branches.map{|r| [r.district, r.id]},
-        {include_blank: t(".please_selected")}, class: "form-control" %>
-    <% end %>
-    <%= f.input :category_id do %>
-      <%= f.select :category_id, @company.categories.map{|r| [r.name, r.id]},
-        {include_blank: t(".please_selected")}, class: "form-control" %>
-    <% end %>
-    <% if @job.new_record? %>
-      <%= render partial: "add_survey", locals: {f: f} %>
-    <% end %>
-    <center>
-      <div class="centerize create-job-btn">
-        <%= f.button :submit, label: t("jobs.form.save_job"),
-          class: "btn btn-primary btn-sm w-105 m-top-20" %>
-      </div>
-    </center>
+
+    <div class="col-md-12">
+      <%= f.input :category_id do %>
+        <%= f.select :category_id, @company.categories.map{|r| [r.name, r.id]},
+          {include_blank: t(".please_selected")}, class: "form-control" %>
+      <% end %>
+    </div>
+
+    <div class="col-md-12">
+      <% if @job.new_record? %>
+        <%= render partial: "add_survey", locals: {f: f} %>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @job.new_record? %>
+    <div id="preview" class="display-none">
+      <%= render "preview_job" %>
+    </div>
   <% end %>
-</div>
+
+ <div class="row">
+    <div class="col-md-12">
+      <center>
+        <%= f.button :submit, label: t("jobs.form.save_job"),
+          class: "btn btn-info btn-md w-90 m-top-20" %>
+        <% if @job.new_record? %>
+          <%= link_to t(".preview"), "javascript:void(0)", id: "btn-preview",
+            class: "btn btn-info btn-md w-90 m-top-20", disabled: "disabled" %>
+
+          <%= link_to t(".back"), "javascript:void(0)", id: "btn-back",
+            class: "btn btn-info btn-md w-90 m-top-20 display-none" %>
+        <% end %>
+      </center>
+    </div>
+  </div>
+<% end %>
 <%= javascript_include_tag "survey" %>
+<%= javascript_include_tag "employers/preview" %>
+<%= javascript_include_tag "format_datepicker" %>

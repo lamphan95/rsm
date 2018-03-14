@@ -1,0 +1,151 @@
+<section class="page-job-detail__header">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-2 col-logo">
+        <span class="center-block text-center logo-wrapper">
+          <%= image_tag @company.logo.url, class: "img-responsive" %>
+        </span>
+      </div>
+      <div class="col-md-10">
+        <div class="job-header-info">
+          <h1 class="text-info job-title"></h1>
+
+          <div class="row">
+            <div class="col-sm-12 lount">
+              <span class="company-name">
+                <a href="/companies/1"><%= @company.name %></a>
+              </span>
+              <span class="text-primary branch-name"></span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <span>
+                <strong class="text-warning text-lg salary"></strong>
+              </span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <i class="text-muted" id="job-expried"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-job-detail__detail">
+  <div class="row">
+    <div class="col-md-8  col-sm-12 tab-main-content">
+      <div class="job-description h-150">
+        <h2><%= t ".reward_benefit" %></h2>
+        <div id="reward-benefit"></div>
+      </div>
+      <div class="job-description mobile-box">
+        <h2><%= t ".job_description" %></h2>
+        <div class="job_content h-150" id="description-job"></div>
+      </div>
+      <div class="job-requirements mobile-box">
+        <h2><%= t ".job_requirements" %></h2>
+        <div class="job_content h-150" id="requirement-job"></div>
+      </div>
+    </div>
+
+    <div class="col-md-4 col-sm-12 tab-sidebar">
+      <div class="mobile-box">
+        <div class="box-summary link-list">
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".job_category" %></span>
+              <span class="content" id="job-category"></span>
+            </div>
+          </div>
+
+           <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-bullseye" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".target" %></span>
+              <span class="content" id="target-job"></span>
+            </div>
+          </div>
+
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".position" %></span>
+              <span class="content" id="position-job"></span>
+            </div>
+          </div>
+
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-calendar-times-o "></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".form" %></span>
+              <span class="content"></span>
+            </div>
+          </div>
+
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".level" %></span>
+              <span class="content" id="level-job"></span>
+            </div>
+          </div>
+
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".skill" %></span>
+              <span class="content" id="skill-job"></span>
+            </div>
+          </div>
+
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-language" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".language" %></span>
+              <span class="content" id="language-job">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div><br>
+
+      <div class="mobile-box">
+        <div class="box-summary link-list">
+          <div class="row summary-item">
+            <div class="col-xs-2 summary-icon">
+              <i class="fa fa-tags" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-10 summary-content">
+              <span class="content-label font-right"><%= t ".survey" %></span>
+              <span class="content" id="survey-job"></span>
+            </div>
+          </div>
+          <div class="row summary-question">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
