@@ -4,7 +4,6 @@ class CreateMicroposts < ActiveRecord::Migration[5.1]
       t.text :content
       t.string :picture
       t.references :user, foreign_key: true
-      t.datetime :deleted_at
 
       t.timestamps
     end

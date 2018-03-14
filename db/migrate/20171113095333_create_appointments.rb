@@ -6,7 +6,6 @@ class CreateAppointments < ActiveRecord::Migration[5.1]
       t.datetime :end_time
       t.integer :type_appointment
       t.references :company, foreign_key: true
-      t.datetime :deleted_at
 
       t.timestamps
     end

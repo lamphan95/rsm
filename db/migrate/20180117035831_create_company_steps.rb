@@ -5,7 +5,6 @@ class CreateCompanySteps < ActiveRecord::Migration[5.1]
       t.references :company, foreign_key: true
       t.integer :priority
       t.datetime :deleted_at
-      t.datetime :deleted_at
 
       t.timestamps
     end

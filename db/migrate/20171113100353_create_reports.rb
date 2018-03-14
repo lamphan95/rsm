@@ -5,7 +5,6 @@ class CreateReports < ActiveRecord::Migration[5.1]
       t.text :reason
       t.integer :reporter_id
       t.integer :reported_id
-      t.datetime :deleted_at
 
       t.timestamps
     end

@@ -5,7 +5,6 @@ class CreateProjectMembers < ActiveRecord::Migration[5.1]
       t.references :member, foreign_key: true
       t.references :project, foreign_key: true
       t.index [:member_id, :project_id], unique: true
-      t.datetime :deleted_at
 
       t.timestamps
     end

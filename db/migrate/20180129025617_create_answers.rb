@@ -4,7 +4,6 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.references :apply
       t.references :survey
       t.text :name
-      t.datetime :deleted_at
 
       t.timestamps
     end
