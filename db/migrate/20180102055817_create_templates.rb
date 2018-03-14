@@ -5,7 +5,6 @@ class CreateTemplates < ActiveRecord::Migration[5.1]
       t.string :name
       t.references :user, foreign_key: true
       t.integer :type_of, default: 1
-      t.datetime :deleted_at
 
       t.timestamps
     end

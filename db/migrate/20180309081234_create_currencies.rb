@@ -5,7 +5,6 @@ class CreateCurrencies < ActiveRecord::Migration[5.1]
       t.string :unit
       t.text :sign
       t.references :company
-      t.datetime :deleted_at
 
       t.timestamps
     end

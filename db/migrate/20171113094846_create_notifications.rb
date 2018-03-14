@@ -6,7 +6,6 @@ class CreateNotifications < ActiveRecord::Migration[5.1]
       t.integer :type
       t.integer :url_id
       t.references :user, foreign_key: true
-      t.datetime :deleted_at
 
       t.timestamps
     end

@@ -8,7 +8,6 @@ class CreateOffers < ActiveRecord::Migration[5.1]
       t.date :start_time
       t.text :address
       t.text :requirement
-      t.datetime :deleted_at
 
       t.timestamps
     end

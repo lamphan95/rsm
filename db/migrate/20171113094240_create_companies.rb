@@ -5,7 +5,6 @@ class CreateCompanies < ActiveRecord::Migration[5.1]
       t.text :address
       t.string :phone
       t.string :majors
-      t.datetime :deleted_at
 
       t.timestamps
     end
