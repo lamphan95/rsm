@@ -1,4 +1,5 @@
 class Apply < ApplicationRecord
+  acts_as_paranoid
   attr_accessor :user, :key_apply
 
   belongs_to :job

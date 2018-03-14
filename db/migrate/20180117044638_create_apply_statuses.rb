@@ -5,6 +5,8 @@ class CreateApplyStatuses < ActiveRecord::Migration[5.1]
       t.references :status_step, foreign_key: true
       t.text :content_email
       t.integer :is_current
+      t.datetime :deleted_at
+
       t.timestamps
     end
   end

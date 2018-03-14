@@ -30,14 +30,14 @@ $(document).on('change', '.template-user', function(){
     start_time: data_apply.get('apply_status[appointment_attributes][start_time]'),
     end_time: data_apply.get('apply_status[appointment_attributes][end_time]'),
     name: data_apply.get('user_name'),
-    salary: data_apply.get(`apply_status[offers_attributes][${size}][salary]`),
-    offer_address: data_apply.get(`apply_status[offers_attributes][${size}][address]`),
-    date_offer: data_apply.get(`apply_status[offers_attributes][${size}][start_time]`),
-    currency_id: data_apply.get(`apply_status[offers_attributes][${size}][currency_id]`)
+    salary: data_apply.get('apply_status[offers_attributes][' + size + '][salary]'),
+    offer_address: data_apply.get('apply_status[offers_attributes][' + size + '][address]'),
+    date_offer: data_apply.get('apply_status[offers_attributes][' + size + '][start_time]'),
+    currency_id: data_apply.get('apply_status[offers_attributes][' +size + '][currency_id]')
   };
 
-  if (CKEDITOR.instances[`apply_status_offers_attributes_${size}_requirement`] !== undefined) {
-    data.requirement = CKEDITOR.instances[`apply_status_offers_attributes_${size}_requirement`].getData()
+  if (CKEDITOR.instances['apply_status_offers_attributes_' + size + '_requirement'] !== undefined) {
+    data.requirement = CKEDITOR.instances['apply_status_offers_attributes_' + size + '_requirement'].getData()
   };
 
   $.ajax('/employers/templates/' + template, {

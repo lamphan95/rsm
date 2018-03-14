@@ -5,6 +5,7 @@ class CreateApplies < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.references :job, foreign_key: true
       t.index [:user_id, :job_id], unique: true
+      t.datetime :deleted_at
       t.timestamps
     end
   end
