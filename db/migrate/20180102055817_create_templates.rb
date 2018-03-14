@@ -4,7 +4,6 @@ class CreateTemplates < ActiveRecord::Migration[5.1]
       t.text :template_body
       t.string :name
       t.references :user, foreign_key: true
-      t.references :company, foreign_key: true
       t.integer :type_of, default: 1
 
       t.timestamps
