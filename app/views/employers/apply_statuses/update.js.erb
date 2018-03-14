@@ -15,6 +15,7 @@
 <% elsif @message.present? %>
   $('#apply-handling-content').html('');
   $('#step-history').html('<%= j render partial: "employers/applies/step_history", locals:{data_step: @data_step, status_step: @current_apply_status.status_step, apply_status: @current_apply_status, apply: @apply, current_apply_status: @current_apply_status} %>');
+  $('#apply-cv-content').html('<%= j render partial: "employers/applies/apply_cv"%>');
   alertify.success('<%= @message %>');
 <% else %>
   var open_email = $('#myonoffswitch_email').is(':checked');

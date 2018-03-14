@@ -1,0 +1,13 @@
+<% if @current_step.is_step? Settings.step.review %>
+  <div class="block block-content area-progress">
+    <div class="block-title">
+      <h2>
+        <i class="fa fa-tasks"></i>
+        <strong><%= t "employers.cv" %></strong>
+      </h2>
+    </div>
+    <div>
+      <iframe src= <%= "#{@apply.cv.url}" %>></iframe>
+    </div>
+  </div>
+<% end %>
