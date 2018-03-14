@@ -22,6 +22,7 @@
   $('#area-hisory-apply-load').html('<%= j render partial: "employers/apply_statuses/apply_status", collection: @apply_statuses, as: :apply_status %>');
   $('#pagination-history-apply').html('<%= j paginate @apply_statuses %>');
   $('#step-history').html('<%= j render partial: "employers/applies/step_history", locals:{data_step: @data_step, status_step: @current_apply_status.status_step, apply_status: @current_apply_status, apply: @apply, current_apply_status: @current_apply_status} %>');
+  $('#apply-cv-content').html('<%= j render partial: "employers/applies/apply_cv"%>');
   alertify.success('<%= @message %>');
   $('.btn-handling').html('<%= j render "employers/applies/apply_btn" %>');
 <% else %>

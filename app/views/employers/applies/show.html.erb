@@ -96,6 +96,10 @@
     <div id = "apply-handling-content" class="row apply-content">
     </div>
 
+      <div id = "apply-cv-content" class="cv-content">
+        <%= render "apply_cv" %>
+      </div>
+
     <div id="step-history" class="row">
       <%= render partial: "employers/applies/step_history", locals:
         {data_step: @data_step, status_step: @data_step[:status_step_lastest],
