@@ -1,4 +1,6 @@
 class EmailSent < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :apply_status, class_name: ApplyStatus.name, foreign_key: :type_id, optional: true
   belongs_to :user
 

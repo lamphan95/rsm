@@ -1,4 +1,6 @@
 class ApplyStatus < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :apply
   belongs_to :status_step
 

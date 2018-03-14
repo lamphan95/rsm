@@ -1,4 +1,6 @@
 class Inforappointment < ApplicationRecord
+  acts_as_paranoid
+
   attr_accessor :activation_token
 
   belongs_to :user

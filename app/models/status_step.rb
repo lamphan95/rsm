@@ -1,4 +1,6 @@
 class StatusStep < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :step
 
   scope :load_by, -> code_text do

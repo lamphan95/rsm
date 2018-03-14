@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :info
       t.references :company, foreign_key: true
+      t.datetime :deleted_at
 
       t.timestamps
     end

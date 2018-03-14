@@ -2,6 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
     :rememberable, :trackable, :validatable, :omniauthable,
     omniauth_providers: %i(facebook google_oauth2 linkedin)
+  acts_as_paranoid
 
   has_many :achievements, dependent: :destroy
   has_many :clubs, dependent: :destroy

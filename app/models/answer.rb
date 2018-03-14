@@ -1,4 +1,6 @@
 class Answer < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :apply, required: true
   belongs_to :survey, required: true
 

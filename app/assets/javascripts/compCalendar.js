@@ -211,7 +211,7 @@ function convertTimetoString(time) {
     var y = time.getFullYear();
     var h = time.getHours();
     var min = time.getMinutes();
-    return `${h}:${min} ${d}/${m}/${y}`;
+    return h + ':' + min + ' ' + d + '/' + m + '/' + y;
   }
 }
 

@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :company
   belongs_to :apply_status
   has_many :inforappointments, dependent: :destroy

@@ -1,4 +1,6 @@
 class Company < ApplicationRecord
+  acts_as_paranoid
+
   has_many :appointments, dependent: :destroy
   has_many :projects, dependent: :destroy
   has_many :jobs, dependent: :destroy

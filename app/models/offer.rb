@@ -1,4 +1,6 @@
 class Offer < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :user
   belongs_to :apply_status
   belongs_to :currency

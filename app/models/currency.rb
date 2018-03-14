@@ -1,4 +1,6 @@
 class Currency < ApplicationRecord
+  acts_as_paranoid
+
   has_many :jobs
   has_many :offers
   belongs_to :company

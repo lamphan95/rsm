@@ -11,6 +11,7 @@ class CreateBranches < ActiveRecord::Migration[5.1]
       t.string :country, null: false
       t.integer :status, null: false, default: 0
       t.references :company, foreign_key: true
+      t.datetime :deleted_at
 
       t.timestamps
     end

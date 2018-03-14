@@ -8,6 +8,7 @@ class CreateEmailSents < ActiveRecord::Migration[5.1]
       t.string :receiver_email
       t.string :type
       t.integer :type_id
+      t.datetime :deleted_at
 
       t.timestamps
     end

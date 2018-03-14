@@ -4,6 +4,7 @@ class CreateFriends < ActiveRecord::Migration[5.1]
       t.boolean :status
       t.integer :friend_id
       t.integer :user_id
+      t.datetime :deleted_at
 
       t.timestamps
     end

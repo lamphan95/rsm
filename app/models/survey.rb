@@ -1,4 +1,6 @@
 class Survey < ApplicationRecord
+  acts_as_paranoid
+
   belongs_to :question
   belongs_to :job
   has_many :answers, dependent: :destroy
