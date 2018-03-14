@@ -258,7 +258,7 @@ function after_close_datetimepicker_end() {
 function handling_event(start_time, end_time) {
   var eventName = $('#apply-appointments').data('name');
   var events = $('#calendar').fullCalendar('clientEvents');
-  var event = events.find(x => x.is_new === true);
+  var event = events.find(function (event) { return event.is_new === true;});
   if (event !== undefined) {
     event.start = start_time;
     event.end = end_time;
