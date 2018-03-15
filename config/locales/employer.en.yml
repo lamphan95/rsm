@@ -274,6 +274,7 @@ en:
         currency: "Currency"
         preview: "Preview"
         back: "Back"
+        work_place: "Workplace"
       job:
         expires_on: "Expires on"
         expired: "Expired"

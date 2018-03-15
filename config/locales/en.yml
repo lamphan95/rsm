@@ -1192,6 +1192,6 @@ en:
   salary_job_up_to: " Up To %{min_salary} %{sign}"
   salary_offer: "%{salary} %{sign}"
   none_content: "None content."
-  branch_in: "Branch In "
+  branch_in: "Workplace In "
   up_to: "Up To "
   expire_at: "Expire at "

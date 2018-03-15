@@ -273,6 +273,7 @@ vn:
         preview: "Xem lại"
         expires_on: "Hết hạn"
         back: "Trở về"
+        work_place: "Nơi làm việc"
       job:
         expires_on: "Hết hạn"
         expired: "hết hạn"
