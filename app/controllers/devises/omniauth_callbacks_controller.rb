@@ -43,11 +43,14 @@ class Devises::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def redirect_after_save_oauth request
     if request && request["apply_id"] && request["job_id"]
-      redirect_to employers_job_apply_url job_id: request["job_id"].to_i,
-        id: request["apply_id"].to_i
-    else
-      redirect_to employers_dashboards_url
+      apply = Apply.find_by id: request["apply_id"]
+      if apply
+        redirect_to employers_job_apply_url job_id: request["job_id"].to_i,
+          id: request["apply_id"].to_i
+        return
+      end
     end
+    redirect_to employers_dashboards_url
   end
 
   def load_user
