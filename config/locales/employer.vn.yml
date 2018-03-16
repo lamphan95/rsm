@@ -93,6 +93,7 @@ vn:
         email: "Email"
         phone: "Điện thoại"
         cv: "Sơ yếu lý lịch"
+        job_applied: "Công việc đã ứng tuyển"
       offers_list:
         offer_send_by: "Offer đưọc gởi bởi"
       offer_detail:
@@ -115,6 +116,21 @@ vn:
         offer: "Đề nghị"
         start_time: "Thời gian bắt đầu"
         currency: "Đơn vị tiền tệ"
+      apply_status_detail:
+        information: "Thông tin chung"
+        job_info: "Thông tin công việc"
+        apply_info: "Thông tin ứng tuyển"
+        name: "Tên"
+        category: "Loại"
+        target: "Chỉ tiêu"
+        salary: "Lương"
+        step: "Bước"
+        status: "Trạng thái"
+        apply_at: "Ưng tuyển vào lúc"
+        show_job: "Xem công việc"
+        show_apply: "Xem đơn ứng tuyển"
+      show:
+        not_found_apply_status: "Không tìm thấy apply."
     appointments:
       appointment:
         click: "Nhấp chuột"

@@ -1,0 +1,6 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% else %>
+  $('#job-applied').html('<%= j render "apply_status_detail" %>');
+  $('#job-applied').modal('show');
+<% end %>

@@ -8,6 +8,7 @@ class Employers::AppliesController < Employers::EmployersController
   before_action :load_steps, only: :index
   before_action :load_statuses, only: :index
   before_action :load_offer_status_step_pending, only: %i(show update)
+  before_action :load_jobs_applied, only: :show
 
   def index
     applies_status = @company.apply_statuses.current
@@ -97,5 +98,9 @@ class Employers::AppliesController < Employers::EmployersController
       end
       @success = t ".success"
     end
+  end
+
+  def load_jobs_applied
+    @applies = Apply.get_by_user(@apply.user_id).includes :job
   end
 end

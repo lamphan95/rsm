@@ -49,6 +49,26 @@
         </table>
       </div>
     </div>
+
+    <div class="block">
+      <div class="block-title clearfix">
+        <h2><i class="fa fa-briefcase"></i> <strong><%= t ".job_applied" %></strong></h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block">
+            <div class="row">
+              <table class="table table-striped table-vcenter">
+                <tbody>
+                  <%= render partial: "job_applied", collection: @applies, as: :apply %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="col-sm-8 col-lg-9">
@@ -138,5 +158,8 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="job-applied" role="dialog"></div>
+
 <%= hidden_field_tag :apply_id, @apply.id %>
 <%= hidden_field_tag :job_id, @apply.job_id %>
