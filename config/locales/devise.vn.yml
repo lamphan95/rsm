@@ -40,7 +40,7 @@ vn:
         author: "Bởi Framgia - Phòng phát triển con người - Bộ phận Giáo dụcBy Framgia - Human Development Division - Education Section"
         copyright: "- Đã đăng ký Bản quyền."
     omniauth_callbacks:
-      failure: "Không thể xác thực bạn từ% {kind} bởi vì \"%{reason}\"."
+      failure: "Không thể xác thực bạn từ %{kind}."
       success: "Chứng thực thành công từ tài khoản %{kind}."
       connect_gmail: "Đã kết nối gmail."
       connect_gmail_failure: "Kết nối gmail thất bại."
