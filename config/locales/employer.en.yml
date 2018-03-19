@@ -18,6 +18,7 @@ en:
         choose_job: "Choose Job"
         apply: "Apply"
         create: "Create"
+        no_job_choosen: "No job were choosen."
       apply_form:
         information: "Information"
         name: "Name"

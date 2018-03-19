@@ -18,6 +18,7 @@ vn:
         choose_job: "Chọn công việc"
         apply: "Ứng tuyển"
         create: "Tạo"
+        no_question_choosen: "Chưa có câu hỏi nào đưọc chọn."
       apply_form:
         information: "Thông tin"
         name: "Tên"
