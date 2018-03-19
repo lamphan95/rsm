@@ -1210,6 +1210,6 @@ vn:
   salary_offer: "%{salary} %{sign}"
   no_job_choosen: "Không có công việc nào đưọc chọn."
   none_content: "Không có nội dung."
-  branch_in: "Chi Nhánh tại "
+  branch_in: "Nơi làm việc tại "
   up_to: "Trên "
   expire_at: "Hết hạn lúc "

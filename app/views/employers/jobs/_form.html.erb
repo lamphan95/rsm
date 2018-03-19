@@ -83,8 +83,12 @@
     </div>
 
     <div class="col-md-12">
-      <%= f.input :branch_id do %>
-        <%= f.select :branch_id, @company.branches.map{|r| [r.district, r.id]},
+      <label class="control-label" for="job_branch_id">
+        <abbr title="required">*</abbr> <%= t ".work_place" %>
+      </label>
+      <%= f.input :branch_id, label: false do %>
+        <%= f.select :branch_id, @company.branches.map{ |branch| ["#{branch.street} #{branch.ward},
+          #{branch.district}, #{branch.province}, #{branch.country}", branch.id] },
           {include_blank: t(".please_selected")}, class: "form-control" %>
       <% end %>
     </div>
