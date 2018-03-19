@@ -37,35 +37,48 @@ RSpec.describe User, type: :model do
     it {is_expected.to have_db_column(:sex).of_type(:integer)}
     it {is_expected.to have_db_column(:role).of_type(:integer)}
   end
-  context "when name is not valid" do
-    before {subject.name = ""}
-    it "matches the error message" do
-      subject.valid?
-      subject.errors[:name].should include("can't be blank")
-    end
-  end
 
-  context "when email is not valid" do
-    before {subject.email = user1.email}
-    it "matches the error message" do
-      subject.valid?
-      subject.errors[:email].should include("already exist")
-    end
-  end
+  context "validates" do
+    it {is_expected.to validate_presence_of(:name)}
 
-  context "when password is too short" do
-    before {subject.password = Faker::Lorem.characters(2)}
-    it "matches the error message" do
-      subject.valid?
-      subject.errors[:password].should include("is too short (minimum is 6 characters)")
+    context "when name is not valid" do
+      before {subject.name = ""}
+      it "matches the error message" do
+        subject.valid?
+        subject.errors[:name].should include("can't be blank")
+      end
     end
-  end
 
-  context "when password is too long" do
-    before {subject.password = Faker::Lorem.characters(222)}
-    it "matches the error message" do
-      subject.valid?
-      subject.errors[:password].should include("is too long (maximum is 128 characters)")
+    context "when email is not valid" do
+      before {subject.email = user1.email}
+      it "matches the error message" do
+        subject.valid?
+        subject.errors[:email].should include("already exist")
+      end
+    end
+
+    context "when password is too short" do
+      before {subject.password = Faker::Lorem.characters(2)}
+      it "matches the error message" do
+        subject.valid?
+        subject.errors[:password].should include("is too short (minimum is 6 characters)")
+      end
+    end
+
+    context "when password is too long" do
+      before {subject.password = Faker::Lorem.characters(222)}
+      it "matches the error message" do
+        subject.valid?
+        subject.errors[:password].should include("is too long (maximum is 128 characters)")
+      end
+    end
+
+    context "birthday cannot be in the future" do
+      before {subject.birthday = 1.year.from_now}
+      it "matches the error message" do
+        subject.valid?
+        subject.errors[:birthday].should include(I18n.t("users.form.birthday.validate"))
+      end
     end
   end
 end

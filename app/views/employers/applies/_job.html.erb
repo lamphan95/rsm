@@ -1,6 +1,6 @@
 <%= collection_check_boxes nil, :job_ids, @jobs, :id, :name do |job| %>
   <tr class="job" id="job-<%= job.object.id %>">
-    <td class="text-center choose-job" data-id="<%= job.object.id %>">
+    <td class="text-center">
       <strong>
         <%= job.check_box %>
       </strong>
