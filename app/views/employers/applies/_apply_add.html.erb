@@ -10,17 +10,23 @@
         <%= f.text_field :name_cont, placeholder: t(".job_name_placeholder"),
           class: "form-control input-sm search-job" %>
       </div>
+      <%= hidden_field_tag :choosen_ids, nil, id: "choosen-ids" %>
       <%= f.submit t(".search"), class: "btn btn-primary btn-sm w60" %>
     <% end %>
     <div class="modal-body">
-      <div class="row">
-        <%= simple_form_for [:employers, @apply], remote: :true,
-          class: "form-horizontal form-bordered" do |f| %>
+      <%= simple_form_for [:employers, @apply], remote: :true,
+        class: "form-horizontal form-bordered" do |f| %>
+        <div class="row">
           <div class="block col-md-5">
             <div class="block-title">
               <h2><strong><%= t ".choose_job" %></strong></h2>
             </div>
             <span class="error-message-job"></span>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="tagsinput" id="example-tags_tagsinput"></div>
+              </div>
+            </div>
             <div id="search-job">
               <%= render "choose_jobs" %>
             </div>
@@ -31,11 +37,15 @@
             </div>
             <%= render partial: "apply_form", locals: {f: f} %>
           </div>
+        </div>
+
+        <div class="row">
           <center>
-            <%= f.submit t(".create"), class: "btn btn-warning w125" %>
+            <%= f.submit t(".create"), class: "btn btn-info w125" %>
           </center>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
+<%= javascript_include_tag "employers/add_apply" %>

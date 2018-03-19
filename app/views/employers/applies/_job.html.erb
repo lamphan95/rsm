@@ -1,12 +1,12 @@
-<%= collection_radio_buttons :apply ,:job_id, @jobs, :id, :name do |job| %>
+<%= collection_check_boxes nil, :job_ids, @jobs, :id, :name do |job| %>
   <tr class="job" id="job-<%= job.object.id %>">
-    <td class="text-center">
+    <td class="text-center choose-job" data-id="<%= job.object.id %>">
       <strong>
-        <%= job.radio_button %>
+        <%= job.check_box %>
       </strong>
     </td>
-    <td class="text-center">
-      <strong>
+    <td data-id="<%= job.object.id %>">
+      <strong id="name-job-<%= job.object.id %>">
         <%= link_to job.object.name, job_path(job.object) %>
       </strong>
     </td>

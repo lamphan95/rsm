@@ -2,7 +2,7 @@ class Apply < ApplicationRecord
   acts_as_paranoid
   attr_accessor :user, :key_apply
 
-  belongs_to :job
+  belongs_to :job, optional: true
   belongs_to :user, optional: true
   has_many :answers, dependent: :destroy
   has_one :company, through: :job
@@ -18,7 +18,6 @@ class Apply < ApplicationRecord
   after_create :create_activity_notify
 
   validates :cv, presence: true
-  validates :job_id, presence: true
   validates :information, presence: true
   enum status: {unlock_apply: 0, lock_apply: 1, cancel_apply: 2}
 

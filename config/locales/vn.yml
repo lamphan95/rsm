@@ -1208,3 +1208,4 @@ vn:
   salary_job: " (%{min_salary} %{sign} - %{max_salary} %{sign})"
   salary_job_up_to: " (Hơn %{min_salary} %{sign})"
   salary_offer: "%{salary} %{sign}"
+  no_job_choosen: "Không có công việc nào đưọc chọn."
