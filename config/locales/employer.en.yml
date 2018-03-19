@@ -94,6 +94,7 @@ en:
         email: "Email"
         phone: "Phone"
         cv: "CV"
+        job_applied: "Job Applied"
       offers_list:
         offer_send_by: "Offer was sent by"
       offer_detail:
@@ -116,6 +117,21 @@ en:
         currency: "Currency"
       update:
         disconnect_gmail: "Please connect gmail to send mail."
+      show:
+        not_found_apply_status: "Not found apply."
+      apply_status_detail:
+        information: "Information"
+        job_info: "Job information"
+        name: "Name"
+        category: "Category"
+        target: "Target"
+        salary: "salary"
+        apply_info: "Apply information"
+        step: "Step"
+        status: "Status"
+        apply_at: "Apply at"
+        show_job: "Show job"
+        show_apply: "Show apply"
     appointments:
       appointment:
         click: "Click"

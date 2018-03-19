@@ -16,7 +16,7 @@ class ApplyStatus < ApplicationRecord
   delegate :name, to: :status_step, allow_nil: true, prefix: true
   delegate :name, to: :step, allow_nil: true, prefix: true
   delegate :id, :information, :created_at, to: :apply, allow_nil: true, prefix: true
-  delegate :name, :id, to: :job, allow_nil: true, prefix: true
+  delegate :name, :id, :target, :level, to: :job, allow_nil: true, prefix: true
 
   accepts_nested_attributes_for :appointment, allow_destroy: true , update_only: true
   accepts_nested_attributes_for :email_sents, allow_destroy: true , update_only: true

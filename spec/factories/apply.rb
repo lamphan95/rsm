@@ -1,6 +1,10 @@
 FactoryGirl.define do
   factory :apply do
-    status 0
     association :user, factory: :user
+    association :job, factory: :job
+    status 0
+    cv File.new File.expand_path(Rails.root.join("lib", "seeds", "template_cv.pdf"))
+    information {{ name: "Phan Dinh Lam", email: "user@gmail.com",
+    phone: Faker::Number.number(10), introducing: Faker::Lorem.sentence(50)}}
   end
 end

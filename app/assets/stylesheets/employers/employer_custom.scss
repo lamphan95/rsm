@@ -661,3 +661,21 @@ a.disabled {
 .h-150 {
   min-height: 150px;
 }
+.p-10 {
+  padding: 10px;
+}
+.background-white {
+  background-color: $white !important;
+}
+td.font-times {
+  font-family: Helvetica, Arial, Tahoma, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+}
+.w-175 {
+  width: 175px;
+}
+.border-bottom-custom {
+  border-bottom: 1px solid $grey-light2;
+  border-top: none !important;
+}

@@ -1,6 +1,6 @@
 class Apply < ApplicationRecord
   acts_as_paranoid
-  attr_accessor :user, :key_apply
+  attr_accessor :current_user, :key_apply
 
   belongs_to :job, optional: true
   belongs_to :user, optional: true
@@ -27,6 +27,7 @@ class Apply < ApplicationRecord
   scope :newest_apply, ->{order :created_at}
   scope :sort_apply, ->{order(created_at: :desc).limit Settings.job.limit}
   scope :lastest_apply, ->{order created_at: :desc}
+  scope :get_by_user, -> user_id {where user_id: user_id}
 
   mount_uploader :cv, CvUploader
 
@@ -61,8 +62,8 @@ class Apply < ApplicationRecord
   rescue
   end
 
-  def self_attr_after_create user, key_apply
-    self.user = user
+  def self_attr_after_create current_user, key_apply
+    self.current_user = current_user
     self.key_apply = key_apply
   end
 
@@ -74,8 +75,8 @@ class Apply < ApplicationRecord
   private
 
   def create_activity_notify
-    self.save_activity :create, user
-    Notification.create_notification key_apply, self, user, self.job.company_id if user || key_apply
+    self.save_activity :create, current_user
+    Notification.create_notification key_apply, self, current_user, self.job.company_id if current_user || key_apply
     AppliesUserJob.perform_later self
     AppliesEmployerJob.perform_later self
   rescue ActiveRecord::RecordInvalid

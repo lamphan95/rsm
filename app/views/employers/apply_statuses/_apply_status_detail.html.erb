@@ -1,0 +1,90 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title pull-left m-l-10"><strong><%= t ".information" %></strong></h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="block">
+          <div class="block-title">
+            <div class="block-options pull-right">
+              <%= link_to employers_job_path(@apply_status.job), class: "btn btn-sm btn-alt btn-default", title: t(".show_job") do %>
+                <i class="fa fa-info"></i>
+              <% end %>
+            </div>
+            <h2><%= t ".job_info" %></h2>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-borderless table-striped table-vcenter">
+                <tbody>
+                  <tr class="background-white border-bottom-custom">
+                    <td class="w-175"><strong><%= t ".name" %></strong></td>
+                    <td class="font-times"><%= @apply_status.job_name %></td>
+                  </tr>
+
+                  <tr class="background-white border-bottom-custom">
+                    <td><strong><%= t ".category" %></strong></td>
+                    <td class="font-times"><%= @apply_status.job.category_name %></td>
+                  </tr>
+
+                  <tr class="background-white border-bottom-custom">
+                    <td><strong><%= t ".target" %></strong></td>
+                    <td class="font-times"><%= @apply_status.job_target %></td>
+                  </tr>
+
+                  <tr class="background-white border-bottom-custom">
+                    <td><strong><%= t ".salary" %></strong></td>
+                    <td class="font-times"><%= salary_job @apply_status.job %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="block">
+          <div class="block-title">
+            <div class="block-options pull-right">
+              <%= link_to employers_apply_path(@apply_status.apply), class: "btn btn-sm btn-alt btn-default", title: t(".show_apply") do %>
+                <i class="fa fa-info"></i>
+              <% end %>
+            </div>
+            <h2><%= t ".apply_info" %></h2>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-borderless table-striped table-vcenter">
+                <tbody>
+                  <tr class="background-white border-bottom-custom">
+                    <td class="w-175"><strong><%= t ".step" %></strong></td>
+                    <td class="font-times"><%= show_step_apply @apply_status.step %></td>
+                  </tr>
+
+                  <tr class="background-white border-bottom-custom">
+                    <td><strong><%= t ".status" %></strong></td>
+                    <td class="font-times"><%= show_status_apply @apply_status.status_step %></td>
+                  </tr>
+
+                  <tr class="background-white border-bottom-custom">
+                    <td><strong><%= t ".apply_at" %></strong></td>
+                    <td class="font-times"><%= l @apply_status.apply.created_at,
+                      format: t("time.formats.date_month_year_v1") %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
