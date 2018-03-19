@@ -129,3 +129,33 @@ label:before {
 .contain-float {
   overflow: hidden;
 }
+
+.text-lg {
+  font-size: 25px;
+}
+
+.job-title {
+  font-weight: 500;
+  font-size: 27px;
+  margin-bottom: 8px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.lount {
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.job-header-info {
+  position: relative;
+  top: -20px;
+}
+
+p {
+  word-break: break-all;
+}
+
+li#benefit {
+  p {
+    display: inline-block;
+  }
+}

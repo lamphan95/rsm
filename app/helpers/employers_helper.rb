@@ -131,7 +131,7 @@ module EmployersHelper
 
   def radio_survey_type key, value, f
     content_tag :div, class: "funkyradio-#{status_survey value} col-md-3 m-bottom-10" do
-      concat f.radio_button :survey_type, value, id:"radio#{value}"
+      concat f.radio_button :survey_type, value, id:"radio#{value}", class: "radio_type"
       concat f.label :survey_type, t("survey.#{key}"), for: "radio#{value}"
     end
   end

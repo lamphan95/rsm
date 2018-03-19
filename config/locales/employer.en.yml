@@ -272,6 +272,8 @@ en:
         next: "Next"
         expires_on: "Expires on"
         currency: "Currency"
+        preview: "Preview"
+        back: "Back"
       job:
         expires_on: "Expires on"
         expired: "Expired"
@@ -319,6 +321,19 @@ en:
         add_question: "Add Question"
       tag_question:
         remove_tag: "Removing tag"
+      preview_job:
+        expire_at: "Expire at"
+        reward_benefit: "Rewards and Benefits"
+        job_description: "Job Decription"
+        job_requirements: "Job Requirement"
+        job_category: "Job Category"
+        target: "Target"
+        position: "Position"
+        form: "Form"
+        level: "Level Requirement"
+        skill: "Skills"
+        language: "Preferred Language"
+        survey: "Survey"
     members:
       form:
         name: "Name"

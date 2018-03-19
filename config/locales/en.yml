@@ -1188,6 +1188,10 @@ en:
     google:
       connect: "Click OK to connect google account."
       disconnect_gmail: "Please connect gmail to send mail."
-  salary_job: " (%{min_salary} %{sign} - %{max_salary} %{sign})"
-  salary_job_up_to: " (Up To %{min_salary} %{sign})"
+  salary_job: " %{min_salary} %{sign} - %{max_salary} %{sign}"
+  salary_job_up_to: " Up To %{min_salary} %{sign}"
   salary_offer: "%{salary} %{sign}"
+  none_content: "None content."
+  branch_in: "Branch In "
+  up_to: "Up To "
+  expire_at: "Expire at "
