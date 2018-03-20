@@ -37,6 +37,9 @@ vn:
       choose_jobs:
         choose: "Chọn"
         name: "Tên"
+      choose_job_undefined_job:
+        choose: "Chọn"
+        name: "Tên"
       email_form:
         close: "Đóng"
         show_template: "Xem giao diện mail"
@@ -94,7 +97,13 @@ vn:
         email: "Email"
         phone: "Điện thoại"
         cv: "Sơ yếu lý lịch"
+      workflow:
         job_applied: "Công việc đã ứng tuyển"
+      select_job:
+        select_job: "Chọn công việc"
+        job_name_placeholder: "Nhập tên ông việc"
+        submit: "Submit"
+        add_job_for_apply: "Đây là apply với công việc không các định, vui lòng chọn công việc để tiếp tục."
       offers_list:
         offer_send_by: "Offer đưọc gởi bởi"
       offer_detail:
@@ -103,6 +112,11 @@ vn:
         start_time: "Ngày bắt đầu"
         address: "Địa điểm"
         requirement: "Yêu cầu"
+      new:
+        not_found_apply: "Không tìm thấy apply!"
+      create_from_apply_none_job:
+        success: "Created success!"
+        failure: "Created failure!"
     apply_statuses:
       confirm_send_email: "Bạn có muốn gửi email cho ứng cử viên?"
       mgs_send_email_susscess: "Thay đổi trạng thái thành công"
@@ -132,6 +146,8 @@ vn:
         show_apply: "Xem đơn ứng tuyển"
       show:
         not_found_apply_status: "Không tìm thấy apply."
+      update:
+        failure: "Cập nhật không thành công!"
     appointments:
       appointment:
         click: "Nhấp chuột"

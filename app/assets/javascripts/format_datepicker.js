@@ -15,4 +15,10 @@ $(document).ready(function() {
     startView: 'months',
     endDate: '+0d'
   });
+
+  $('.datepicker-v1').datepicker({
+    dateFormat: I18n.t('datepicker.format_date_v1'),
+    startView: 'months',
+    minDate: 0
+  });
 });

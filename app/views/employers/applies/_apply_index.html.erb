@@ -1,7 +1,7 @@
 <tr role="row" class="apply_status-<%= apply_status.id %>">
   <td class="text-center"><%= apply_status_counter + 1 %></td>
   <td class="text-center"><%= apply_status.apply.information[:name] %></td>
-  <td class="text-center"><%= apply_status.apply.job_name %></td>
+  <td class="text-center"><%= check_show_job_exception apply_status.apply.job %></td>
   <td class="text-center"><%= apply_status.apply.information[:email] %></td>
   <td class="text-center"><%= apply_status.apply.information[:phone] %></td>
   <td class="text-center">

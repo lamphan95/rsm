@@ -1,13 +1,9 @@
 <tr>
   <td class="text-center">
-    <%= link_to "javascript:void(0)" do %>
-      <strong><%= apply_status.job_name %></strong>
-    <% end %>
+    <%= check_show_job_exception apply_status.apply.job %>
   </td>
   <td class="text-center">
-    <%= link_to "javascript:void(0)" do %>
-      <%= apply_status.apply.information[:phone] %>
-    <% end %>
+    <%= apply_status.apply.information[:phone] %>
   </td>
   <td class="text-center">
     <%= show_status_apply apply_status.status_step %>

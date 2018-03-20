@@ -57,3 +57,4 @@ en:
   datepicker:
     format: "dd/mm/yyyy"
     long: "dd/mm/yyyy"
+    format_date_v1: "dd/mm/yy"

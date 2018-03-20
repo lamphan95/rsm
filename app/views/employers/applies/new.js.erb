@@ -1,5 +1,9 @@
 <% if params[:q] %>
-  $('#search-job').html('<%= j render "choose_jobs" %>');
+  <% if params[:role] == Settings.role.undefined_job %>
+    $('#search-job').html('<%= j render "choose_job_undefined_job" %>');
+  <% else %>
+    $('#search-job').html('<%= j render "choose_jobs" %>');
+  <% end %>
   <% choosen_ids = params[:choosen_ids].split(",") %>
   <% if choosen_ids.present? %>
     <% choosen_ids.each do |id| %>

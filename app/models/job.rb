@@ -33,7 +33,7 @@ class Job < ApplicationRecord
   validates :survey_type, presence: true
 
   enum position_types: {full_time_freshers: 0, full_time_careers: 1, part_time: 2, intern: 3, freelance: 4}
-  enum status: [:opend, :closed]
+  enum status: [:opend, :closed, :exception]
   enum survey_type: [:not_exist, :optional, :compulsory]
 
   scope :sort_max_salary_and_target, -> do
@@ -48,6 +48,8 @@ class Job < ApplicationRecord
   scope :unexpired_jobs, -> date_compare {where "end_time >= ? OR end_time IS NULL", date_compare}
   scope :expired_jobs, -> date_compare {where "end_time < ?", date_compare}
   scope :get_job, -> ids {where id: ids}
+  scope :get_not_exception, ->{where.not status: :exception}
+  scope :get_by_not_id, -> ids {where.not id: ids}
 
   delegate :id, to: :company, prefix: true, allow_nil: true
   delegate :sign, to: :currency, prefix: true, allow_nil: true

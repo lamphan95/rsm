@@ -262,10 +262,10 @@
               <div class="mobile-box">
                 <div class="company-job">
                    <div class="col-md-12 col-md-offset-0 show_jobs">
-                    <% if @company.jobs.any? %>
+                    <% if @company.jobs.get_not_exception.any? %>
                       <h3 class="jobs-count">
                         <%= t ".jobs" %>
-                        <span id="jobs-numbers"> <%= @company.jobs.size %></span>
+                        <span id="jobs-numbers"> <%= @company.jobs.get_not_exception.size %></span>
                       </h3>
                       <div id="jobs">
                         <%= render @jobs %>

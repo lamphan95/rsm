@@ -37,6 +37,9 @@ en:
       choose_jobs:
         choose: "Choose"
         name: "Name"
+      choose_job_undefined_job:
+        choose: "Choose"
+        name: "Name"
       email_form:
         close: "Close"
         show_template: "Show Temlate"
@@ -95,7 +98,13 @@ en:
         email: "Email"
         phone: "Phone"
         cv: "CV"
+      workflow:
         job_applied: "Job Applied"
+      select_job:
+        select_job: "Select job"
+        job_name_placeholder: "Please input job name"
+        submit: "Submit"
+        add_job_for_apply: "This is apply with undefined job, please select job to continues."
       offers_list:
         offer_send_by: "Offer was sent by"
       offer_detail:
@@ -104,6 +113,13 @@ en:
         start_time: "Start time"
         address: "Address company"
         requirement: "Requirement"
+      update:
+        failure: "Updated failure!"
+      new:
+        not_found_apply: "Not found apply!"
+      create_from_apply_none_job:
+        success: "Created success!"
+        failure: "Created failure!"
     apply_statuses:
       confirm_send_email: "Do you want to send email for candidate ?"
       mgs_send_email_susscess: "You changed status success"

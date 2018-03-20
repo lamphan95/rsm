@@ -18,6 +18,7 @@
   alertify.error('<%= @error %>');
 <% elsif @success %>
   $('#add-apply').modal('hide');
+  $('#table-applies').html('<%= j render "table_applies" %>');
   alertify.success('<%= @success %>');
 <% elsif @error %>
   alertify.error('<%= @error %>');
