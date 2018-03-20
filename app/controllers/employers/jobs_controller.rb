@@ -32,7 +32,7 @@ class Employers::JobsController < Employers::EmployersController
   end
 
   def index
-    @search = @company.jobs.includes(:applies).search params[:q]
+    @search = @company.jobs.get_not_exception.includes(:applies).search params[:q]
     @jobs = @search.result(distinct: true).sort_lastest
       .page(params[:page]).per Settings.job.page
     @page = params[:page]
@@ -84,7 +84,7 @@ class Employers::JobsController < Employers::EmployersController
   end
 
   def load_jobs
-    @jobs = @company.jobs.includes(:applies).sort_lastest.page(params[:page]).per Settings.job.page
+    @jobs = @company.jobs.get_not_exception.includes(:applies).sort_lastest.page(params[:page]).per Settings.job.page
   end
 
   def load_applies_joined_by_jobs

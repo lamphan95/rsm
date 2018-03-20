@@ -25,7 +25,7 @@ class JobsController < BaseNotificationsController
   before_action :build_question_job, only: :new
 
   def index
-    @q = @company.jobs.unexpired_jobs(Time.zone.now.to_date).ransack params[:q]
+    @q = @company.jobs.get_not_exception.unexpired_jobs(Time.zone.now.to_date).ransack params[:q]
     @jobs = @q.result(distinct: true).sort_lastest.includes(:branch)
       .includes(:category).page(params[:page]).per(Settings.pagination.jobs_perpage)
   end
@@ -92,7 +92,7 @@ class JobsController < BaseNotificationsController
   end
 
   def load_jobs
-    @jobs = @company.jobs.includes(:branch, :category).
+    @jobs = @company.jobs.get_not_exception.includes(:branch, :category).
       sort_lastest.page(params[:page]).per(Settings.pagination.jobs_perpage)
   end
 

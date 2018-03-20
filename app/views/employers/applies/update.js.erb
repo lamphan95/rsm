@@ -1,0 +1,11 @@
+<% if @apply.job.exception? %>
+  <% if params[:job_ids][1].blank? %>
+    alertify.error('<%= t "none_job_choosen" %>');
+  <% elsif @error %>
+    alertify.error('<%= @error %>');
+  <% elsif @success %>
+    $('#workflow').html('<%= j render "workflow" %>');
+    $('#select-job').html('<%= j render "select_job" %>');
+    alertify.success('<%= @success %>');
+  <% end %>
+<% end %>

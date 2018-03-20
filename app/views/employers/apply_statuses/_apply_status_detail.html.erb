@@ -54,7 +54,8 @@
         <div class="block">
           <div class="block-title">
             <div class="block-options pull-right">
-              <%= link_to employers_apply_path(@apply_status.apply), class: "btn btn-sm btn-alt btn-default", title: t(".show_apply") do %>
+              <%= link_to employers_job_apply_path(@apply_status.job, id: @apply_status.apply.id),
+                class: "btn btn-sm btn-alt btn-default", title: t(".show_apply") do %>
                 <i class="fa fa-info"></i>
               <% end %>
             </div>

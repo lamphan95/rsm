@@ -23,10 +23,10 @@ class Employers::CompaniesController < Employers::EmployersController
   end
 
   def load_branch_id_owner_jobs
-    @branch_id_owner_jobs = @company.jobs.pluck :branch_id
+    @branch_id_owner_jobs = @company.jobs.get_not_exception.pluck :branch_id
   end
 
   def load_category_id_owner_jobs
-    @category_id_owner_jobs = @company.jobs.pluck :category_id
+    @category_id_owner_jobs = @company.jobs.get_not_exception.pluck :category_id
   end
 end

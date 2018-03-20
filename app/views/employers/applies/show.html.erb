@@ -60,80 +60,72 @@
       </div>
     </div>
 
-    <div class="block">
-      <div class="block-title clearfix">
-        <h2><i class="fa fa-briefcase"></i> <strong><%= t ".job_applied" %></strong></h2>
-      </div>
-
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="row">
-            <table class="table table-striped table-vcenter">
-              <tbody>
-                <%= render partial: "job_applied", collection: @applies, as: :apply %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+    <div id="workflow">
+      <%= render "workflow" %>
     </div>
   </div>
 
-  <div class="col-sm-8 col-lg-9">
-    <div class="block block-content area-progress">
-      <div class="block-title">
-        <h2>
-          <i class="fa fa-tasks"></i>
-          <strong>&nbsp;<%= t".current" %></strong>
-          &nbsp;<%= t ".status" %>
-        </h2>
-      </div>
-      <ul class="progress-indicator" id="area-status-progress">
-        <%= render partial: "status_progress", locals: {steps: @steps,
-          current_step: @current_step, company_steps_by_step: @company_steps_by_step} %>
-      </ul>
-      <div class="btn-group pull-right btn-handling">
-        <%= render "employers/applies/apply_btn"  %>
-      </div>
-    </div>
-
-    <div class="block block-content overcast-custom <%= disabled_block @apply %>">
-      <div class="block-title margin-bottom-0">
-        <h2>
-          <i class="fa fa-pencil"></i>
-          <strong><%= t"employers.change" %></strong>
-          <%= t "employers.status" %>
-        </h2>
-      </div>
-      <div class="tab-pane active row" id="apply-handling">
-        <div id="area-form-status" class="col-md-12">
-        <%= render partial: "form_status", locals: {apply: @apply,
-          current_step: @current_step, current_status_steps: @current_status_steps,
-          status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false,
-          step_main: @current_step, current_apply_status: @current_apply_status} %>
+  <% unless @apply.job.exception? %>
+    <div class="col-sm-8 col-lg-9">
+      <div class="block block-content area-progress">
+        <div class="block-title">
+          <h2>
+            <i class="fa fa-tasks"></i>
+            <strong>&nbsp;<%= t".current" %></strong>
+            &nbsp;<%= t ".status" %>
+          </h2>
         </div>
-        <ul class="media-list media-feed push content-media">
-          <li class="media">
-            <div class="media-body">
-            </div>
-          </li>
+        <ul class="progress-indicator" id="area-status-progress">
+          <%= render partial: "status_progress", locals: {steps: @steps,
+            current_step: @current_step, company_steps_by_step: @company_steps_by_step} %>
         </ul>
+        <div class="btn-group pull-right btn-handling">
+          <%= render "employers/applies/apply_btn"  %>
+        </div>
       </div>
-    </div>
 
-    <div id = "apply-handling-content" class="row apply-content">
-    </div>
+      <div class="block block-content overcast-custom <%= disabled_block @apply %>">
+        <div class="block-title margin-bottom-0">
+          <h2>
+            <i class="fa fa-pencil"></i>
+            <strong><%= t"employers.change" %></strong>
+            <%= t "employers.status" %>
+          </h2>
+        </div>
+        <div class="tab-pane active row" id="apply-handling">
+          <div id="area-form-status" class="col-md-12">
+          <%= render partial: "form_status", locals: {apply: @apply,
+            current_step: @current_step, current_status_steps: @current_status_steps,
+            status_step_scheduled_ids: @status_step_scheduled_ids, is_prev_step: false,
+            step_main: @current_step, current_apply_status: @current_apply_status} %>
+          </div>
+          <ul class="media-list media-feed push content-media">
+            <li class="media">
+              <div class="media-body">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id = "apply-handling-content" class="row apply-content">
+      </div>
 
       <div id = "apply-cv-content" class="cv-content">
         <%= render "apply_cv" %>
       </div>
 
-    <div id="step-history" class="row">
-      <%= render partial: "employers/applies/step_history", locals:
-        {data_step: @data_step, status_step: @data_step[:status_step_lastest],
-        apply_status: @data_step[:apply_status_lastest], apply: @apply, current_apply_status: @current_apply_status} %>
+      <div id="step-history" class="row">
+        <%= render partial: "employers/applies/step_history", locals:
+          {data_step: @data_step, status_step: @data_step[:status_step_lastest],
+          apply_status: @data_step[:apply_status_lastest], apply: @apply, current_apply_status: @current_apply_status} %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div id="select-job">
+      <%= render "select_job" %>
+    </div>
+  <% end %>
 </div>
 
 <div class="modal fade modal-history-apply" id="area-hisory-apply" role="dialog">
@@ -219,3 +211,5 @@
 </div>
 <%= hidden_field_tag :apply_id, @apply.id %>
 <%= hidden_field_tag :job_id, @apply.job_id %>
+
+<%= javascript_include_tag "employers/select_step" %>

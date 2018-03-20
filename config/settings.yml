@@ -208,3 +208,5 @@ omniauth:
 password:
   length: 10
 delimiter: "."
+role:
+  undefined_job: "undefined_job"

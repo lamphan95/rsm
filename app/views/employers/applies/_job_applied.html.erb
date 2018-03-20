@@ -1,6 +1,8 @@
 <tr class="background-white">
-  <td class="border-bottom-custom"><strong><%= apply.job_name %></strong></td>
-  <td class="border-bottom-custom"><%= link_to employers_apply_status_path(apply), remote: true, class: "btn btn-default btn-xs" do %>
-    <i class="fa fa-eye"></i>
-  <% end %></td>
+  <td class="border-bottom-custom">
+    <strong><%= check_show_job_exception apply.job %></strong>
+  </td>
+  <td class="border-bottom-custom">
+    <%= get_link_job_exception apply %>
+  </td>
 </tr>

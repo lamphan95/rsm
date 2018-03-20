@@ -10,7 +10,7 @@ class Supports::Dashboard
   end
 
   def prioritize_jobs
-    @company.jobs.includes(:branch).job_company(@company).sort_max_salary_and_target
+    @company.jobs.get_not_exception.includes(:branch).job_company(@company).sort_max_salary_and_target
   end
 
   def prioritize_apply_statues
