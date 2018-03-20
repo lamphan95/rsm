@@ -1,0 +1,15 @@
+<tr class="background-white border-bottom-custom">
+  <td class="border-bottom-custom chil-margin-0">
+    <small class="text-muted"><%= t ".note_by" %>:</small> <%= note.user_name %>
+
+    <div class="collapse break" id="content-<%= note.id %>">
+      <%= raw note.content %>
+    </div>
+  </td>
+  <td class="border-bottom-custom">
+    <%= link_to "javascript:void(0)", class: "btn btn-xs btn-default", id: "read-more",
+      data: {toggle: "collapse", target: "#content-#{note.id}"} do %>
+      <i class="fa fa-ellipsis-h"></i>
+    <% end %>
+  </td>
+</tr>

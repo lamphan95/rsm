@@ -1,0 +1,9 @@
+<% if @error %>
+  alertify.error('<%= @error %>');
+<% elsif @note.errors.any? %>
+  $('#new-note').html('<%= j render "new_note" %>');
+<% elsif @success %>
+  $('#notes').html('<%= j render "employers/applies/notes" %>');
+  $('#new-note').modal('hide');
+  alertify.success('<%= @success %>');
+<% end %>

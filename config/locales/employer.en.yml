@@ -96,6 +96,7 @@ en:
         phone: "Phone"
         cv: "CV"
         job_applied: "Job Applied"
+        haven't_notes: "Don't have notes."
       offers_list:
         offer_send_by: "Offer was sent by"
       offer_detail:
@@ -474,6 +475,12 @@ en:
         enter_job: "Enter job"
         enter_status_applies: "Enter status"
         filter: "Filter"
+    notes:
+      create:
+        success: "Created success!"
+        not_found_apply: "Not found apply!"
+      show:
+        not_found_apply: "Not found apply!"
   layouts:
     employers:
       footer_employer:
@@ -546,4 +553,3 @@ en:
         employer: "Employer"
       employer:
         employer: "Employer"
-
