@@ -241,9 +241,6 @@ $(document).ready(function() {
       },
       'user[phone]': {
         regex: /^(\+\d{2,4})?\s?(\d{10,15})$/
-      },
-      'user[birthday]': {
-        required: true
       }
     },
     messages: {
@@ -267,9 +264,6 @@ $(document).ready(function() {
       },
       'user[phone]': {
         regex: 'Please enter the correct phone format'
-      },
-      'user[birthday]': {
-        required: I18n.t("users.form.birthday.required")
       }
     }
   });

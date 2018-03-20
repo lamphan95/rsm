@@ -61,11 +61,11 @@
             <i class="fa fa-calendar" aria-hidden="true" title="<%= t '.received' %>"></i>
           </span>
           <% if @certificate.received_time.present? %>
-            <%= f.text_field :received_time, data: {provide: "datepicker"},
+            <%= f.text_field :received_time,
               class: "datepick form-control input-custom input-lg", placeholder: t(".received"),
-              value: @certificate.received_time.strftime(t "date_format") %>
+              value: l(@certificate.received_time, format: :long) %>
           <% else %>
-            <%= f.text_field :received_time, data: {provide: "datepicker"},
+            <%= f.text_field :received_time,
               class: "datepick form-control input-custom input-lg", placeholder: t(".received") %>
           <% end %>
         </div>
