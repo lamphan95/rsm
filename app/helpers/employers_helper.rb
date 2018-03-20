@@ -159,4 +159,8 @@ module EmployersHelper
   def show_salary offer
     t "salary_offer", salary: number_with_delimiter(offer.salary.round, delimiter: Settings.delimiter), sign: offer.currency.sign
   end
+
+  def index_count_page counter, page, max_per
+    counter + CouterIndex.couter(page, max_per)
+  end
 end

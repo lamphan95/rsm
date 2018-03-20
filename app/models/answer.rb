@@ -9,4 +9,8 @@ class Answer < ApplicationRecord
   }
 
   delegate :job, to: :survey, prefix: true, allow_nil: true
+
+  scope :answers_of_surveys, ->id_apply{where(apply_id: id_apply)}
+  scope :name_not_blank, ->{where.not(name: [nil, ""])}
+
 end

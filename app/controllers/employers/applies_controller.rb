@@ -9,6 +9,7 @@ class Employers::AppliesController < Employers::EmployersController
   before_action :load_statuses, only: :index
   before_action :load_offer_status_step_pending, only: %i(show update)
   before_action :load_jobs_applied, only: :show
+  before_action :load_answers_for_survey, only: :show
 
   def index
     applies_status = @company.apply_statuses.current
@@ -102,5 +103,10 @@ class Employers::AppliesController < Employers::EmployersController
 
   def load_jobs_applied
     @applies = Apply.get_by_user(@apply.user_id).includes :job
+  end
+
+  def load_answers_for_survey
+    @answers = @apply.answers.name_not_blank
+      .page(params[:page]).per Settings.survey.max_record
   end
 end

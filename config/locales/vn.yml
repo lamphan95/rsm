@@ -456,7 +456,12 @@ vn:
               blank: "Không thể để trống"
             name:
               blank: "Không thể để trống"
+  survey:
+    question: "Câu hỏi"
+    answer: "Câu trả lời"
+    no_survey: "Công việc này không có câu hỏi khảo sát"
   employers:
+    survey: "Khảo sát"
     members:
       index:
         id: "ID"
