@@ -36,11 +36,11 @@
           <i class="fa fa-calendar" aria-hidden="true" title="<%= t '.from' %>"></i>
         </span>
         <% if @experience.start_time.present? %>
-          <%= f.text_field :start_time, data: {provide: "datepicker"},
+          <%= f.text_field :start_time,
             class: "datepick form-control input-custom input-lg", placeholder: t(".from"),
-            value: @experience.start_time.strftime(t "date_format") %>
+            value: l(@experience.start_time, format: :long) %>
         <% else %>
-          <%= f.text_field :start_time, data: {provide: "datepicker"},
+          <%= f.text_field :start_time,
             class: "datepick form-control input-custom input-lg", placeholder: t(".from") %>
         <% end %>
       </div>
@@ -52,11 +52,11 @@
           <i class="fa fa-calendar" aria-hidden="true" title="<%= t '.to' %>"></i>
         </span>
         <% if @experience.end_time.present? %>
-          <%= f.text_field :end_time, data: {provide: "datepicker"},
+          <%= f.text_field :end_time,
             class: "datepick form-control input-custom input-lg", placeholder: t(".to"),
-            value: @experience.end_time.strftime(t "date_format") %>
+            value: l(@experience.end_time, format: :long) %>
         <% else %>
-          <%= f.text_field :end_time, data: {provide: "datepicker"},
+          <%= f.text_field :end_time,
             class: "datepick form-control input-custom input-lg", placeholder: t(".to") %>
         <% end %>
       </div>

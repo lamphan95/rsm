@@ -55,5 +55,5 @@ en:
         one: "1 day ago"
         other: "%{count} days ago"
   datepicker:
-    format: "dd-mm-yy"
-    long: "dd-mm-yy"
+    format: "dd/mm/yyyy"
+    long: "dd/mm/yyyy"
