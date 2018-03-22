@@ -280,7 +280,8 @@ Devise.setup do |config|
       scope: ["https://mail.google.com/", "email", "profile"],
       prompt: "consent",
       approval_prompt: "force",
-      access_type: "offline"
+      access_type: "offline",
+      skip_jwt: true
     }
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"],
     {scope: "email"}

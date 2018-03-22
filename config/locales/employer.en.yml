@@ -279,7 +279,7 @@ en:
         target: "Target"
         level: "Level"
         skill: "Skill"
-        request: "Request"
+        request: "Requirement"
         please_selected: "--- Please Select ---"
         position: "Position"
         save: "Create Job"
