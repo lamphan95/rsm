@@ -76,11 +76,13 @@ en:
         step: "Step"
         no: "No"
       create:
+        success_candidate: "Created candidate success."
         success: "Applied success"
         failure: "Applied failure"
         job_nil: "Please select job"
         job: "job"
         cv: "Cv"
+        candidate_exist: "candidate was exist."
       index:
         all_applies: "All Applies"
         apply: "apply"
