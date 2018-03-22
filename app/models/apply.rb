@@ -15,7 +15,7 @@ class Apply < ApplicationRecord
 
   serialize :information, Hash
 
-  after_create :create_activity_notify
+  after_create :create_activity_notify, :create_user
 
   validates :cv, presence: true
   validates :information, presence: true
@@ -34,6 +34,7 @@ class Apply < ApplicationRecord
   delegate :name, to: :job, prefix: true, allow_nil: true
   delegate :name, to: :step, prefix: true, allow_nil: true
   delegate :phone, :email, :name, to: :user, prefix: true, allow_nil: true
+  delegate :id, to: :company, prefix: true, allow_nil: true
 
   include PublicActivity::Model
 
@@ -79,6 +80,19 @@ class Apply < ApplicationRecord
     Notification.create_notification key_apply, self, current_user, self.job.company_id if current_user || key_apply
     AppliesUserJob.perform_later self
     AppliesEmployerJob.perform_later self
+  rescue ActiveRecord::RecordInvalid
+  end
+
+  def create_user
+    return if self.user.present?
+    user = User.find_by email: information[:email]
+    if user.blank?
+      password = Devise.friendly_token.first(Settings.password.length)
+      user = User.create! email: information[:email], name: information[:name],
+        password: password, company_id: company_id, phone: information[:phone],
+        address: information[:address], auto_password: password
+    end
+    self.update_attributes user_id: user.id
   rescue ActiveRecord::RecordInvalid
   end
 end
