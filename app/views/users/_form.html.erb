@@ -8,7 +8,7 @@
           <% if @user.picture.present? %>
             <%= image_tag @user.picture.url, class: "img-responsive", id: "banner_img" %>
           <% else %>
-            <%= image_tag "avatar_2x.png", class: "img-responsive", id: "banner_img" %>
+            <%= image_tag "avatar_2x.jpg", class: "img-responsive", id: "banner_img" %>
           <% end %>
         </div>
         <%= f.label :picture, t(".change_avatar"), class: "profile-label" %>
