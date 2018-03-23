@@ -2,9 +2,15 @@
 <li class="<%= @type %>">
   <div class="col-md-3 col-sm-3 col-xs-3">
     <div class="notify-img">
-      <%= image_tag(notification.user_picture.url,
-        width: Settings.picture_user_width,
-        height: Settings.picture_user_height) if notification.user_id %>
+      <% if  notification.user_id %>
+        <%= image_tag(notification.user_picture.url,
+          width: Settings.picture_user_width,
+          height: Settings.picture_user_height) %>
+      <% else %>
+        <%= image_tag("user_avatar_default.png",
+          width: Settings.picture_user_width,
+          height: Settings.picture_user_height) %>
+      <% end %>
     </div>
   </div>
   <% check_notify notification %>

@@ -20,11 +20,12 @@ class SendmailService
       candidate_email, email_sender, access_token
   end
 
-  def send_interview
-    SendEmailJob.perform_later @email_sents, @company, @apply
-  end
-
   class << self
+    def send_interview inforappointment, company, apply
+      SendEmailJob.perform_later inforappointment, company, apply
+    end
+
+
     def get_template_mailer content, logo_url
       ApplicationController.new.render_to_string template: "company_mailer/send_mailer_candidate",
         layout: "layouts/gmail", assigns: {content: content, logo_url: logo_url}
