@@ -26,6 +26,7 @@ RSpec.describe User, type: :model do
     it {is_expected.to have_many :inforappointments}
     it {is_expected.to have_many :notifications}
     it {is_expected.to have_many :members}
+    it {is_expected.to have_one :candidate}
   end
 
   context "column" do

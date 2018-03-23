@@ -42,7 +42,7 @@ class Employers::AppliesController < Employers::EmployersController
     job_ids = params[:job_ids]
 
     if job_ids[1].blank?
-      save_apply information
+      create_candidate information, params[:apply][:cv]
     else
       import_applies job_ids, information
     end
@@ -77,16 +77,6 @@ class Employers::AppliesController < Employers::EmployersController
     Apply.statuses["lock_apply"]
   end
 
-  def save_apply information
-    @apply = Apply.new apply_params
-    @apply.information = information
-    if @apply.save
-      @success = t ".success"
-    else
-      @error = t ".failure"
-    end
-  end
-
   def import_applies job_ids, information
     Apply.transaction requires_new: true do
       applies = []
@@ -108,5 +98,22 @@ class Employers::AppliesController < Employers::EmployersController
   def load_answers_for_survey
     @answers = @apply.answers.name_not_blank
       .page(params[:page]).per Settings.survey.max_record
+  end
+
+  def create_candidate information, cv
+    candidate = Candidate.find_by email: information[:email]
+    if candidate
+      @error = t ".candidate_exist"
+    else
+      @candidate = Candidate.new company_id: @company.id,
+        email: information[:email], name: information[:name],
+        phone: information[:phone], address: information[:address],
+        cv: cv, user_created: current_user.id
+      if @candidate.save
+        @success = t ".success_candidate"
+      else
+        @error = t ".failure"
+      end
+    end
   end
 end

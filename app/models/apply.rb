@@ -15,7 +15,7 @@ class Apply < ApplicationRecord
 
   serialize :information, Hash
 
-  after_create :create_activity_notify, :create_user
+  after_create :create_activity_notify, :create_user, :create_candidates
 
   validates :cv, presence: true
   validates :information, presence: true
@@ -35,6 +35,7 @@ class Apply < ApplicationRecord
   delegate :name, to: :step, prefix: true, allow_nil: true
   delegate :phone, :email, :name, to: :user, prefix: true, allow_nil: true
   delegate :id, to: :company, prefix: true, allow_nil: true
+  delegate :id, to: :user, prefix: true, allow_nil: true
 
   include PublicActivity::Model
 
@@ -93,6 +94,15 @@ class Apply < ApplicationRecord
         address: information[:address], auto_password: password
     end
     self.update_attributes user_id: user.id
+  rescue ActiveRecord::RecordInvalid
+  end
+
+  def create_candidates
+    candidate = Candidate.find_by email: information[:email]
+    return if candidate
+    Candidate.create! user_id: self.user_id, company_id: self.company_id,
+      email: information[:email], name: information[:name],
+      phone: information[:phone], address: information[:address], cv: cv
   rescue ActiveRecord::RecordInvalid
   end
 end

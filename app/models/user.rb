@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :offers, dependent: :destroy
   has_one :oauth, dependent: :destroy
   has_many :apply_statuses, through: :applies
+  has_one :candidate, dependent: :destroy
 
   validates :name, presence: true
   validates :email, uniqueness: { scope: :company_id,

@@ -75,11 +75,13 @@ vn:
         step: "Bước"
         no: "STT"
       create:
+        success_candidate: "Đã tạo ứng vien thành công."
         success: "Đã tạo đơn thành công"
         failure: "Tạo đơn thất bại"
         job_nil: "Vui lòng chọn công việc"
         job: "Công việc"
         cv: "Cv"
+        candidate_exist: "Ứng viên đã tồn tại."
       index:
         all_applies: "Tất cả đơn nộp"
         apply: "Ứng tuyển"
