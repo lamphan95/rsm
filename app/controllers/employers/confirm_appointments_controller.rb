@@ -1,7 +1,6 @@
 class Employers::ConfirmAppointmentsController < ApplicationController
 
   def edit
-    binding.pry
     inforappointment = Inforappointment.find_by(id: params[:id])
     if inforappointment && inforappointment.activation_digest == params[:activation_digest]
       update_appointment inforappointment
