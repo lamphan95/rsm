@@ -48,7 +48,7 @@ class Employers::SendEmailsController < ApplicationController
 
   def send_mail_interviewer
     @apply.inforappointments.each do |inforappointment|
-      SendEmailJob.perform_later inforappointment, @company
+      SendEmailJob.perform_later inforappointment, @company, @apply
     end
   end
 
