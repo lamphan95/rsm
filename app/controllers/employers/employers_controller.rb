@@ -124,4 +124,8 @@ class Employers::EmployersController < BaseNotificationsController
   def load_currency
     @currencies = @company.currencies.get_newest
   end
+
+  def load_notes
+    @notes = @apply.notes.get_newest.includes :user if @apply
+  end
 end

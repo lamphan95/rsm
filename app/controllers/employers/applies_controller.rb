@@ -8,7 +8,7 @@ class Employers::AppliesController < Employers::EmployersController
   before_action :load_steps, only: :index
   before_action :load_statuses, only: :index
   before_action :load_offer_status_step_pending, only: %i(show update)
-  before_action :load_jobs_applied, only: :show
+  before_action :load_jobs_applied, :load_notes, only: :show
   before_action :load_answers_for_survey, only: :show
 
   def index

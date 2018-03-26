@@ -12,6 +12,7 @@ class Apply < ApplicationRecord
   has_many :status_steps, through: :apply_statuses, dependent: :destroy
   has_many :steps, through: :status_steps, dependent: :destroy
   has_many :offers, through: :apply_statuses
+  has_many :notes, dependent: :destroy
 
   serialize :information, Hash
 

@@ -39,6 +39,7 @@ class Ability
     can :manage, ApplyStatus, apply_id: company.applies.pluck(:id)
     can :read, StatusStep, company_id: company.id
     can :manage, Question, company_id: company.id
+    can :manage, Note
   end
 
   def permission_admin

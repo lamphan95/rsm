@@ -469,6 +469,12 @@ vn:
         of_company: " của công ty "
         template_error: "Không thể tìm thấy mẫu. Hãy thử lại sau"
         company: "Công ty %{name} Việt Nam"
+    notes:
+      create:
+        success: "Đã tạo ghi chú thành công!"
+        not_found_apply: "Khôn tìm thấy apply!"
+      show:
+        not_found_apply: "Không tìm thấy apply!"
   layouts:
     employers:
       footer_employer:
