@@ -66,14 +66,12 @@
       </div>
 
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="row">
-            <table class="table table-striped table-vcenter">
-              <tbody>
-                <%= render partial: "job_applied", collection: @applies, as: :apply %>
-              </tbody>
-            </table>
-          </div>
+        <div class="col-md-12">
+          <table class="table table-striped table-vcenter">
+            <tbody>
+              <%= render partial: "job_applied", collection: @applies, as: :apply %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
