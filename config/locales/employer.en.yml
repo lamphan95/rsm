@@ -489,6 +489,14 @@ en:
         not_candidates: "Haven't candidates."
       form_search:
         enter_search_candidates: "Enter name or phone or address or email"
+        filter: "Filter"
+      choose_job:
+        choose: "Choose"
+        name: "Name"
+      select_job:
+        add_job_for_apply: "This is apply with undefined job, please select job to continues."
+        submit: "Submit"
+        job_name_placeholder: "Please input job name"
   layouts:
     employers:
       footer_employer:
@@ -561,4 +569,3 @@ en:
         employer: "Employer"
       employer:
         employer: "Employer"
-

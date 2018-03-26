@@ -48,6 +48,7 @@ class Job < ApplicationRecord
   scope :unexpired_jobs, -> date_compare {where "end_time >= ? OR end_time IS NULL", date_compare}
   scope :expired_jobs, -> date_compare {where "end_time < ?", date_compare}
   scope :get_job, -> ids {where id: ids}
+  scope :get_by_not_id, -> ids {where.not id: ids}
 
   delegate :id, to: :company, prefix: true, allow_nil: true
   delegate :sign, to: :currency, prefix: true, allow_nil: true

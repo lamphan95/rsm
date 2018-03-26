@@ -1,0 +1,52 @@
+<div class="col-sm-8 col-lg-9">
+  <div class="block full">
+    <div class="block-title">
+      <h2>
+        <i class="fa fa-briefcase"></i>
+        <strong><%= t ".select_job" %></strong>
+      </h2>
+      <small class="text-muted">
+        <i class="fa fa-warning"></i> <%= t ".add_job_for_apply" %>
+      </small>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tagsinput h-35" id="example-tags_tagsinput"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 m-top-15">
+        <%= search_form_for @q, url: employers_company_candidate_path(@company, id: @candidate.id),
+          remote: true do |f| %>
+          <%= hidden_field_tag :choosen_ids, nil, id: "choosen-ids" %>
+          <label>
+            <div class="input-group">
+              <%= f.text_field :name_cont, placeholder: t(".job_name_placeholder"),
+                class: "form-group form-control input-md z-index-0" %>
+              <span class="input-group-addon p-0">
+                <%= f.button :submit, class: "btn btn-primary btn-sm col-md-12" do %>
+                  <i class="fa fa-search"></i>
+                <% end %>
+              </span>
+            </div>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <%= form_tag employers_applies_path, method: :post, remote: :true, class: "form-horizontal form-bordered" do %>
+        <div id="search-job">
+          <%= render "choose_job" %>
+        </div>
+        <div class="row">
+          <center>
+            <%= submit_tag t(".submit"), class: "btn btn-info" %>
+          </center>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

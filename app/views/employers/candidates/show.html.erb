@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-sm-4 col-lg-3">
+    <div class="block full">
+      <div class="block-title clearfix">
+        <h2><i class="fa fa-ticket"></i> <strong><%= t ".candidate_information" %></strong></h2>
+      </div>
+      <div class="block">
+        <div class="block-section text-center">
+          <%= show_image_apply @candidate %>
+          <h3>
+            <strong><%= @candidate.name %></strong><br><small></small>
+          </h3>
+        </div>
+        <table class="ml-18 table table-borderless table-striped">
+          <tbody>
+            <tr class="background-none">
+              <td class="text-right"><strong><%= t ".email" %></strong></td>
+              <td><span class="label label-primary"><%= @candidate.email %></span></td>
+            </tr>
+
+            <tr class="background-none">
+              <td class="text-right"><strong><%= t ".phone" %></strong></td>
+              <td><%= @candidate.phone %></td>
+            </tr>
+
+            <tr class="background-none">
+              <td class="text-right"><strong><%= t "employers.cv" %></strong></td>
+              <td>
+                <a href="<%= @candidate.cv.url %>" data-fancybox class="thumbnail-cv label label-info">
+                  <i class="fa fa-eye"></i><b><%= t "employers.view" %></b>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title clearfix">
+        <h2><i class="fa fa-briefcase"></i> <strong><%= t ".job_applied" %></strong></h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row">
+            <table class="table table-striped table-vcenter">
+              <tbody id="workflow">
+                <%= render partial: "employers/applies/job_applied", collection: @applies, as: :apply %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="select-job">
+    <%= render "select_job" %>
+  </div>
+</div>
+
+<div class="modal fade" id="job-applied" role="dialog"></div>
+<%= javascript_include_tag "employers/select_step" %>

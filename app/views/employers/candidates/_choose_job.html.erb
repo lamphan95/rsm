@@ -1,0 +1,14 @@
+<%= javascript_include_tag "translate" %>
+<div class="scrollbar block full tbl-user-member" id="style-2">
+  <table class="table table-striped table-vcenter">
+    <thead class="header-scroll">
+      <tr>
+        <th class="text-center"><%= t ".choose" %></th>
+        <th><%= t ".name" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render "employers/applies/job" %>
+    </tbody>
+  </table>
+</div>

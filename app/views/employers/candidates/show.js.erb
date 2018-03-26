@@ -1,0 +1,10 @@
+<% if params[:q] %>
+  $('#search-job').html('<%= j render "choose_job" %>');
+  <% choosen_ids = params[:choosen_ids].split(",") %>
+  <% if choosen_ids.present? %>
+    <% choosen_ids.each do |id| %>
+      <% next if id.blank? %>
+      $('#job_ids_<%= id %>').prop('checked', true);
+    <% end %>
+  <% end %>
+<% end %>

@@ -19,6 +19,12 @@
 <% elsif @success %>
   $('#add-apply').modal('hide');
   alertify.success('<%= @success %>');
+  <% if  %>
+    $('#workflow').html('<%= j render partial: "employers/applies/job_applied", collection: @applies, as: :apply %>');
+    $('#select-job').html('<%= j render "select_job" %>');
+  <% else %>
+    $('#table-applies').html('<%= j render "table_applies" %>');
+  <% end %>
 <% elsif @error %>
   alertify.error('<%= @error %>');
 <% end %>

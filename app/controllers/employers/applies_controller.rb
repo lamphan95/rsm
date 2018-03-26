@@ -46,6 +46,7 @@ class Employers::AppliesController < Employers::EmployersController
     else
       import_applies job_ids, information
     end
+    load_applies
   rescue ActiveRecord::RecordInvalid
     @error = t ".failure"
   end
@@ -114,6 +115,19 @@ class Employers::AppliesController < Employers::EmployersController
       else
         @error = t ".failure"
       end
+    end
+  end
+
+  def create_from_apply_none_job
+    job_ids = params[:job_ids]
+    if job_ids.present?
+      import_applies job_ids, @apply.information
+      if @success
+        before_hanlding_apply_undefined_job
+        load_jobs_applied
+      end
+    else
+      @error = t ".job_nil"
     end
   end
 end

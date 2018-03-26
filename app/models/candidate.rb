@@ -2,6 +2,8 @@ class Candidate < ApplicationRecord
   belongs_to :company
   belongs_to :user, optional: true
 
+  has_many :applies, through: :user
+
   mount_uploader :cv, CvUploader
 
   validates :cv, presence: true

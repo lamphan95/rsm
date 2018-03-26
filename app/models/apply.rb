@@ -74,6 +74,10 @@ class Apply < ApplicationRecord
     self.errors[attribute_name].blank?
   end
 
+  def self.get_by_email email
+    self.select {|apply| apply.information[:email] == email}
+  end
+
   private
 
   def create_activity_notify
