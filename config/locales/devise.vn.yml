@@ -19,6 +19,7 @@ vn:
     mailer:
       confirmation_instructions:
         subject: "Xác nhận hướng dẫn"
+        password: "Mật khẩu của bạn: %{password}."
       reset_password_instructions:
         subject: "Đặt lại hướng dẫn mật khẩu"
       unlock_instructions:

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :auto_password
   devise :database_authenticatable, :registerable, :confirmable, :recoverable,
     :rememberable, :trackable, :validatable, :omniauthable,
     omniauth_providers: %i(facebook google_oauth2 linkedin)
@@ -45,6 +46,10 @@ class User < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
   mount_uploader :cv, CvUploader
+
+  def self_attr_after_save auto_password
+    self.auto_password = auto_password
+  end
 
   def is_user? user
     user == self

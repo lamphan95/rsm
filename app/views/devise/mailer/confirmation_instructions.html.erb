@@ -3,6 +3,13 @@
     <%= t "devise.mailer.content.hello" %> <%= @resource.email %>!
   </td>
 </tr>
+<% if @resource.auto_password %>
+  <tr>
+    <td>
+      <p><%= t ".password", password: @resource.auto_password %></p>
+    </td>
+  </tr>
+<% end %>
 <tr>
   <td>
     <%= t "devise.mailer.content.confirm_your_account_email" %>
