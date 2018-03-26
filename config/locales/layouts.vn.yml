@@ -220,6 +220,7 @@ vn:
         applies: "Hồ sơ ứng tuyển"
         connect_gmail: "Kết nối gmail"
         connected_gmail: "Đã kết nối gmail"
+        candidates: "Các ứng viên"
       header_employer:
         messages: "Tin nhắn"
         profile: "Hồ sơ cá nhân"

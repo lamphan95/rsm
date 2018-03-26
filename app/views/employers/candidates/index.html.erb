@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag "employer/hidepaginate" %>
+<div class="row text-center d-flex">
+
+</div>
+<div class="block full">
+  <div class="block-title">
+    <h2><strong><%= t ".all_applies" %></strong></h2>
+  </div>
+  <div class="table-responsive">
+    <div id="example-datatable_wrapper" class="dataTables_wrapper form-inline no-footer">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="pull-right">
+            <%= render "form_search" %>
+          </div>
+        </div>
+      </div>
+      <%= render "table_candidates" %>
+    </div>
+  </div>
+</div>

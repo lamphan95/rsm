@@ -36,7 +36,9 @@ Rails.application.routes.draw do
       resources :applies, only: %i(show index update)
     end
     resources :users
-    resources :companies
+    resources :companies do
+      resources :candidates
+    end
     resources :members
     resources :company_activities
     resources :appointments

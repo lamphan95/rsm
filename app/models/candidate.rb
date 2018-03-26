@@ -11,4 +11,6 @@ class Candidate < ApplicationRecord
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
   validates :phone, presence: true, length: {maximum: Settings.apply.model.phone_max_length,
     minimum: Settings.apply.model.phone_min_length}, numericality: true
+
+  scope :get_newest, ->{order created_at: :desc}
 end

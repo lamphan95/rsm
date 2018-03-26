@@ -476,6 +476,19 @@ en:
         enter_job: "Enter job"
         enter_status_applies: "Enter status"
         filter: "Filter"
+    candidates:
+      table_candidates:
+        no: "No"
+        name: "Name"
+        email: "Email"
+        phone: "Phone"
+        join_at: "Join at"
+        action: "Action"
+        not_candidates: "Haven't candidates."
+      index:
+        not_candidates: "Haven't candidates."
+      form_search:
+        enter_search_candidates: "Enter name or phone or address or email"
   layouts:
     employers:
       footer_employer:

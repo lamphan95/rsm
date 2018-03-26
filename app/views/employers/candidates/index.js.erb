@@ -1,0 +1,6 @@
+<% if @candidates.present? %>
+  $('#table-candidates').html('<%= j render  @candidates %>');
+  $('.pag').html('<%= j paginate @candidates, remote: true %>');
+<% else %>
+  $('#table-candidates').html('<p class="text-danger text-center"><i class="fa fa-times"></i> <%= t ".not_candidates" %></p>');
+<% end %>
